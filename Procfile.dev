@@ -1,0 +1,4 @@
+web: bundle exec unicorn_rails -p $PORT -c config/unicorn.rb
+worker: bundle exec sidekiq -C config/sidekiq.yml
+redis: redis-server /usr/local/etc/redis.conf
+postgres: postgres -D /usr/local/var/postgres
