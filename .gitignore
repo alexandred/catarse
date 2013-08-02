@@ -21,3 +21,5 @@ db/structure.sql
 Cookbooks
 .vagrant
 .project
+vendor/bundle
+.ruby-version
