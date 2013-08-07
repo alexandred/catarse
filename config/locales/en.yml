@@ -344,7 +344,7 @@ en:
         goal: "How much do you intend to raise? (use only numbers)"
         name: "Project's Name"
         online_days: 'How Many Campaign Days?'
-        video_url: Video
+        video_url: 'Image or Video'
         uploaded_image: "Project thumbnail"
       reward:
         maximum_backers: "Maximum backers (optional)"
@@ -593,15 +593,15 @@ en:
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
     new:
-      legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your backers. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
+      legend_html: "After filling in the form below, you will receive a project page in Draft mode. You can share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go live on the site."
       permalink_important: 'Try not to use underline, hyphen etc.'
-      permalink_hint: 'Go simple. Your backers should be able to remmember the URL to your project ;)'
+      permalink_hint: 'Go simple. Your supporters should be able to remmember the URL to your project ;)'
       name_important: "Do not exceed  50 characters"
       online_days_important: "60 days is the maximum"
       about_important: "Don't make it too long! Indicate links so people can know more about your work"
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
       send_project: "I want to submit my project."
-      video_important: "The video must be hosted by Vimeo. Paste here the URL!"
+      video_important: "Please enter a video or image url. The video must be hosted by Youtube or Vimeo."
       more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
       first_backers_important: "These people are fundamental to the success of your project."
       how_know_important: "Yay! We reached  the final question."
