@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'state_machine'
+require 'money'
 class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PgSearch
@@ -122,6 +123,14 @@ class Project < ActiveRecord::Base
     self.state_machine.states.map do |state|
       state.name if state.name != :deleted
     end.compact!
+  end
+  
+  def self.major_currencies
+    [:gbp, :usd, :eur]
+  end
+  
+  def self.all_currencies
+    ::Money::Currency.table.keys
   end
 
   def subscribed_users

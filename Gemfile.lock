@@ -485,6 +485,7 @@ DEPENDENCIES
   launchy
   letter_opener
   moip!
+  money
   newrelic_rpm
   omniauth
   omniauth-facebook (= 1.4.0)

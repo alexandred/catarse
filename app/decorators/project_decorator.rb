@@ -1,3 +1,4 @@
+require 'money'
 class ProjectDecorator < Draper::Decorator
   decorates :project
   include Draper::LazyHelpers
@@ -42,11 +43,15 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_pledged
-    number_to_currency source.pledged, unit: 'R$', precision: 0, delimiter: '.'
+    number_to_currency source.pledged, unit: currency.symbol, precision: 0, delimiter: currency.delimiter
   end
 
   def display_goal
-    number_to_currency source.goal, unit: 'R$', precision: 0, delimiter: '.'
+    number_to_currency source.goal, unit: currency.symbol, precision: 0, delimiter: currency.delimiter
+  end
+  
+  def currency
+    ::Money::Currency.new(source.currency)
   end
 
   def progress_bar

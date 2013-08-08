@@ -65,6 +65,10 @@
               p.inline-hints= t('formtastic.hints.project.goal').html_safe
 
             .input
+              = form.label :currency, t('formtastic.labels.project.currency')
+              = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @project.errors[:currency].present?}"
+
+            .input
               = form.label :online_days, t('formtastic.labels.project.expires_at')
               .input-append
                 = form.text_field :online_days, class: "#{'error' if @project.errors[:online_days].present?}"
