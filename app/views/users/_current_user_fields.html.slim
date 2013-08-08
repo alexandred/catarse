@@ -30,16 +30,12 @@
           .profile
             = f.input :id, as: :string, input_html: { disabled:  'disabled'}
             = f.input :full_name, required: true, as: :string
-            = f.input :cpf, as: :string, input_html: {autocomplete: 'off'}, label: (t('activerecord.attributes.user.cpf') + link_to(t('activerecord.attributes.user.cpf_hint'), 'http://suporte.catarse.me/knowledgebase/articles/162312-o-catarse-emite-nota-fiscal', {title: t('activerecord.attributes.user.cpf_hint_title') })).html_safe
-            = f.input :state_inscription, as: :string
             = f.input :name, required: false, as: :string
-            = f.input :address_street, as: :string
-            = f.input :address_number, as: :string
-            = f.input :address_complement, required: false, as: :string
-            = f.input :address_neighbourhood, as: :string
-            = f.input :address_zip_code, as: :string, input_html: {autocomplete: 'off'}
+            = f.input :address_street, as: :string, label: "Address"
+            = f.input :address_neighbourhood, as: :string, label: "Address 2"
             = f.input :address_city, as: :string
-            = f.input :address_state, as: :select, collection: State.array
+            = f.input :address_state, as: :string, input_html: {style: 'margin-right: 20px'}
+            = f.input :address_zip_code, as: :string, input_html: {autocomplete: 'off'}
           .socialmidia
             .div
               = f.label :twitter, t('.twitter')
