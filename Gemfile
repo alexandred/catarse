@@ -57,6 +57,7 @@ gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref:
 
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.1.1'
+gem 'country-select'
 gem "auto_html",    '= 1.4.2'
 gem 'kaminari'
 

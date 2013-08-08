@@ -142,6 +142,7 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     connection_pool (1.1.0)
+    country-select (1.1.1)
     coveralls (0.6.7)
       colorize
       multi_json (~> 1.3)
@@ -461,6 +462,7 @@ DEPENDENCIES
   coffee-rails
   compass-960-plugin
   compass-rails
+  country-select
   coveralls
   database_cleaner
   devise

@@ -66,11 +66,7 @@ Catarse::Application.routes.draw do
 
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
-    resources :rewards, only: [ :index, :create, :update, :destroy ] do
-      member do
-        post 'sort'
-      end
-    end
+
     resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
       member do
         match 'credits_checkout'
@@ -87,6 +83,27 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
+
+  resources :charities do
+    resources :updates, only: [ :index, :create, :destroy ]
+
+    resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
+      member do
+        match 'credits_checkout'
+        post 'update_info'
+      end
+    end
+    collection do
+      get 'video'
+      get 'check_slug'
+    end
+    member do
+      put 'pay'
+      get 'embed'
+      get 'video_embed'
+    end
+  end
+  
   resources :users do
     collection do
       get :uservoice_gadget

@@ -130,6 +130,18 @@ en:
         permalink: 'Project URL'
         how_know: "How did you hear about Catarse?"
         more_links: 'Where can we find more about you and your project?'
+      charity:
+        category: Category
+        expires_at: Deadline
+        online_days: Days of the air campaign
+        headline: Headline
+        image_url: "Image URL"
+        name: Name
+        user_id: "User ID"
+        video_url: "Video URL"
+        permalink: 'Charity URL'
+        how_know: "How did you hear about Catarse?"
+        more_links: 'Where can we find more about you and your project?'
       reward:
         description: Description
         maximum_backers: "Maximum backers"
@@ -347,6 +359,24 @@ en:
         online_days: 'How Many Campaign Days?'
         video_url: 'Image or Video'
         uploaded_image: "Project thumbnail"
+      charity:
+        more_links: "List project related links *"
+        how_know: "How did you get to know Catarse?"
+        headline: "Punch Line"
+        category: 'Category'
+        first_backers: "List your first backers *"
+        about: "Please give a brief description of your Charity"
+        expires_at: "What's the deadline to reach your goal?"
+        goal: "How much do you intend to raise? (use only numbers)"
+        currency: "What currency do you want to use for donations?"
+        name: "Charity Name"
+        online_days: 'How Many Campaign Days?'
+        video_url: 'Video URL'
+        uploaded_image: "Charity thumbnail"
+        registration_number: "Charity Registration Number"
+        charity_url: "Charity website URL"
+        charity_email: "Charity email address"
+        phone: "Telephone Number"
       reward:
         maximum_backers: "Maximum backers (optional)"
         days_to_delivery: "Days to delivery"
@@ -636,6 +666,44 @@ en:
       take_a_look: "Check out the project %{name} on @catarse"
     video_embed:
       a_project_by_html: "A project by %{link} on"
+  charities:
+    new:
+      title: "Submit your charity"
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      legend_html: "After filling in the form below, you will receive a project page in Draft mode. You can share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go live on the site."
+      permalink_important: 'Try not to use underline, hyphen etc.'
+      permalink_hint: 'Go simple. Your supporters should be able to remmember the URL to your charity ;)'
+      name_important: "Do not exceed  50 characters"
+      online_days_important: "60 days is the maximum"
+      about_important: "Don't make it too long! Indicate links so people can know more about your work"
+      important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
+      send_project: "I want to submit my charity."
+      video_important: "Please enter a video or image url. The video must be hosted by Youtube or Vimeo."
+      how_know_important: "Yay! We reached  the final question."
+      headline_important: "It's a summary of  your project . 140 characteres tops!:D"
+      tags_important: "Check ou other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      about: "Give a brief description of your Charity"
+      category: "Project category"
+      how_much_you_need: "How much do you want to raise?"
+      about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
+      contact: "Leave us your email address so we can contact you"
+      links: "Where can we find more about you and your project?"
+      links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
+      video: "Your project already have a video?"
+      video_hint: "A Vimeo link"
+      twitter: "Have twitter account?"
+      facebook: "Have facebook account?"
+      blog: "Have a blog about the project?"
+      know_us_via: "How did you meet Catarse?"
+      how_works: "How to mobilize backers to raise $ needed for enforcement?"
+      project_warning:
+        content_html: "Want to have your project selected? Don't forget to read %{link}."
+        help_link: "our guide"
+      rewards: "What rewards do you want to offer?"
+      rewards_hint: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
+      submit: "Submit the Charity"
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
   projects_mailer:
     start_project_email:
       subject: "Project sent by %{name}"
