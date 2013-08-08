@@ -43,7 +43,6 @@
           = link_to t('.tabs.created_projects'), '#projects', id: 'created_projects_link'
           / = link_to t('.tabs.comments'), '#comments', id: 'comments_link'
           - if can? :manage, @user
-            = link_to t('.tabs.credits'), '#credits', id: 'credits_link'
             = link_to t('.tabs.settings'), '#settings', id: 'settings_link'
             = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link'
       .clearfix
