@@ -15,8 +15,6 @@ CATARSE.BackersNewView = Backbone.View.extend({
       check_credits()
       if(!value_ok())
         all_ok = false
-      if(!reward_ok())
-        all_ok = false
       if(all_ok){
         $('#backer_submit').attr('disabled', false)
       } else {
@@ -50,7 +48,7 @@ CATARSE.BackersNewView = Backbone.View.extend({
     }
     value_ok = function(){
       var value = $('#backer_value').val()
-      if(/^(\d+)$/.test(value) && parseInt(value) >= 10){
+      if(/^(\d+)$/.test(value) && parseInt(value) >= 0){
         $('#backer_value').addClass("ok").removeClass("error")
         return true
       } else {

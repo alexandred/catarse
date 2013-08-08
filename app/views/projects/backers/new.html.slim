@@ -16,7 +16,7 @@
               .clearfix
             = form.input :value, required: false, as: :string, label: false,  input_html: { autocomplete: 'off' }
             .simbol
-              p R$
+              p= @project.currency_symbol
             = form.input :anonymous
             #anonymous_warning.important.hide
               .bootstrap-alert

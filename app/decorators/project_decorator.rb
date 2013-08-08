@@ -50,6 +50,10 @@ class ProjectDecorator < Draper::Decorator
     number_to_currency source.goal, unit: currency.symbol, precision: 0, delimiter: currency.delimiter
   end
   
+  def currency_symbol
+    currency.symbol
+  end
+  
   def currency
     ::Money::Currency.new(source.currency)
   end
