@@ -17,12 +17,6 @@
             = form.input :value, required: false, as: :string, label: false,  input_html: { autocomplete: 'off' }
             .simbol
               p R$
-            - @rewards[0].id = 0
-            script
-              |var rewards = new Array();
-              - @rewards.each do |reward|
-                |rewards[#{reward.id || 0}] = #{reward.minimum_value};
-            = form.input :reward, as: :radio, collection: @rewards
             = form.input :anonymous
             #anonymous_warning.important.hide
               .bootstrap-alert
@@ -35,7 +29,7 @@
         #project_info
           .project_name= link_to @project.name, project_by_slug_path(permalink: @project.permalink)
           = image_tag @project.display_image, alt: @project.name, class: 'project_image', width: 280
-          .project_owner por #{link_to @project.user.display_name, user_path(@project.user)}
+          .project_owner for #{link_to @project.user.display_name, user_path(@project.user)}
           .project_expires_at #{@project.time_to_go[:time]} #{@project.time_to_go[:unit]} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
         .clearfix
         .back_faq
