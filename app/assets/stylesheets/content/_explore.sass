@@ -34,7 +34,7 @@
                 padding: 1px 10px
                 text-decoration: none
                 +border-radius(5px)
-                &:hover, &.selected
+                &:hover, &.selected, &.type-selected
                   background: rgba($pink, 0.3)
       .main
         .section_header
@@ -53,6 +53,25 @@
             font-family: Arial
             font-size: 16px
             color: $ultra_gryn
+          .search-box
+            margin-top: 20px
+            #explore-search
+              width: 500px
+              padding: 7px
+              border-radius: 8px
+              border: 1px solid #ccc
+              font-size: 14px
+              margin-right: 5px
+            input.btn
+              background-color: #E85397
+              border: 0
+              color: #fff
+              padding: 8px 12px
+              border-radius: 4px
+              font-size: 12px
+              font-weight: bold
+              cursor: pointer
+
         #explore_results
           .results
             ul.collection_list

@@ -65,6 +65,9 @@
               p.inline-hints= t('formtastic.hints.project.goal').html_safe
 
             .input
+              = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @charity.errors[:country].present?}"
+              
+            .input
               = form.label :currency, t('formtastic.labels.project.currency')
               = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @project.errors[:currency].present?}"
 

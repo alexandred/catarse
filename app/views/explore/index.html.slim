@@ -11,6 +11,9 @@
         .original_title
           h1= t('.title')
           h4= t('.subtitle')
+        .search-box
+          input type="text" id="explore-search" 
+          input type="submit" value="Search" class="btn" id="explore-search-sub"
 
       #explore_results
         .results &nbsp;
@@ -18,6 +21,20 @@
 
     .sidebar
       .content
+        section.highlights
+          h2 browse by country
+          select#country_filter name="country_filter" style="margin-bottom: 20px"
+            option value="" 
+              = "Select country..."
+            - Project.all.map {|p| p.country }.sort.uniq.each do |country|
+              option=country
+              
+        section.highlights
+          h2 type
+          ul
+            li=link_to 'charities', charities_path
+            li=link_to 'projects', explore_path, class: 'type-selected'
+            
         - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
           section.highlights
             h2= t('.quick_explore')
