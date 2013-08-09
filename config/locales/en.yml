@@ -632,7 +632,7 @@ en:
       about_important: "Don't make it too long! Indicate links so people can know more about your work"
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
       send_project: "I want to submit my project."
-      video_important: "Please enter a video or image url. The video must be hosted by Youtube or Vimeo."
+      video_important: "Please enter a video or image url. The video must be hosted by on Vimeo."
       more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
       first_backers_important: "These people are fundamental to the success of your project."
       how_know_important: "Yay! We reached  the final question."
@@ -678,7 +678,7 @@ en:
       about_important: "Don't make it too long! Indicate links so people can know more about your work"
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
       send_project: "I want to submit my charity."
-      video_important: "Please enter a video or image url. The video must be hosted by Youtube or Vimeo."
+      video_important: "Please enter a video or image url. The video must be hosted by on Vimeo."
       how_know_important: "Yay! We reached  the final question."
       headline_important: "It's a summary of  your project . 140 characteres tops!:D"
       tags_important: "Check ou other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
