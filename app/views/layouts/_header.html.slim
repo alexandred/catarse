@@ -2,7 +2,12 @@
   /= render 'layouts/announcement'
   = link_to "Home", root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
   nav.actions
-    = link_to t('layouts.header.explore'), explore_path, :class => 'explore'
+    = link_to '#', class: 'explore' do
+      span explore
+      = image_tag('dropdown.png', :class => 'dropdown_arrow')
+    ul.dropdown.explore-projects
+      li= link_to "explore projects", projects_path
+      li= link_to "explore charities", charities_path
     = link_to '#', class: 'submit_project' do
       span submit
       = image_tag('dropdown.png', :class => 'dropdown_arrow')

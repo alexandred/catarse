@@ -10,6 +10,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     "submit .search": "search",
     "click a.my_profile_link":"currentUserDropDown",
     "click a.submit_project":"submitDropDown",
+    "click a.explore":"exploreDropDown",
     "focus .form_login.bootstrap-form input":"markLoginForm",
     "focus .form_register.bootstrap-form input":"markRegisterForm",
   },
@@ -69,6 +70,19 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   },
 
+  exploreDropDown: function(e) {
+    e.preventDefault();
+    $dropdown = this.$('.dropdown.explore-projects');
+    if(!this.dropDownOpened) {
+      $dropdown.show();
+      this.dropDownOpened = true;
+    } else {
+      this.dropDownOpened = false;
+      $dropdown.hide();
+    }
+
+  },
+  
   render: function(){
     this.flash()
   }
