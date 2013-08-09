@@ -3,7 +3,12 @@
   = link_to "Home", root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
   nav.actions
     = link_to t('layouts.header.explore'), explore_path, :class => 'explore'
-    = link_to t('layouts.header.submit_project'), guidelines_start_path, :class =>  'submit_project'
+    = link_to '#', class: 'submit_project' do
+      span submit
+      = image_tag('dropdown.png', :class => 'dropdown_arrow')
+    ul.dropdown.submit-project
+      li= link_to "submit new project", new_project_path
+      li= link_to "submit new charity", new_charity_path
   .search
     = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
       = text_field_tag :search, nil, autocomplete: "off"
