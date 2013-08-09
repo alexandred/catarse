@@ -82,6 +82,14 @@
               = form.text_field :video_url, class: "#{'error' if @charity.errors[:video_url].present?}"
 
             .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.thumbnail_important')
+              = form.label :uploaded_image, t('formtastic.labels.charity.uploaded_image')
+              = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
+              
+            .input
               = form.label :currency, t('formtastic.labels.charity.currency')
               = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @charity.errors[:currency].present?}"
 

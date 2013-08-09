@@ -65,7 +65,7 @@
               p.inline-hints= t('formtastic.hints.project.goal').html_safe
 
             .input
-              = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @charity.errors[:country].present?}"
+              = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @project.errors[:country].present?}"
               
             .input
               = form.label :currency, t('formtastic.labels.project.currency')
@@ -86,6 +86,16 @@
               = form.label :video_url, t('formtastic.labels.project.video_url')
               = form.text_field :video_url, class: "#{'error' if @project.errors[:video_url].present?}"
               p.inline-hints= t('formtastic.hints.project.video_url').html_safe
+              
+            
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.thumbnail_important')
+              = form.label :uploaded_image, t('formtastic.labels.project.uploaded_image')
+              = form.file_field :uploaded_image, class: "#{'error' if @project.errors[:uploaded_image].present?}"
+              p.inline-hints= t('formtastic.hints.project.uploaded_image').html_safe
 
             .input
               .bootstrap-alert

@@ -58,7 +58,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   protected
 
   def is_project? picture
-    model.class.name == 'Project'
+    model.class.name == 'Project' || model.class.name == 'Charity'
   end
 
   def is_user? picture

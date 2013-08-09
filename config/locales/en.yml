@@ -357,7 +357,7 @@ en:
         currency: "What currency do you want to use for donations?"
         name: "Project's Name"
         online_days: 'How Many Campaign Days?'
-        video_url: 'Image or Video'
+        video_url: 'Video URL'
         uploaded_image: "Project thumbnail"
       charity:
         more_links: "List project related links *"
@@ -633,6 +633,7 @@ en:
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
       send_project: "I want to submit my project."
       video_important: "Please enter a video or image url. The video must be hosted by on Vimeo."
+      thumbnail_important: "512x400px image. Larger images will be scaled down"
       more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
       first_backers_important: "These people are fundamental to the success of your project."
       how_know_important: "Yay! We reached  the final question."
@@ -679,6 +680,7 @@ en:
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
       send_project: "I want to submit my charity."
       video_important: "Please enter a video or image url. The video must be hosted by on Vimeo."
+      thumbnail_important: "512x400px image. Larger images will be scaled down"
       how_know_important: "Yay! We reached  the final question."
       headline_important: "It's a summary of  your project . 140 characteres tops!:D"
       tags_important: "Check ou other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
