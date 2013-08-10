@@ -1,0 +1,27 @@
+#page_content
+  .container
+    .backer_content
+      .title
+        h1="Donate to #{@charity.name}".html_safe
+      #back_options.bootstrap-form
+        = semantic_form_for @backer, url: @create_url, html: { id: 'backer_form' } do |form|
+          = form.inputs do
+            = form.label :value, t('formtastic.labels.backer.value')
+            = form.input :value, required: false, as: :string, label: false,  input_html: { autocomplete: 'off' }
+            .simbol
+              p= @charity.currency_symbol
+            = form.input :anonymous
+            .clearfix
+            = form.input :comment, label: "Leave a comment with this donation:"
+         
+            #anonymous_warning.important.hide
+              .bootstrap-alert
+                .alert
+                  = render 'anonymous_warning'
+          = form.actions do
+            .bootstrap-twitter
+              = form.submit "Donate", disabled: true, class: 'btn btn-primary btn-large', id: "backer_submit"
+    .clearfix
+
+= content_for :mouseflow do
+  = render 'layouts/mouseflow'

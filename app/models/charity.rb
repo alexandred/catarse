@@ -4,6 +4,7 @@ class Charity < ActiveRecord::Base
   schema_associations
   belongs_to :user
   has_many :projects
+  has_many :backers
   
   mount_uploader :uploaded_image, LogoUploader
   mount_uploader :video_thumbnail, LogoUploader
@@ -15,7 +16,7 @@ class Charity < ActiveRecord::Base
 
   scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
 
-  delegate :display_image, :display_video_embed_url, :currency_symbol,
+  delegate :display_image, :display_video_embed_url, :currency_symbol, :currency_delimiter,
            to: :decorator
   
   def decorator

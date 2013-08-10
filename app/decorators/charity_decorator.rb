@@ -23,6 +23,10 @@ class CharityDecorator < Draper::Decorator
     currency.symbol
   end
   
+  def currency_delimiter
+    currency.delimiter
+  end
+  
   def currency
     ::Money::Currency.new(source.currency)
   end

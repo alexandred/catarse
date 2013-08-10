@@ -43,6 +43,8 @@
         #charity_projects.content style="display: none"
           - @charity.projects.each do |project|
             = render '/projects/project', project: project
+        #charity_donations.content style="display: none"
+          p="There are current no donations for this charity. You can be the first!"
         #charity_contact.content style="display: none"
           h2="Contact #{@charity.name}"
           br
@@ -67,5 +69,6 @@
     $('document').ready(function(){
       $('#menu-projects').click(function(){ switchSection(this, '#charity_projects') })
       $('#menu-about').click(function(){ switchSection(this, '#charity_about') })
+      $('#menu-donations').click(function(){ switchSection(this, '#charity_donations') })
       $('#menu-contact').click(function(){ switchSection(this, '#charity_contact') })
     })
