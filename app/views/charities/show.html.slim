@@ -30,18 +30,42 @@
         section.highlights
           h2 Menu
           ul
-            li= link_to 'About', '#about', class: 'selected'
-            li= link_to 'Updates', '#updates'
-            li= link_to 'Projects in Support', '#projects'
-            li= link_to 'Donations', '#donations'
-            li= link_to 'Comments', '#comments'
-            li= link_to 'Contact Us', '#contact'
+            li= link_to 'About', '#about', class: 'selected', id: 'menu-about'
+            li= link_to 'Updates', '#updates', id: 'menu-updates'
+            li= link_to 'Projects in Support', '#projects', id: 'menu-projects'
+            li= link_to 'Donations', '#donations', id: 'menu-donations'
+            li= link_to 'Comments', '#comments', id: 'menu-comments'
+            li= link_to 'Contact Us', '#contact', id: 'menu-contact'
 
     .main
       #charity_content
         #charity_about.content= render 'charity_about'
+        #charity_projects.content style="display: none"
+          - @charity.projects.each do |project|
+            = render '/projects/project', project: project
+        #charity_contact.content style="display: none"
+          h2="Contact #{@charity.name}"
+          br
+          p="- Visit #{link_to @charity.charity_url}".html_safe
+          br
+          p="- Or email us at #{link_to @charity.email, "mailto:#{@charity.email}"}".html_safe
+            
         .clearfix
       .clearfix
 
     .clearfix
 = render 'show_embed'
+- content_for :js_templates do
+  javascript:
+    function switchSection(el, content) {
+      $('.sidebar a.selected').removeClass('selected')
+      $('#charity_content .content:visible').hide()
+      $(el).addClass('selected')
+      $(content).show()
+    }
+    
+    $('document').ready(function(){
+      $('#menu-projects').click(function(){ switchSection(this, '#charity_projects') })
+      $('#menu-about').click(function(){ switchSection(this, '#charity_about') })
+      $('#menu-contact').click(function(){ switchSection(this, '#charity_contact') })
+    })

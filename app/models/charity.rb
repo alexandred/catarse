@@ -3,6 +3,7 @@ class Charity < ActiveRecord::Base
   attr_accessor :accepted_terms
   schema_associations
   belongs_to :user
+  has_many :projects
   
   mount_uploader :uploaded_image, LogoUploader
   mount_uploader :video_thumbnail, LogoUploader
