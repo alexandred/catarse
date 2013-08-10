@@ -131,6 +131,13 @@
             - if @project.user.other_link
               li.other
                 = link_to @project.user.other_link, @project.user.other_link, target: '_blank'
+        - if @project.charity
+          #creator_profile style="padding-top: 0"
+            h3= "Project Charity"
+            .avatar = image_tag @project.charity.display_image('project_thumb_small')
+            .personal_info
+              p.name
+               = link_to @project.charity.name, charity_path(@project.charity)
 
         .clearfix
 
