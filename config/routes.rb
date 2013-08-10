@@ -168,5 +168,4 @@ Catarse::Application.routes.draw do
 
   # Root path
   root to: 'projects#index'
-
 end
