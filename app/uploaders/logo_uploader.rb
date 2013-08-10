@@ -14,7 +14,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   def self.choose_storage
-    (Rails.env.production? and Configuration[:aws_access_key]) ? :fog : :file
+    (Configuration[:aws_access_key]) ? :fog : :file
   end
 
   storage choose_storage
