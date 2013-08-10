@@ -1,0 +1,29 @@
+#page_content
+  .container
+    .main
+      .list
+        .list_title
+          .title
+            h2= "Explore Charities"
+        .clearfix
+        .charities
+          - @charities.each_with_index do |item,i|
+            .charity 
+              .charity-image=image_tag item.display_image('project_thumb')
+              h2= item.name
+              p=item.about_html
+              p=link_to 'More information', charity_path(item)
+              .clearfix
+    .sidebar
+      .content
+        .facebook
+          h3= t('sidebar.titles.facebook')
+          .fb-like data-href="#{Configuration['facebook_url']}" data-send="false" data-width="160" data-show-faces="true"
+        #twitter.twitter[data-username="@#{Configuration['twitter_username']}"]
+        .newsletter
+          h3= t('sidebar.titles.newsletter')
+          = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
+            = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
+            = submit_tag t('sidebar.buttons.newsletter')
+    .clearfix
+
