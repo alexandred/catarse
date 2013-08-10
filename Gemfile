@@ -116,6 +116,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'capybara',   '~> 2.0.2'
   gem 'rspec-rails'
 end
 
@@ -124,7 +125,6 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  gem 'capybara',   '~> 2.0.2'
   gem 'jasmine'
   gem 'coveralls', require: false
 end
