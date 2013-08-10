@@ -13,6 +13,44 @@ class CharitiesController < ApplicationController
       @title = t('charities.new.title')
     end
   end
+  
+  def create
+    @charity = current_user.charities.new(params[:charity])
+
+    create!(notice: t('charities.create.success')) do |success, failure|
+      success.html{ return redirect_to charity_by_slug_path(@charity.permalink) }
+    end
+  end
+  
+  def update
+    update! do |success, failure|
+      success.html{ return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') }
+      failure.html{ return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') }
+    end
+  end
+
+  def show
+    begin
+      if params[:id].present?
+        @charity = Charity.by_permalink(params[:id]).last
+      else
+        return redirect_to charity_by_slug_path(resource.permalink)
+      end
+
+      show!{
+        @title = @charity.name
+        #@backers = @charity.backers.confirmed.limit(12).order("confirmed_at DESC").all
+        fb_admins_add(@charity.user.facebook_id) if @charity.user.facebook_id
+        #@updates = Array.new
+        #@charity.updates.order('created_at DESC').each do |update|
+        #  @updates << update if can? :see, update
+        #end
+        #@update = @charity.updates.where(id: params[:update_id]).first if params[:update_id].present?
+      }
+    rescue ActiveRecord::RecordNotFound
+      return render_404
+    end
+  end
 
   protected
 

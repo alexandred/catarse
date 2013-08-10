@@ -164,6 +164,7 @@ Catarse::Application.routes.draw do
 
   match "/mudancadelogin" => "users#set_email", as: :set_email_users
   match "/:permalink" => "projects#show", as: :project_by_slug
+  match "/charities/:permalink" => "charity#show", as: :charity_by_slug
 
   # Root path
   root to: 'projects#index'

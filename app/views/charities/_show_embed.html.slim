@@ -1,0 +1,14 @@
+- box_width = "240px"
+- box_height = "415px"
+- video_width = "384px"
+- video_height = "415px"
+#embed_overlay.overlay.hide
+  #charity_embed.hide
+    a.close href='javascript:CATARSE.router.back()' X
+    #charity_box_embed
+      iframe frameborder='0' height=box_height width=box_width src=embed_charity_path(@charity)
+      form.html= text_area_tag 'charity_box_embed_html', '<iframe frameborder="0" height="' + box_height + '" src="' + embed_charity_url(@charity) + '" width="' + box_width + '"></iframe>', readonly: true
+    #charity_video_embed
+      iframe frameborder='0' height=video_height width=video_width src=video_embed_charity_path(@charity)
+      form.html= text_area_tag 'charity_video_embed_html', '<iframe frameborder="0" height="' + video_height + '" src="' + video_embed_charity_url(@charity) + '" width="' + video_width + '"></iframe>', readonly: true
+    .clearfix
