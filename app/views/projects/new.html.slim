@@ -31,6 +31,15 @@
               = form.label :name, t('formtastic.labels.project.name')
               = form.text_field :name, class: "#{'error' if @project.errors[:name].present?}"
               p.inline-hints= t('formtastic.hints.project.name')
+              
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important
+                    If this project is for a charity registered on the site, please select it here.
+              = form.label :charity_id, "Charity"
+              = form.select :charity_id, [["Select Charity...", ""]] + Charity.all.map {|c| [c.name, c.id]}, class: "#{'error' if @project.errors[:charity_id].present?}"
 
             .input
               .bootstrap-alert
