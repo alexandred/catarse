@@ -87,7 +87,7 @@ Catarse::Application.routes.draw do
   resources :charities do
     resources :updates, only: [ :index, :create, :destroy ]
 
-    resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
+    resources :backers, controller: 'charities/backers', only: [ :index, :show, :new, :create ] do
       member do
         match 'credits_checkout'
         post 'update_info'
