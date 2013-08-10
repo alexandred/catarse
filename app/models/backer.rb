@@ -126,7 +126,7 @@ class Backer < ActiveRecord::Base
   end
 
   def display_value
-    number_to_currency value, unit: "R$", precision: 0, delimiter: '.'
+    number_to_currency value, unit: project.currency_symbol, precision: 0, delimiter: project.currency_delimiter
   end
 
   def available_rewards
