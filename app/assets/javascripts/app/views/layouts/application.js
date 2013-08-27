@@ -62,7 +62,9 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     $dropdown = this.$('.dropdown.submit-project');
     if(!this.dropDownOpened) {
       $dropdown.show();
+      this.$('.dropdown.explore-projects').hide();
       this.dropDownOpened = true;
+      this.exploreDropDownOpened = false;
     } else {
       this.dropDownOpened = false;
       $dropdown.hide();
@@ -73,11 +75,13 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
   exploreDropDown: function(e) {
     e.preventDefault();
     $dropdown = this.$('.dropdown.explore-projects');
-    if(!this.dropDownOpened) {
+    if(!this.exploreDropDownOpened) {
       $dropdown.show();
-      this.dropDownOpened = true;
-    } else {
+      this.$('.dropdown.submit-project').hide();
+      this.exploreDropDownOpened = true;
       this.dropDownOpened = false;
+    } else {
+      this.exploreDropDownOpened = false;
       $dropdown.hide();
     }
 
