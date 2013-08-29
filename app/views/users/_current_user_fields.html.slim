@@ -36,7 +36,7 @@
             = f.input :address_city, as: :string
             = f.input :address_state, as: :string, input_html: {style: 'margin-right: 20px'}
             = f.input :address_zip_code, as: :string, input_html: {autocomplete: 'off'}
-            = f.input :country, as: :country, priority_countries: ["United Kingdom"]
+            = f.input :country, as: :country, priority_countries: ["United Kingdom"], :prompt => "Select Country..."
           .socialmidia
             .div
               = f.label :twitter, t('.twitter')

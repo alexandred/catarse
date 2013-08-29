@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
     :address_city,
     :address_state,
     :address_zip_code,
+    :country,
     :phone_number,
     :cpf,
     :state_inscription,
