@@ -4,5 +4,13 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Catarse::Application.load_tasks
+# found from http://blog.jayfields.com/2008/02/rake-task-overwriting.html
+# used by conditional heroku asset compile magick
+class Rake::Task
+  def overwrite(&block)
+    @actions.clear
+    enhance(&block)
+  end
+end
 
+Catarse::Application.load_tasks
