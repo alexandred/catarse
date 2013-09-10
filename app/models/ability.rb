@@ -9,7 +9,7 @@ class Ability
 
     # NOTE: Update authorizations
     can :access, :updates do |update|
-      update.project.user_id == current_user.id
+      (update.project && update.project.user_id == current_user.id) || (update.charity && update.charity.user_id == current_user.id)
     end
     can :see, :updates do |update|
       !update.exclusive || !current_user.backs.confirmed.where(project_id: update.project.id).empty?

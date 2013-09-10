@@ -2,8 +2,10 @@ class Update < ActiveRecord::Base
   extend CatarseAutoHtml
 
   schema_associations
+  belongs_to :project
+  belongs_to :charity
   has_many :notifications, dependent: :destroy
-  validates_presence_of :user_id, :project_id, :comment, :comment_html
+  validates_presence_of :user_id, :comment, :comment_html
   before_save -> {self.comment = comment.gsub(/^\s+/, "")}
 
   catarse_auto_html_for field: :comment, video_width: 560, video_height: 340

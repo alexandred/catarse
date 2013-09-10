@@ -1,6 +1,8 @@
 .media_content_update
-  - if @project.updates.empty?
+  - if (@project && @project.updates.empty?)
     em = t('projects.project_updates.empty')
+  - if (@charity && @charity.updates.empty?)
+    em = t('charities.charity_updates.empty')
   - else
     ul.collection_list
       - for update in @updates
@@ -13,11 +15,14 @@
           .media
             .social
               .update_share
-                - url = project_by_slug_url(@project.permalink, update_id: update.id, locale: I18n.locale)
+                - url = @project ? project_by_slug_url(@project.permalink, update_id: update.id, locale: I18n.locale) : charity_by_slug_url(@charity.permalink, update_id: update.id, locale: I18n.locale)
                 .twitter_share= render_twitter text: "#{update.title}", url: url
                 .facebook_share= render_facebook_like href: url, width: '360'
           - if can? :manage, update
-            = link_to t('projects.project_updates.destroy'), project_update_path(project_id: @project.id, id: update.id), confirm: t('projects.project_updates.destroy_confirmation'), remote: true, method: :delete, class: 'destroy_update'
+            - if @project
+              = link_to t('projects.project_updates.destroy'), project_update_path(project_id: @project.id, id: update.id), confirm: t('projects.project_updates.destroy_confirmation'), remote: true, method: :delete, class: 'destroy_update'
+            - if @charity
+              = link_to t('charities.charity_updates.destroy'), charity_update_path(charity_id: @charity.id, id: update.id), confirm: t('charities.charity_updates.destroy_confirmation'), remote: true, method: :delete, class: 'destroy_update'
             .deleting_update.hide= image_tag "loading.gif"
 
 

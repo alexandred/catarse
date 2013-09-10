@@ -41,11 +41,11 @@ class CharitiesController < ApplicationController
         @title = @charity.name
         #@backers = @charity.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@charity.user.facebook_id) if @charity.user.facebook_id
-        #@updates = Array.new
-        #@charity.updates.order('created_at DESC').each do |update|
-        #  @updates << update if can? :see, update
-        #end
-        #@update = @charity.updates.where(id: params[:update_id]).first if params[:update_id].present?
+        @updates = Array.new
+        @charity.updates.order('created_at DESC').each do |update|
+          @updates << update if can? :see, update
+        end
+        @update = @charity.updates.where(id: params[:update_id]).first if params[:update_id].present?
       }
     rescue ActiveRecord::RecordNotFound
       return render_404

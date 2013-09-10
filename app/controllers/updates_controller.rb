@@ -4,7 +4,7 @@ class UpdatesController < ApplicationController
 
   actions :index, :create, :destroy
   respond_to :html, only: [ :index, :create, :destroy ]
-  belongs_to :project
+  belongs_to :project, :charity, :optional => true
 
   def index
     index! do |format|
@@ -15,6 +15,8 @@ class UpdatesController < ApplicationController
   def create
     @update = parent.updates.new(params[:update])
     @update.user = current_user
+    Rails.logger.info @update.valid?
+    Rails.logger.info @update.errors
     create! do |format|
       format.html{ return index }
     end

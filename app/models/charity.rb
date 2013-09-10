@@ -5,6 +5,7 @@ class Charity < ActiveRecord::Base
   belongs_to :user
   has_many :projects
   has_many :backers
+  has_many :updates
   
   mount_uploader :uploaded_image, LogoUploader
   mount_uploader :video_thumbnail, LogoUploader
