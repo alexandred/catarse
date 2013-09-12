@@ -93,14 +93,6 @@
               = form.label :currency, t('formtastic.labels.charity.currency')
               = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @charity.errors[:currency].present?}"
 
-            .input
-              .bootstrap-alert
-                span
-                .alert
-                  .important= t('.how_know_important')
-              = form.label :how_know, t('formtastic.labels.charity.how_know')
-              = form.text_area :how_know, class: "#{'error' if @charity.errors[:how_know].present?}"
-
             .clearfix
             .submit
               fieldset.accept

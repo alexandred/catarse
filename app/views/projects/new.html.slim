@@ -106,14 +106,6 @@
               = form.file_field :uploaded_image, class: "#{'error' if @project.errors[:uploaded_image].present?}"
               p.inline-hints= t('formtastic.hints.project.uploaded_image').html_safe
 
-            .input
-              .bootstrap-alert
-                span
-                .alert
-                  .important= t('.how_know_important')
-              = form.label :how_know, t('formtastic.labels.project.how_know')
-              = form.text_area :how_know, class: "#{'error' if @project.errors[:how_know].present?}"
-
             .clearfix
             .submit
               fieldset.accept
