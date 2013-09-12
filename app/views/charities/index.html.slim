@@ -4,13 +4,18 @@
       .list
         .list_title
           .title
-            h2= "Explore Charities"
+            h2= "Discover amazing Charities"
+            h4= "Search for the charity you want to support"
+          .search-box
+            input type="text" id="explore-search" 
+            input type="submit" value="Search" class="btn" id="explore-search-sub"
         .clearfix
         .charities
           - @charities.each_with_index do |item,i|
             .charity 
-              .charity-image=image_tag item.display_image('project_thumb')
-              h2= item.name
+              .charity-image
+                =link_to image_tag(item.display_image('project_thumb')), charity_path(item)
+              h2= link_to item.name, charity_path(item)
               p=item.about_html
               p=link_to 'More information', charity_path(item)
               .clearfix
