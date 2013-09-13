@@ -21,15 +21,28 @@
               .clearfix
     .sidebar
       .content
-        .facebook
-          h3= t('sidebar.titles.facebook')
-          .fb-like data-href="#{Configuration['facebook_url']}" data-send="false" data-width="160" data-show-faces="true"
-        #twitter.twitter[data-username="@#{Configuration['twitter_username']}"]
-        .newsletter
-          h3= t('sidebar.titles.newsletter')
-          = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
-            = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
-            = submit_tag t('sidebar.buttons.newsletter')
+        section.highlights
+          h2 browse by country
+          select#country_filter name="country_filter" style="margin-bottom: 20px"
+            option value="" 
+              = "Select country..."
+            - Charity.all.map {|c| c.country }.sort.uniq.each do |country|
+              option=country
+        section.highlights
+          h2 type
+          ul
+            li=link_to 'charities', charities_path, class: 'type-selected'
+            li=link_to 'projects', explore_path
+        section.highlights
+          h2= t('.quick_explore')
+          ul#explore_quick
+            li
+              a href='#recommended'
+                = t('.recommended')
+            - if current_user
+              li.no_margin
+                a href="#near"
+                  = t('.near')
     .clearfix
 
 - content_for :js_templates do

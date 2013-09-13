@@ -28,13 +28,13 @@
               = "Select country..."
             - Project.all.map {|p| p.country }.sort.uniq.each do |country|
               option=country
-              
+
         section.highlights
           h2 type
           ul
             li=link_to 'charities', charities_path
             li=link_to 'projects', explore_path, class: 'type-selected'
-            
+
         - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
           section.highlights
             h2= t('.quick_explore')

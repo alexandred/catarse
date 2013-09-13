@@ -884,6 +884,40 @@
               background: rgba($pink, 0.3)
 
 [data-namespace="null"][data-controller="charities"][data-action="index"], [data-namespace="null"][data-controller="charities"][data-action="search"]
+  .sidebar
+    margin-top: 123px
+    .content
+      padding-top: 10px
+    section
+      h2
+        font-size: 16px
+        color: black
+        font-family: "Lato"
+        font-weight: 700
+        margin-bottom: 10px
+        text-transform: lowercase
+        padding-left: 20px
+      &.highlights
+        h2
+          background: url($images_path+'min_star12x11.png') left 3px no-repeat
+      &.categories
+        h2
+          background: url($images_path+'category_icon14x14.png') left 2px no-repeat
+      ul
+        margin-bottom: 20px
+        li
+          margin-bottom: 5px
+          a
+            color: $ultra_gryn
+            font-size: 14px
+            font-family: Arial
+            background: rgba($minimal_gryn, 0.3)
+            display: block
+            padding: 1px 10px
+            text-decoration: none
+            +border-radius(5px)
+            &:hover, &.selected, &.type-selected
+              background: rgba($pink, 0.3)
   .search-box
     margin-top: 62px
     margin-left: 28px
