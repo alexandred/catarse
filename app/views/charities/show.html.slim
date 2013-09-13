@@ -36,6 +36,8 @@
             li= link_to 'Donations', '#donations', id: 'menu-donations'
             li= link_to 'Comments', '#comments', id: 'menu-comments'
             li= link_to 'Contact Us', '#contact', id: 'menu-contact'
+            - if current_user == @charity.user
+              li= link_to 'Edit Charity Details', edit_charity_path(@charity)
 
     .main
       #charity_content
