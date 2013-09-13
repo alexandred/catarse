@@ -4,6 +4,7 @@ class CharitiesController < ApplicationController
   load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
 
   inherit_resources
+  has_scope :pg_search, :by_country
   respond_to :html, except: [:backers]
   respond_to :json, only: [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, only: [:backers]
@@ -12,6 +13,11 @@ class CharitiesController < ApplicationController
     new! do
       @title = t('charities.new.title')
     end
+  end
+  
+  def search
+    @charities = Charity.pg_search(params[:search])
+    render :index 
   end
   
   def create

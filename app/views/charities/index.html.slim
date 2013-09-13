@@ -14,10 +14,10 @@
           - @charities.each_with_index do |item,i|
             .charity 
               .charity-image
-                =link_to image_tag(item.display_image('project_thumb')), charity_path(item)
-              h2= link_to item.name, charity_path(item)
+                =link_to image_tag(item.display_image('project_thumb')), charity_path(item.permalink)
+              h2= link_to item.name, charity_path(item.permalink)
               p=item.about_html
-              p=link_to 'More information', charity_path(item)
+              p=link_to 'More information', charity_path(item.permalink)
               .clearfix
     .sidebar
       .content
@@ -32,3 +32,10 @@
             = submit_tag t('sidebar.buttons.newsletter')
     .clearfix
 
+- content_for :js_templates do
+  javascript:
+    $(document).ready(function(){
+      $('#explore-search-sub').click(function(){
+        window.location = '/charities/search/' + $('#explore-search').val();
+      })
+    })

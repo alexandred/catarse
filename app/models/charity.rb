@@ -1,5 +1,6 @@
 class Charity < ActiveRecord::Base
   extend CatarseAutoHtml
+  include PgSearch
   attr_accessor :accepted_terms
   schema_associations
   belongs_to :user
@@ -16,6 +17,9 @@ class Charity < ActiveRecord::Base
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
 
   scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
+  scope :by_country, ->(country) { where(country: country) }
+  
+  pg_search_scope :pg_search, :against => :name
 
   delegate :display_image, :display_video_embed_url, :currency_symbol, :currency_delimiter,
            to: :decorator
