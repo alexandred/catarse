@@ -23,7 +23,7 @@
       .content
         section.highlights
           h2 browse by country
-          select#country_filter name="country_filter" style="margin-bottom: 20px"
+          select#charity_country_filter name="country_filter" style="margin-bottom: 20px"
             option value="" 
               = "Select country..."
             - Charity.all.map {|c| c.country }.sort.uniq.each do |country|
@@ -37,11 +37,11 @@
           h2= t('.quick_explore')
           ul#explore_quick
             li
-              a href='#recommended'
+              a href='/charities/filter/recommended'
                 = t('.recommended')
             - if current_user
               li.no_margin
-                a href="#near"
+                a href="/charities/filter/nearby"
                   = t('.near')
     .clearfix
 
@@ -50,5 +50,8 @@
     $(document).ready(function(){
       $('#explore-search-sub').click(function(){
         window.location = '/charities/search/' + $('#explore-search').val();
+      })
+      $('#charity_country_filter').change(function(){
+        window.location = '/charities/filter/' + $(this).val();
       })
     })

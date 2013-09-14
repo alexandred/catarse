@@ -20,6 +20,27 @@ class CharitiesController < ApplicationController
     render :index 
   end
   
+  def recommended
+    @charities = Charity.recommended
+    render :index 
+  end
+  
+  def nearby
+    if current_user
+      @charities = Charity.by_country(current_user.country)
+    else
+      redirect_to charities_path and return
+    end
+    render :index 
+  end
+  
+  def country
+    @charities = Charity.by_country(params[:country])
+    render :index 
+  end
+
+    
+  
   def create
     @charity = current_user.charities.new(params[:charity])
 

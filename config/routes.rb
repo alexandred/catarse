@@ -166,6 +166,9 @@ Catarse::Application.routes.draw do
   match "/:permalink" => "projects#show", as: :project_by_slug
   match "/charities/:permalink" => "charities#show", as: :charity_by_slug
   match "/charities/search/:search" => "charities#search"
+  match "/charities/filter/recommended" => "charities#recommended"
+  match "/charities/filter/nearby" => "charities#nearby"
+  match "/charities/filter/:country" => "charities#country"
 
   # Root path
   root to: 'projects#index'

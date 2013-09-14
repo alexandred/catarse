@@ -18,6 +18,7 @@ class Charity < ActiveRecord::Base
 
   scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
   scope :by_country, ->(country) { where(country: country) }
+  scope :recommended, -> { where(recommended: true) }
   
   pg_search_scope :pg_search, :against => :name
 
