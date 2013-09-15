@@ -1,42 +1,73 @@
 #header
-  /= render 'layouts/announcement'
-  = link_to "Home", root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
-  nav.actions
-    = link_to '#', class: 'explore' do
-      span explore
-      = image_tag('dropdown.png', :class => 'dropdown_arrow')
-    ul.dropdown.explore-projects
-      li= link_to "explore projects", explore_path
-      li= link_to "explore charities", charities_path
-    = link_to '#', class: 'submit_project' do
-      span submit
-      = image_tag('dropdown.png', :class => 'dropdown_arrow')
-    ul.dropdown.submit-project
-      li= link_to "submit new project", new_project_path
-      li= link_to "submit new charity", new_charity_path
-  .search
-    = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
-      = text_field_tag :search, nil, autocomplete: "off"
-      = submit_tag
-  nav.menu
-    = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, id: 'guidelines_header_modal' if Configuration[:support_forum].present?
-    = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'blog' if Configuration['blog_url'].present?
-    - if current_user
-      = link_to '#', class: 'my_profile_link' do
-        = image_tag(current_user.display_image, :size => "30x30", :class => 'profile_picture')
-        span.current_user_name= t('layouts.header.account')
+  <div class="wrap-top-menu">
+  <div class="container_12 clearfix">
+  <div class="grid_12">
+  <nav class="top-menu">
+  <ul id="main-menu" class="nav nav-horizontal clearfix">
+  <li class="active"><a href="index.html">Home</a></li>
+  <li class="sep"></li>
+  <li><a href="all-pages.html">All Pages</a></li>
+  <li class="sep"></li>
+  <li><a href="how-it-work.html">Help</a></li>
+  <li class="sep"></li>
+  <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a id="btn-toogle-menu" class="btn-toogle-menu" href="#alternate-menu">
+  <span class="line-bar"></span>
+  <span class="line-bar"></span>
+  <span class="line-bar"></span>
+  </a>
+  <div id="right-menu">
+  <ul class="alternate-menu">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="all-pages.html">All Pages</a></li>
+  <li><a href="how-it-work.html">Help</a></li>
+  <li><a href="contact.html">Contact us</a></li>
+  </ul>
+  </div>
+  </nav>
+  </div>
+  </div>
+  </div>
+  #header-inner
+    /= render 'layouts/announcement'
+    = link_to "Home", root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
+    nav.actions
+      = link_to '#', class: 'explore' do
+        span explore
         = image_tag('dropdown.png', :class => 'dropdown_arrow')
-      ul.dropdown.user
-        li= link_to t('layouts.header.profile'), current_user
-        - if current_user.admin?
-          - for menu, path in Adm::BaseController.menu do
-            li= link_to menu, path
-        - if current_user.trustee?
-          - for menu, path in Channels::Adm::ProjectsController.menu do
-            li.channel_trustee= link_to menu, path
-        li.divider
-        li= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
-    - else
-      = link_to t('layouts.header.signup'), new_user_session_path(active_register: true)
-      = link_to t('layouts.header.signin'), new_user_session_path
+      ul.dropdown.explore-projects
+        li= link_to "explore projects", explore_path
+        li= link_to "explore charities", charities_path
+      = link_to '#', class: 'submit_project' do
+        span submit
+        = image_tag('dropdown.png', :class => 'dropdown_arrow')
+      ul.dropdown.submit-project
+        li= link_to "submit new project", new_project_path
+        li= link_to "submit new charity", new_charity_path
+    .search
+      = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
+        = text_field_tag :search, nil, autocomplete: "off"
+        = submit_tag
+    nav.menu
+      = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, id: 'guidelines_header_modal' if Configuration[:support_forum].present?
+      = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'blog' if Configuration['blog_url'].present?
+      - if current_user
+        = link_to '#', class: 'my_profile_link' do
+          = image_tag(current_user.display_image, :size => "30x30", :class => 'profile_picture')
+          span.current_user_name= t('layouts.header.account')
+          = image_tag('dropdown.png', :class => 'dropdown_arrow')
+        ul.dropdown.user
+          li= link_to t('layouts.header.profile'), current_user
+          - if current_user.admin?
+            - for menu, path in Adm::BaseController.menu do
+              li= link_to menu, path
+          - if current_user.trustee?
+            - for menu, path in Channels::Adm::ProjectsController.menu do
+              li.channel_trustee= link_to menu, path
+          li.divider
+          li= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
+      - else
+        = link_to t('layouts.header.signup'), new_user_session_path(active_register: true)
+        = link_to t('layouts.header.signin'), new_user_session_path
   .clearfix

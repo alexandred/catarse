@@ -1,116 +1,184 @@
 #header
-  +grid-container
-  +grid-system(16)
-  margin: 20px auto 20px
-  display: block
-  .logo
-    +grid(4)
-    +alpha
-    margin-right: 20px
-    height: 54px
-    border: none
-    background: url($images_path+"logo.png") left top no-repeat
-    text-indent: -9999em
-  nav
-    a
-      display: inline-block
-      font-family: "Lato"
+  width: 100% !important
+  font-family: 'Open Sans', sans-serif
+  font-weight: 400
+  font-size: 0.813em
+  line-height: 1.6em
+  color: #5c666b
+  
+  .wrap-top-menu
+    background: #3e4b51
+    padding: 9px 0
+    height: 20px
+    a 
       text-decoration: none
-    &.actions
-      +grid(4)
-      margin-top: 20px
-      .dropdown.submit-project
-        margin-left: 115px
-        width: 136px
-        padding-top: 5px
-        a
-          font-size: 14px
-      .dropdown.explore-projects
-        margin-left: 0
-        margin-top: 10px
-        width: 136px
-        padding-top: 5px
-        a
-          font-size: 14px
-      a
-        color: $ultra_gryn
-        font-size: 18px
-        margin-right: 27px
-        &:last-child
-          margin-right: 0
-        &:hover
-          text-decoration: underline
-        &.explore
-          background: url($images_path+"explore_icon23x15.png") left 3px no-repeat
-          text-indent: 30px
-          margin-right: 20px
-          .dropdown_arrow 
-            margin: 0 0 4px 5px
-        &.submit_project
-          background: url($images_path+"submit_project_icon25x13.png") left 4px no-repeat
-          text-indent: 30px
-          margin-right: 0
-          .dropdown_arrow 
-            margin: 0 0 4px 5px
-    &.menu
-      +grid(4)
-      margin-top: 20px
-      a
-        font-family: "Lato"
-        text-transform: lowercase
-        color: $ultra_gryn
-        font-size: 14px
-        margin-right: 12px
-        &.my_profile_link
-          width: 130px
-          display: block
-          float: right
-          margin-right: 0
-          img.profile_picture
-            border: 1px $ultra_gryn
-            +box-shadow(rgba(black, 0.3) 1px 1px 2px)
-            +transition(all, 0.5s)
-            position: relative
-            float: left
-            margin-top: -14px
-            margin-right: 5px
+    .container_12
+      margin-left: auto
+      margin-right: auto
+      width: 960px
+    .grid_12
+      width: 98%
+    
+    .top-menu
+      float: left
+      .alternate-menu
+        display: none
+    .top-message
+      float: right
+    .txt-message
+      color: #92999d
+      margin: 0 20px 0 10px
+    .wrap-top-menu .iBtnRed
+      display: none
+      &.active
+        background-position: -56px -32px
+    .nav
+      list-style: none
+      margin: 0
+      padding: 0
+      > li > a
+        display: block
 
-            &:hover
-              +box-shadow(rgba(black, 0.6) 1px 1px 2px inset)
-          .current_user_name
-            float: left
-            margin-right: 5px
-          .dropdown_arrow
-            float: left
-            position: relative
-            margin-top: 7px
-        &:last-child
-          margin-right: none
-        &:hover
-          color: $pink
-  .search
-    +grid(4)
-    margin-top: 18px
-    form
-      width: 220px
-      height: 22px
-      +border-radius(8px)
-      border: 1px $minimal_gryn solid
-      // +box-shadow(rgba(black, 0.1) 1px 1px 2px)
-      background: white
-      input[type="text"]
-        border: none
-        width: 190px
-        float: left
-        margin-left: 3px
-        margin-top: 3px
-        &:focus
-          outline: none
-      input[type="submit"]
-        background: url($images_path+"search_submit15x15.png") left top no-repeat
-        width: 15px
-        height: 15px
-        border: none
-        text-indent: -9999em
-        float: right
-        margin: 3px 5px 0 0px
+    /*.nav > li{}
+
+    /*.nav-horizontal{}
+
+    .nav-horizontal > li
+      float: left
+      padding: 0 20px
+      &:first-child
+        padding-left: 0
+      &.sep
+        border-left: 1px dotted #788186
+        height: 7px
+        background: none
+        margin-top: 7px
+        padding: 0
+      > a
+        color: #92999d
+        transition: color 0.3s
+        -o-transition: color 0.3s
+        -ms-transition: color 0.3s
+        -moz-transition: color 0.3s
+        -webkit-transition: color 0.3s
+      &:hover > a, &.active > a
+        color: #FFF
+
+  #header-inner
+    +grid-container
+    +grid-system(16)
+    margin: 20px auto 20px
+    margin-top: 10px
+    margin-bottom: 80px
+    display: block
+    .logo
+      +grid(4)
+      +alpha
+      margin-right: 20px
+      height: 54px
+      border: none
+      background: url($images_path+"logo.png") left top no-repeat
+      text-indent: -9999em
+    nav
+      a
+        display: inline-block
+        font-family: "Lato"
+        text-decoration: none
+      &.actions
+        +grid(4)
+        margin-top: 20px
+        .dropdown.submit-project
+          margin-left: 115px
+          width: 136px
+          padding-top: 5px
+          a
+            font-size: 14px
+        .dropdown.explore-projects
+          margin-left: 0
+          margin-top: 10px
+          width: 136px
+          padding-top: 5px
+          a
+            font-size: 14px
+        a
+          color: $ultra_gryn
+          font-size: 18px
+          margin-right: 27px
+          &:last-child
+            margin-right: 0
+          &:hover
+            text-decoration: underline
+          &.explore
+            background: url($images_path+"explore_icon23x15.png") left 3px no-repeat
+            text-indent: 30px
+            margin-right: 20px
+            .dropdown_arrow 
+              margin: 0 0 4px 5px
+          &.submit_project
+            background: url($images_path+"submit_project_icon25x13.png") left 4px no-repeat
+            text-indent: 30px
+            margin-right: 0
+            .dropdown_arrow 
+              margin: 0 0 4px 5px
+      &.menu
+        +grid(4)
+        margin-top: 20px
+        a
+          font-family: "Lato"
+          text-transform: lowercase
+          color: $ultra_gryn
+          font-size: 14px
+          margin-right: 12px
+          &.my_profile_link
+            width: 130px
+            display: block
+            float: right
+            margin-right: 0
+            img.profile_picture
+              border: 1px $ultra_gryn
+              +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+              +transition(all, 0.5s)
+              position: relative
+              float: left
+              margin-top: -14px
+              margin-right: 5px
+
+              &:hover
+                +box-shadow(rgba(black, 0.6) 1px 1px 2px inset)
+            .current_user_name
+              float: left
+              margin-right: 5px
+            .dropdown_arrow
+              float: left
+              position: relative
+              margin-top: 7px
+          &:last-child
+            margin-right: none
+          &:hover
+            color: $pink
+    .search
+      +grid(4)
+      margin-top: 18px
+      form
+        width: 220px
+        height: 22px
+        +border-radius(8px)
+        border: 1px $minimal_gryn solid
+        // +box-shadow(rgba(black, 0.1) 1px 1px 2px)
+        background: white
+        input[type="text"]
+          border: none
+          width: 190px
+          float: left
+          margin-left: 3px
+          margin-top: 3px
+          &:focus
+            outline: none
+        input[type="submit"]
+          background: url($images_path+"search_submit15x15.png") left top no-repeat
+          width: 15px
+          height: 15px
+          border: none
+          text-indent: -9999em
+          float: right
+          margin: 3px 5px 0 0px
