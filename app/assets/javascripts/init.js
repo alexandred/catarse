@@ -34,4 +34,7 @@ jQuery(function () {
   exec_filter('init');
   exec( controllerClass, controllerName, action );
   exec_filter('finish');
+  if($("#md-slider-1").length){
+    $("#md-slider-1").mdSlider({fullwidth:true,transitions:"fade",width:980,height:365,responsive:true,slideShowDelay:6e3,slideShow:true,loop:true,showLoading:false,showArrow:1,showBullet:1,posBullet:2,showThumb:false,enableDrag:true})
+  }
 });
