@@ -38,8 +38,6 @@ class CharitiesController < ApplicationController
     @charities = Charity.by_country(params[:country])
     render :index 
   end
-
-    
   
   def create
     @charity = current_user.charities.new(params[:charity])

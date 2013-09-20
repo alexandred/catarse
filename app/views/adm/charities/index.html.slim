@@ -1,0 +1,112 @@
+#page_content
+  .container
+    .title
+      h1= t('.title')
+      h2
+        strong= "#{@total_charities} "
+        = t('.total_charities')
+
+    .filters
+      .bootstrap-form
+        = form_tag adm_charities_path, method: :get, class: 'form-horizontal' do |f|
+          fieldset
+            .input
+              = label_tag :by_id, t('.id')
+              = text_field_tag :by_id, params[:by_id], class: 'input-small'
+
+            .input
+              = label_tag :between_created_at_start_at, t('.between_created_at')
+              = text_field_tag 'between_created_at[start_at]', (params[:between_created_at][:start_at] if params[:between_created_at].present?), class: 'input-small'
+              | &nbsp;
+              | &nbsp;
+              = text_field_tag 'between_created_at[ends_at]', (params[:between_created_at][:ends_at] if params[:between_created_at].present?), class: 'input-small'
+
+            .input
+              = label_tag :by_state, t('.by_state')
+              = select_tag :by_state, options_for_select(Charity.state_names, params[:by_state]), include_blank: true
+
+            .input
+              = label_tag :pg_search, t('.charity')
+              = text_field_tag :pg_search, params[:pg_search]
+            .input
+              = label_tag :user_name_contains, t('.user')
+              = text_field_tag :user_name_contains, params[:user_name_contains]
+            .input
+              = label_tag :order_table, t('.order_table')
+              = select_tag :order_table, options_for_select({t('.order_created_at') => 'created_at', t('.order_asc') => 'asc',t('.order_desc') => 'desc'}, params[:order_table]), include_blank: false
+
+            .bootstrap-twitter
+              .input.submit
+                = submit_tag t('.submit'), class: 'btn btn-success'
+          fieldset
+            .input.total_results
+              #total_results
+                = pluralize_without_number @charities.count, t('found_singular'), t('found_plural')
+                strong= @charities.count
+                = pluralize_without_number(@charities.count, t('charity_singular'), t('charity_plural')).downcase
+      .clearfix
+    .data-table
+      = paginate @charities
+      - if @charities.empty?
+        = t('.no_backers')
+      - else
+        .bootstrap-twitter
+          table.table.table-striped
+            thead
+              tr
+                th style="width: 200px;"
+                  = t('.name')
+                th= t('.user_id')
+                th= t('.pledged')
+                th= t('.recommended')
+                th= t('.online_date')
+                th= t('.state')
+                th
+            tbody
+              - @charities.each do |charity|
+                tr id=charity.id class=cycle("even", "odd")
+                  td= link_to charity.name, charity_by_slug_path(permalink: charity.permalink)
+                  td= best_in_place [:adm, charity], :user_id, method: :put, type: :input
+                  td= "#{charity.display_pledged}"
+                  td.checkbox= best_in_place [:adm, charity], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
+                  td= charity.online_date.strftime('%d/%m/%Y') if charity.online_date
+                  td
+                    - if charity.online?
+                      span.label.label-online= charity.state
+                    - elsif charity.successful?
+                      span.label.label-success= charity.state
+                    - elsif charity.failed? or charity.rejected?
+                      span.label.label-important= charity.state
+                    - else
+                      span.label= charity.state
+                  td
+                    .btn-group
+                      = link_to 'javascript:void(0);', class: 'btn btn-mini dropdown-toggle', data: {toggle: "dropdown"} do
+                        b.caret
+                      ul.dropdown-menu
+                        - if charity.can_push_to_trash?
+                          li
+                            = link_to adm_charity_path(charity), method: :delete, data: {confirm: t('adm.confirm_dialog')} do
+                              i.icon-trash
+                              = t('.send_to_trash')
+                        - if charity.can_approve?
+                          li
+                            = link_to approve_adm_charity_path(charity), method: :put do
+                              i.icon-ok
+                              = t('.approve')
+
+                        - if charity.can_reject?
+                          li
+                            = link_to reject_adm_charity_path(charity), method: :put  do
+                              i.icon-ban-circle
+                              = t('.reject')
+
+                        - if charity.can_push_to_draft?
+                          li
+                            = link_to  push_to_draft_adm_charity_path(charity), method: :put  do
+                              i.icon-trash
+                              = t('.send_to_draft')
+      = paginate @charities
+  .clearfix
+
+

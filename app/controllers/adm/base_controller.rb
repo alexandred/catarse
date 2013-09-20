@@ -32,6 +32,4 @@ class Adm::BaseController < ApplicationController
     controller_namespace = controller_name_segments.join('/').camelize
     @current_ability ||= Ability.new(current_user, { namespace: controller_namespace })
   end
-
-
 end

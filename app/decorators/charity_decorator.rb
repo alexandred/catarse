@@ -30,5 +30,9 @@ class CharityDecorator < Draper::Decorator
   def currency
     ::Money::Currency.new(source.currency)
   end
+  
+  def display_pledged
+    number_to_currency source.pledged, unit: currency.symbol, precision: 0, delimiter: currency.delimiter
+  end
 end
 

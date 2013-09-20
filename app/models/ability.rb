@@ -57,7 +57,6 @@ class Ability
       current_user.admin
     end
 
-
     # NOTE: Backer authorizations
     cannot :show, :backers
     can :create, :backers if current_user.persisted?
@@ -113,12 +112,8 @@ class Ability
       else
     end
 
-
-
     # NOTE: admin can access everything.
     # It's the last ability to override all previous abilities.
     can :access, :all if current_user.admin?
-
-
   end
 end

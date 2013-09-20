@@ -140,6 +140,14 @@ Catarse::Application.routes.draw do
         put 'push_to_draft'
       end
     end
+    
+    resources :charities, only: [ :index, :update, :destroy ] do
+      member do
+        put 'approve'
+        put 'reject'
+        put 'push_to_draft'
+      end
+    end
 
     resources :statistics, only: [ :index ]
     resources :financials, only: [ :index ]
