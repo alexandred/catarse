@@ -6,6 +6,7 @@ Coveralls.wear!('rails')
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'sidekiq/testing'
+require 'shoulda'
 
 
 # Preparing devise to be tested again Capybara acceptance tests
