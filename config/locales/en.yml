@@ -675,22 +675,32 @@ en:
     video_embed:
       a_project_by_html: "A project by %{link} on"
   charities:
-    new:
-      title: "Submit your charity"
-      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
-      legend_html: "After filling in the form below, you will receive a project page in Draft mode. You can share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go live on the site."
+    form:
+      permalink_hint: 'Simplify the URL of your charity. Think that your sponsor need to remember the address to share your project.'
+      add_reward: "Add reward"
+      important_html: "Please notice that Catarse will charge 13% if your charity is successful. Add this values to your budget in order to execute your project with no surprises."
+      project_warning:
+        content_html: "Want to have your charity selected? Don't forget to read %{link}."
+        help_link: "our guide"
+      rewards_description: "We believe that the best way to inspire people to back a charity is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
+      rewards_title: Rewards
+      submit: "Submit charity"
       permalink_important: 'Try not to use underline, hyphen etc.'
-      permalink_hint: 'Go simple. Your supporters should be able to remmember the URL to your charity ;)'
       name_important: "Do not exceed  50 characters"
       online_days_important: "60 days is the maximum"
       about_important: "Don't make it too long! Indicate links so people can know more about your work"
-      important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
-      send_project: "I want to submit my charity."
       video_important: "Please enter a video or image url. The video must be hosted by on Vimeo."
       thumbnail_important: "512x400px image. Larger images will be scaled down"
       how_know_important: "Yay! We reached  the final question."
       headline_important: "It's a summary of  your project . 140 characteres tops!:D"
       tags_important: "Check ou other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
+    new:
+      title: "Submit your charity"
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      legend_html: "After filling in the form below, you will receive a project page in Draft mode. You can share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go live on the site."
+      permalink_hint: 'Go simple. Your supporters should be able to remmember the URL to your charity ;)'
+      important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
+      send_project: "I want to submit my charity."
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       about: "Give a brief description of your Charity"
       category: "Project category"
