@@ -18,11 +18,8 @@ class Adm::CharitiesController < Adm::BaseController
 
   	def destroy
     	@charity = Charity.find params[:id]
-    	if @charity.can_push_to_trash?
-      		@charity.push_to_trash!
-   	 	end
-
-    	redirect_to adm_projects_path
+    	@charity.destroy
+    	redirect_to adm_charities_path
   	end
 
   	def collection

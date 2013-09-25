@@ -6,10 +6,11 @@ class Charity < ActiveRecord::Base
   attr_accessor :accepted_terms
   schema_associations
   belongs_to :user
-  has_many :projects
+  has_many :projects, dependent: :destroy
   has_many :backers
   has_many :updates
   has_one :charity_total
+  #before_destroy :delete_children
   
   mount_uploader :uploaded_image, LogoUploader
   mount_uploader :video_thumbnail, LogoUploader
@@ -18,6 +19,7 @@ class Charity < ActiveRecord::Base
   
   validates_acceptance_of :accepted_terms, on: :create
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
+  validates_uniqueness_of :permalink
 
   scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
   scope :by_country, ->(country) { where(country: country) }
@@ -113,4 +115,10 @@ class Charity < ActiveRecord::Base
   def pledged
     charity_total ? charity_total.pledged : 0.0
   end
+
+  private
+
+    def delete_children
+      self.projects.delete_all
+    end
 end

@@ -675,8 +675,10 @@ en:
     video_embed:
       a_project_by_html: "A project by %{link} on"
   charities:
+    create:
+      success: "Charity successfully created"
     form:
-      permalink_hint: 'Simplify the URL of your charity. Think that your sponsor need to remember the address to share your project.'
+      permalink_hint: 'URL already taken, please choose another'
       add_reward: "Add reward"
       important_html: "Please notice that Catarse will charge 13% if your charity is successful. Add this values to your budget in order to execute your project with no surprises."
       project_warning:

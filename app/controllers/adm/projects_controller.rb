@@ -19,10 +19,7 @@ class Adm::ProjectsController < Adm::BaseController
 
   def destroy
     @project = Project.find params[:id]
-    if @project.can_push_to_trash?
-      @project.push_to_trash!
-    end
-
+    @project.destroy
     redirect_to adm_projects_path
   end
 
