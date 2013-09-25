@@ -26,6 +26,13 @@ class Ability
       project.user == current_user && ( project.draft? || project.rejected? )
     end
 
+    #NOTE: Charity authorizations
+    can :create, :charities if current_user.persisted?
+
+    can :update, :charities do |charity|
+      charity.user == current_user && ( charity.draft? || charity.rejected? )
+    end
+
 
     # NOTE: Reward authorizations
     can :create, :rewards do |reward|
