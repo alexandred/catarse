@@ -23,7 +23,7 @@ class Update < ActiveRecord::Base
       link target: :_blank
     end
   end
-
+=begin
   def notify_backers
     project.subscribed_users.each do |user|
       Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
@@ -41,5 +41,22 @@ class Update < ActiveRecord::Base
         update_comment: email_comment_html.force_encoding("UTF-8")
     end
   end
-
+=end 
+def notify_backers
+    charity.subscribed_users.each do |user|
+      Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
+      Notification.create_notification_once :updates, user,
+        {update_id: self.id, user_id: user.id},
+        charity_name: charity.name.force_encoding("UTF-8"),
+        charity_owner: charity.user.display_name.force_encoding("UTF-8"),
+        charity_owner_email: charity.user.email.force_encoding("UTF-8"),
+        from: charity.user.email.force_encoding("UTF-8"),
+        display_name: charity.user.display_name.force_encoding("UTF-8"),
+        update_title: title.force_encoding("UTF-8"),
+        update: self,
+        from: charity.user.email.force_encoding("UTF-8"),
+        display_name: charity.user.display_name.force_encoding("UTF-8"),
+        update_comment: email_comment_html.force_encoding("UTF-8")
+    end
+  end
 end

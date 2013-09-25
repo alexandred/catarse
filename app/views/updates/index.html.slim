@@ -22,7 +22,7 @@
             - if @project
               = link_to t('projects.project_updates.destroy'), project_update_path(project_id: @project.id, id: update.id), confirm: t('projects.project_updates.destroy_confirmation'), remote: true, method: :delete, class: 'destroy_update'
             - if @charity
-              = link_to t('charities.charity_updates.destroy'), charity_update_path(charity_id: @charity.id, id: update.id), confirm: t('charities.charity_updates.destroy_confirmation'), remote: true, method: :delete, class: 'destroy_update'
+              = link_to t('charities.charity_updates.destroy'), charity_update_path(charity_id: @charity.id, id: update.id), confirm: t('charities.charity_updates.destroy_confirmation'), method: :delete, class: 'destroy_update'
             .deleting_update.hide= image_tag "loading.gif"
 
 

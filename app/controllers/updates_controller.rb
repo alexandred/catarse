@@ -8,7 +8,8 @@ class UpdatesController < ApplicationController
 
   def index
     index! do |format|
-      format.html{ return render :index, layout: false }
+      format.html{ return render :index, layout: false } if @project
+      format.html { redirect_to controller: 'charities', action: 'show', id: parent.id } if @charity
     end
   end
 
