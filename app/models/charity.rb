@@ -23,6 +23,15 @@ class Charity < ActiveRecord::Base
   scope :by_country, ->(country) { where(country: country) }
   scope :recommended, -> { where(recommended: true) }
   scope :not_deleted_charities, ->() { where("charities.state <> 'deleted'") }
+  scope :order_table, ->(sort) {
+    if sort == 'desc'
+      order('goal desc')
+    elsif sort == 'asc'
+      order('goal asc')
+    else
+      order('created_at desc')
+    end
+  }
   
   pg_search_scope :pg_search, :against => :name
 
@@ -43,6 +52,10 @@ class Charity < ActiveRecord::Base
     
     event :push_to_draft do
       transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(
+    end
+
+    event :push_to_trash do
+      transition [:draft, :rejected] => :deleted
     end
 
     event :reject do

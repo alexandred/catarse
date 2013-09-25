@@ -1,4 +1,8 @@
 en:
+  adm:
+    charities:
+      index:
+        submit: 'Submit'
   uservoice_gadget:
     user:
       name: 'User'
@@ -183,6 +187,8 @@ en:
   backer_plural: backers
   project_plural: projects
   project_singular: project
+  charity_singular: charity
+  charity_plural: charities
   backer_singular: backer
   click_here: "Click here"
   clicking_here: "clicking here"

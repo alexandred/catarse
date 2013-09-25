@@ -12,6 +12,7 @@
         .clearfix
         .charities
           - @charities.each_with_index do |item,i|
+            - next if item.name.include?('deleted') || item.state != 'online'
             .charity 
               .charity-image
                 =link_to image_tag(item.display_image('project_thumb')), charity_path(item.permalink)
