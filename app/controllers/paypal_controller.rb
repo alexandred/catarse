@@ -50,6 +50,7 @@ class PaypalController < ApplicationController
     #end
     # Verify all this with paypal
     http = Net::HTTP.start(paypal_url, 443)
+    http.use_ssl = true
     response = http.post('/cgi-bin/webscr', query)
     http.finish
 
