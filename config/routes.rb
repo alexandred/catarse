@@ -56,12 +56,13 @@ Catarse::Application.routes.draw do
   get '/policy',                to: "static#policy",              as: :policy
   get '/contact',               to: "static#contact",             as: :contact
   get '/plans',                 to: "static#plans",               as: :plans
-  get '/pages/paypal',                to: "paypal#paypal_ipn",          as: :paypal
 
 
   match "/explore" => "explore#index", as: :explore
   match "/explore#:quick" => "explore#index", as: :explore_quick
   match "/credits" => "credits#index", as: :credits
+
+  match "/pages/paypal" => "paypal#paypal_ipn", :via => :post
 
   match "/reward/:id" => "rewards#show", as: :reward
   resources :posts, only: [:index, :create]
