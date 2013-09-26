@@ -26,7 +26,7 @@ Catarse::Application.configure do
 
   # https://github.com/ryanb/cancan/issues/511
   config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get((ENV["LOG_LEVEL"] || "ERROR").upcase)
+  config.logger.level = :debug#Logger.const_get((ENV["LOG_LEVEL"] || "ERROR").upcase)
 
   # Use a different cache store in production
   #config.cache_store = :dalli_store
