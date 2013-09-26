@@ -1,5 +1,7 @@
 class PaypalController < ApplicationController
 
+  protect_from_forgery :except => :paypal_ipn
+
   def sign_up_user(custom)
     logger.info("sign_up_user (#{custom})")
   end
@@ -35,8 +37,6 @@ class PaypalController < ApplicationController
     user.subscribed = true
     user.save(validate: false)
   end
-
-  protect_from_forgery :except => :paypal_ipn
 
   # process the PayPal IPN POST
   def paypal_ipn
