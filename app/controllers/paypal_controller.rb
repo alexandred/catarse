@@ -29,7 +29,7 @@ class PaypalController < ApplicationController
   end
 
   # Called each time paypal collects a payment
-  def subscription_payment(custom, plan_id)
+  def subscription_payment(custom)
     logger.info("recurrent_payment_received (#{custom})")
     user = User.find(custom.to_i)
     user.subscribed = true
@@ -60,7 +60,6 @@ class PaypalController < ApplicationController
     payment_status = params[:payment_status]
     txn_type = params[:txn_type]
     custom = params[:custom]
-    logger.info("#{response.body.chomp}")
     # Paypal confirms so lets process.
     if response && response.body.chomp == 'VERIFIED' 
 
