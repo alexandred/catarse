@@ -1,5 +1,41 @@
 class PaypalController < ApplicationController
 
+  def sign_up_user(custom)
+    logger.info("sign_up_user (#{custom})")
+  end
+
+  # This will be called if someone cancels a payment
+  def cancel_subscription(custom)
+    logger.info("cacnel_subscription (#{custom})")
+    user = User.find(custom.to_i)
+    user.subscribed = false
+    user.save(validate: false)
+  end
+
+  # This will be called if a subscription expires
+  def subscription_expired(custom)
+    logger.info("subscription_expired (#{custom})")
+    user = User.find(custom.to_i)
+    user.subscribed = false
+    user.save(validate: false)
+  end
+
+  # Called if a subscription fails
+  def subscription_failed(custom)
+    logger.info("subscription_failed (#{custom})")
+    user = User.find(custom.to_i)
+    user.subscribed = false
+    user.save(validate: false)
+  end
+
+  # Called each time paypal collects a payment
+  def subscription_payment(custom, plan_id)
+    logger.info("recurrent_payment_received (#{custom})")
+    user = User.find(custom.to_i)
+    user.subscribed = true
+    user.save(validate: false)
+  end
+
   protect_from_forgery :except => :paypal_ipn
 
   # process the PayPal IPN POST
@@ -44,44 +80,4 @@ class PaypalController < ApplicationController
       render :text => 'ERROR'
     end
   end
-  private
-
-
-  # This will be called when soemone first subscribes
-  def sign_up_user(custom)
-    logger.info("sign_up_user (#{custom})")
-  end
-
-  # This will be called if someone cancels a payment
-  def cancel_subscription(custom)
-    logger.info("cacnel_subscription (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = false
-    user.save(validate: false)
-  end
-
-  # This will be called if a subscription expires
-  def subscription_expired(custom)
-    logger.info("subscription_expired (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = false
-    user.save(validate: false)
-  end
-
-  # Called if a subscription fails
-  def subscription_failed(custom)
-    logger.info("subscription_failed (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = false
-    user.save(validate: false)
-  end
-
-  # Called each time paypal collects a payment
-  def subscription_payment(custom, plan_id)
-    logger.info("recurrent_payment_received (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = true
-    user.save(validate: false)
-  end
-  
 end
