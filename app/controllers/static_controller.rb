@@ -16,6 +16,10 @@ class StaticController < ApplicationController
     redirect_to [backer.project, backer]
   end
 
+  def plans
+    @user = current_user
+  end
+
   def sitemap
     # TODO: update this sitemap to use new homepage logic
     @home_page    ||= Project.includes(:user, :category).visible.limit(6).all

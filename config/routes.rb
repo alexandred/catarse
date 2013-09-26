@@ -55,6 +55,8 @@ Catarse::Application.routes.draw do
   get '/terms',                 to: "static#terms",               as: :terms
   get '/policy',                to: "static#policy",              as: :policy
   get '/contact',               to: "static#contact",             as: :contact
+  get '/plans',                 to: "static#plans",               as: :plans
+  get '/paypal',                to: "paypal#paypal_ipn",          as: :paypal
 
 
   match "/explore" => "explore#index", as: :explore
