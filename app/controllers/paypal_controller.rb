@@ -49,7 +49,7 @@ class PaypalController < ApplicationController
       paypal_url = 'www.sandbox.paypal.com'
     #end
     # Verify all this with paypal
-    http = Net::HTTP.start(paypal_url, 80)
+    http = Net::HTTP.start(paypal_url, 443)
     response = http.post('/cgi-bin/webscr', query)
     http.finish
 
