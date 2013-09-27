@@ -36,6 +36,11 @@
           - if @user.other_link
             li.other
               = link_to @user.other_link, @user.other_link, target: '_blank'
+          center
+            -if @user.subscribed
+              = render 'unsubscribe'
+            -else
+              = render 'subscribe'
 
       .tab_container
         nav#user_profile_menu

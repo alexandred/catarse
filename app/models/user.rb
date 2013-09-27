@@ -52,7 +52,8 @@ class User < ActiveRecord::Base
     :twitter,
     :facebook_link,
     :other_link,
-    :moip_login
+    :moip_login,
+    :subscribed
 
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper

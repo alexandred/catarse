@@ -45,10 +45,10 @@ namespace :users do
   # Sets user as administrator
   # usage: rake users:admin[email]
   ##
-  desc "Sets user as administrator"
+  desc "Sets user as administrator and subscriber"
   task :admin, [:email] => :environment do |t, args|
     puts
-    puts "Setting #{args[:email]} as administrator..."
+    puts "Setting #{args[:email]} as administrator and subscriber..."
     u = User.find_by_email(args[:email])
     unless u
       puts "ERROR: User doesn't exist!"
@@ -56,7 +56,8 @@ namespace :users do
     end
 
     u.update_attribute :admin, true
-    puts  "#{u.name}: #{u.email} is now an administrator!"
+    u.update_attributed :subscribed, true
+    puts  "#{u.name}: #{u.email} is now an administrator and is subscribed!"
     puts 'Done!'
     puts
   end
@@ -65,7 +66,7 @@ namespace :users do
   # Sets first user as administrator
   # usage: rake users:adminfirst
   ##
-  desc "Sets first user as administrator"
+  desc "Sets first user as administrator and subscriber"
   task :adminfirst => :environment do
     puts
     unless User.count > 0
@@ -75,7 +76,8 @@ namespace :users do
 
     u = User.first
     u.update_attribute :admin, true
-    puts  "#{u.name}: #{u.email} is now an administrator!"
+    u.update_attribute :subscribed, true
+    puts  "#{u.name}: #{u.email} is now an administrator and a subscriber!"
     puts 'Done!'
     puts
   end
