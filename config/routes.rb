@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
   match '/thank_you' => "static#thank_you"
+  devise_for :users, :controllers => { :registrations => "registrations" }
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 
@@ -55,14 +56,14 @@ Catarse::Application.routes.draw do
   get '/terms',                 to: "static#terms",               as: :terms
   get '/policy',                to: "static#policy",              as: :policy
   get '/contact',               to: "static#contact",             as: :contact
-  get '/plans',                 to: "static#plans",               as: :plans
+  get '/plans/redirect',        to: "plans#redirect",             as: :plansredirect
 
 
   match "/explore" => "explore#index", as: :explore
   match "/explore#:quick" => "explore#index", as: :explore_quick
   match "/credits" => "credits#index", as: :credits
 
-  match "/pages/paypal" => "paypal#paypal_ipn", :via => :post
+  match "/pages/paypal" => "paypal#paypal_ipn", :via => :post, as: :paypal
 
   match "/reward/:id" => "rewards#show", as: :reward
   resources :posts, only: [:index, :create]
@@ -110,6 +111,8 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
+
+  resources :plans
   
   resources :users do
     collection do
