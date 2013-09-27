@@ -57,6 +57,7 @@ Catarse::Application.routes.draw do
   get '/policy',                to: "static#policy",              as: :policy
   get '/contact',               to: "static#contact",             as: :contact
   get '/plans/redirect',        to: "plans#redirect",             as: :plansredirect
+  get '/plans/redirect2',       to: "plans#redirect2",            as: :plansredirect2
 
 
   match "/explore" => "explore#index", as: :explore
