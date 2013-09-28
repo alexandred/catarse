@@ -195,6 +195,13 @@ var CATARSE = {
       window.view = new CATARSE.StaticGuidelinesView({el: $("body") });
     }
   },
+  charities: {
+    donations: {
+      'new': function(){
+        window.view = new CATARSE.DonationsNewView({el: $("body") });
+      }
+    }
+  },
   users: {
     show: function(){
       window.view = new CATARSE.UsersShowView({el: $("body") });

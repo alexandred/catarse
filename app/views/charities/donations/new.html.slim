@@ -25,3 +25,23 @@
 
 = content_for :mouseflow do
   = render 'layouts/mouseflow'
+- content_for :js_templates do
+  javascript:
+    $('document').ready(function(){
+      $('#backer_anonymous').click(function(){
+      alert("I am an alert box!");
+        if($(this).is(':checked')){
+          $('#anonymous_warning').slideDown(200)
+        } else {
+          $('#anonymous_warning').slideUp(200)
+        }
+      })
+      $('input[type=radio]:checked').parent().parent().addClass('selected')
+
+      // Colapse all faq texts
+      $('.back_faq p').hide();
+
+      $('.back_faq h3').click(function(event){
+        $(event.target).next('p').slideToggle('slow');
+      });
+    })
