@@ -64,6 +64,7 @@ class Ability
       current_user.admin
     end
 
+    can :create, :donations if current_user.persisted?
     # NOTE: Backer authorizations
     cannot :show, :backers
     can :create, :backers if current_user.persisted?

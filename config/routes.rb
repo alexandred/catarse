@@ -96,12 +96,8 @@ Catarse::Application.routes.draw do
   resources :charities do
     resources :updates, only: [ :index, :create, :destroy ]
 
-    resources :backers, controller: 'charities/backers', only: [ :index, :show, :new, :create ] do
-      member do
-        match 'credits_checkout'
-        post 'update_info'
-      end
-    end
+    resources :donations, controller: 'charities/donations', only: [ :index, :new, :create ]
+
     collection do
       get 'video'
       get 'check_slug'

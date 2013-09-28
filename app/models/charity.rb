@@ -8,6 +8,7 @@ class Charity < ActiveRecord::Base
   belongs_to :user
   has_many :projects, dependent: :destroy
   has_many :backers
+  has_many :donations
   has_many :updates
   has_one :charity_total
   #before_destroy :delete_children
