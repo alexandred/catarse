@@ -31,7 +31,7 @@ Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.
    	 if owner.subscribed
      	{"receiver"=>[{"email"=>charity.email.to_s, "amount"=> amount.to_s}]}
     else
-    	fee = 0.05*amount
+    	fee = (0.05*amount).round(2)
     	{"receiver"=>[{"email"=>charity.email.to_s, "amount"=> amount.to_s, "primary" => true},
     								 {"email"=> @merchant, "amount"=>fee}
     		]}
