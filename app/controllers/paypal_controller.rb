@@ -50,9 +50,7 @@ class PaypalController < ApplicationController
     else
       donation.anonymous = false
     end
-    don = donation.dup
-    puts "Saving:" + don.save!
-    puts "after save"
+    don.save!
   end
   # process the PayPal IPN POST
   def paypal_ipn
@@ -100,6 +98,7 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
+    return if params.has_key?("txn_type")
     queryhash = params.except("donation_id","user_id","charity_id","amount","comment","anonymous")
     query = 'cmd=_notify-validate&' + queryhash.to_param
     #paypal_url = 'www.paypal.com'
@@ -112,7 +111,7 @@ class PaypalController < ApplicationController
     http.start
     response = http.post('/cgi-bin/webscr', query)
     http.finish
-
+    puts response.body.chomp
     if response && response.body.chomp == 'VERIFIED' 
       if params.has_key?("transaction")
         new_charity_donation(params)
