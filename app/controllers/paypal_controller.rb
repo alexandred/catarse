@@ -84,19 +84,24 @@ class PaypalController < ApplicationController
   def ipn2
     params = request.params
     queryhash = params.except("donation_id","user_id","charity_id","amount","comment","anonymous")
-    query = queryhash.to_param
+    query = 'cmd=_notify-validate&' + queryhash.to_param
     puts query
-    ipn = PaypalAdaptive::IpnNotification.new
-    ipn.send_back(query)
-    if ipn.verified?
-      #mark transaction as completed in your DB
-      puts "Verified"
-      output = "Verified."
-    else
-      puts "not verified"
-      output = "Not Verified."
-    end
+    #paypal_url = 'www.paypal.com'
+    #if ENV['RAILS_ENV'] == 'development'
+    paypal_url = 'www.sandbox.paypal.com'
+    #end
+    # Verify all this with paypal
+    http = Net::HTTP.new(paypal_url, 443)
+    http.use_ssl = true
+    http.start
+    response = http.post('/cgi-bin/webscr', query)
+    http.finish
 
-    [200, {"Content-Type" => "text/html"}, [output]]
-  end
+    if response && response.body.chomp == 'VERIFIED' 
+
+      render :text => 'OK'
+
+    else
+      render :text => 'ERROR'
+    end
 end
