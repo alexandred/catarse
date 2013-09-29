@@ -1,4 +1,5 @@
 class PaypalController < ApplicationController
+  require 'bigdecimal'
   protect_from_forgery :except => [:paypal_ipn, :ipn2]
 
   def sign_up_user(custom)
