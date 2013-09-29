@@ -83,7 +83,7 @@ gem 'moip', git: 'git://github.com/catarse/moip-ruby.git'
 gem 'activemerchant', '>= 1.17.0', require: 'active_merchant'
 gem 'httpclient',     '>= 2.2.5'
 gem 'money'
-gem 'paypal-sdk-adaptivepayments', require: 'paypal-sdk-adaptivepayments'
+gem 'paypal_adaptive', require: 'paypal_adaptive'
 
 group :production do
 

@@ -7,7 +7,7 @@
         = semantic_form_for @donation, url: @create_url, html: { id: 'backer_form' } do |form|
           = form.inputs do
             = form.label :amount, t('formtastic.labels.backer.value')
-            = form.input :amount, required: false, as: :string, label: false,  input_html: { autocomplete: 'off' }
+            = form.input :amount, required: false, as: :string, label: false,  input_html: { autocomplete: 'on' }
             .simbol
               p= @charity.currency_symbol
             = form.input :anonymous
