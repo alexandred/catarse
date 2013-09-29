@@ -17,19 +17,23 @@ class Charities::DonationsController < ApplicationController
   end
 
   def create
+    response = @donation.payment(@charity, @donation.amount)
+      if response.success?
+        return redirect_to response.approve_paypal_payment_url
+      else
+        flash[:failure] = response.errors.first['message']
+        return redirect_to new_charity_donation_path(@charity)
+      end
+  end
+
+  def return
     create! do |success,failure|
       failure.html do
         flash[:failure] = t('projects.backers.review.error')
         return redirect_to new_charity_donation_path(@charity)
       end
       success.html do
-        response = @donation.payment(@charity, @donation.amount)
-        if response.success?
-         return redirect_to response.approve_paypal_payment_url
-        else
-          flash[:failure] = response.errors.first['message']
-          return redirect_to new_charity_donation_path(@charity)
-        end
+        return redirect_to charity_path(@charity)
       end
     end
   end

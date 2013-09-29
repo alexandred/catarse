@@ -1,0 +1,23 @@
+development:
+  environment: "sandbox"
+  username: "alex.daoud-facilitator_api1.live.com"
+  password: "1380158318"
+  signature: "AZbgSOUNX2nDDpIb3YiE5TMykgucA6T-o4UaffRrzHyD.10dKSkAJ2MA"
+  application_id: "APP-80W284485P519543T"
+  api_cert_file:
+
+test:
+  environment: "sandbox"
+  username: "sandbox_username"
+  password: "sandbox_password"
+  signature: "sandbox_signature"
+  application_id: "sandbox_app_id"
+  api_cert_file: "/path/to_cert"
+
+production:
+  environment: "production"
+  username: "my_production_username"
+  password: "my_production_password"
+  signature: "my_production_signature"
+  application_id: "my_production_app_id"
+  api_cert_file: "/path/to_cert"

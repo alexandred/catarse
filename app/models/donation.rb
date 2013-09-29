@@ -25,10 +25,10 @@ include Rails.application.routes.url_helpers
 
    def receivers(owner,amount)
    	 if owner.subscribed
-     	{"receiver"=>[{"email"=>owner.email.to_s, "amount"=> amount.to_s}]}
+     	{"receiver"=>[{"email"=>charity.email.to_s, "amount"=> amount.to_s}]}
     else
     	fee = 0.05*amount
-    	{"receiver"=>[{"email"=>owner.email.to_s, "amount"=> amount.to_s, "primary" => true},
+    	{"receiver"=>[{"email"=>charity.email.to_s, "amount"=> amount.to_s, "primary" => true},
     								 {"email"=> @merchant, "amount"=>fee}
     		]}
     end
