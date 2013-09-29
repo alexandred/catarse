@@ -12,7 +12,7 @@ include Rails.application.routes.url_helpers
     "returnUrl" => plansredirect2_url, 
     "requestEnvelope" => {"errorLanguage" => "en_US"},
     "currencyCode"=> charity.currency.to_s,  
-    "receiverList" => receivers(owner,amount),
+    "receiverList" => receivers(owner,charity,amount),
     "cancelUrl"=> new_charity_donation_url(charity),
     "actionType"=>"PAY",
     "ipnNotificationUrl"=>paypal_url
@@ -23,7 +23,7 @@ include Rails.application.routes.url_helpers
 
    end
 
-   def receivers(owner,amount)
+   def receivers(owner,charity,amount)
    	 if owner.subscribed
      	{"receiver"=>[{"email"=>charity.email.to_s, "amount"=> amount.to_s}]}
     else
