@@ -50,7 +50,8 @@ class PaypalController < ApplicationController
     else
       donation.anonymous = false
     end
-    puts "Saving:" + donation.save!
+    don = donation.dup
+    puts "Saving:" + don.save!
     puts "after save"
   end
   # process the PayPal IPN POST
@@ -113,9 +114,9 @@ class PaypalController < ApplicationController
     http.finish
 
     if response && response.body.chomp == 'VERIFIED' 
-    #  if params.has_key?("transaction")
+      if params.has_key?("transaction")
         new_charity_donation(params)
-    #  end
+      end
       render :text => 'OK'
     else
       print 'unverified'
