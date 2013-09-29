@@ -1,6 +1,4 @@
 class PaypalController < ApplicationController
-  require(File.dirname(__FILE__) + "/../../config/environment") unless defined?(Rails)
-
   protect_from_forgery :except => :paypal_ipn, :ipn2
 
   def sign_up_user(custom)
@@ -84,23 +82,19 @@ class PaypalController < ApplicationController
   end
 
   def ipn2
-      request = Rack::Request.new(env)
-      params = request.params
-      params.each_pair {|key, value| query = query + '&' + key + '=' + value
-      ipn = PaypalAdaptive::IpnNotification.new
-      ipn.send_back(query)
-      if ipn.verified?
-        #mark transaction as completed in your DB
-        puts "Verified"
-        output = "Verified."
-      else
-        puts "not verified"
-        output = "Not Verified."
-      end
-
-      [200, {"Content-Type" => "text/html"}, [output]]
+    params = request.params
+    params.each_pair {|key, value| query = query + '&' + key + '=' + value
+    ipn = PaypalAdaptive::IpnNotification.new
+    ipn.send_back(query)
+    if ipn.verified?
+      #mark transaction as completed in your DB
+      puts "Verified"
+      output = "Verified."
     else
-      [404, {"Content-Type" => "text/html"}, ["Not Found"]]
+      puts "not verified"
+      output = "Not Verified."
     end
+
+    [200, {"Content-Type" => "text/html"}, [output]]
   end
 end
