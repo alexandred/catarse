@@ -38,6 +38,7 @@ class PaypalController < ApplicationController
   end
 
   def new_charity_donation(params)
+    begin
     donation = Donation.new
     donation.id = params["donation_id"]
     donation.user_id = params["user_id"]
@@ -50,6 +51,9 @@ class PaypalController < ApplicationController
       donation.anonymous = false
     end
     donation.save!
+  rescue Exception
+    puts $!, $@
+  end
   end
   # process the PayPal IPN POST
   def paypal_ipn
