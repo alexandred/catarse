@@ -98,6 +98,7 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
+    puts params.to_param
     queryhash = params.except("donation_id","user_id","charity_id","amount","comment","anonymous")
     query = 'cmd=_notify-validate&' + queryhash.to_param
     puts query
