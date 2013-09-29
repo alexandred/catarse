@@ -62,4 +62,7 @@ Catarse::Application.configure do
   config.active_support.deprecation = :notify
   config.active_record.schema_format = :sql
 
+  config.after_initialize do
+    Rails.application.routes.default_url_options[:host] = request.host_with_port
+  end    
 end
