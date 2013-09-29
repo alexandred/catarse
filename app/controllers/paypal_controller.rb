@@ -43,8 +43,12 @@ class PaypalController < ApplicationController
     donation.user_id = params["user_id"]
     donation.charity_id = params["charity_id"]
     donation.amount = params["amount"]
-    donation.comment = CGI::unescape(params["comment")
-    donation.anonymous = params["anonymous"]
+    donation.comment = CGI::unescape(params["comment"])
+    if params["anonymous"] = "true"
+      donation.anonymous = true
+    else
+      donation.anonymous = false
+    end
     donation.save!
   end
   # process the PayPal IPN POST
