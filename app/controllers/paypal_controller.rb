@@ -98,9 +98,9 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
-    return if params.has_key?("txn_type")
     queryhash = params.except("donation_id","user_id","charity_id","amount","comment","anonymous")
     query = 'cmd=_notify-validate&' + queryhash.to_param
+    puts query
     #paypal_url = 'www.paypal.com'
     #if ENV['RAILS_ENV'] == 'development'
     paypal_url = 'www.sandbox.paypal.com'
@@ -111,7 +111,6 @@ class PaypalController < ApplicationController
     http.start
     response = http.post('/cgi-bin/webscr', query)
     http.finish
-    puts response.body.chomp
     if response && response.body.chomp == 'VERIFIED' 
       if params.has_key?("transaction")
         new_charity_donation(params)
