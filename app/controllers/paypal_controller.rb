@@ -1,5 +1,5 @@
 class PaypalController < ApplicationController
-  protect_from_forgery :except => :paypal_ipn, :ipn2
+  protect_from_forgery :except => [:paypal_ipn, :ipn2]
 
   def sign_up_user(custom)
     logger.info("sign_up_user (#{custom})")
