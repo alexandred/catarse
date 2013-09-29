@@ -5,6 +5,7 @@ include Rails.application.routes.url_helpers
   attr_accessible :amount, :comment, :status, :anonymous
 
   def payment(charity,amount)
+  	@merchant = "daoud@daoud.com"
   	pay_request = PaypalAdaptive::Request.new
     owner = User.find(charity.user_id)
     data = {
@@ -27,9 +28,8 @@ include Rails.application.routes.url_helpers
      	{"receiver"=>[{"email"=>owner.email.to_s, "amount"=> amount.to_s}]}
     else
     	fee = 0.05*amount
-    	remaining = amount-fee
-    	{"receiver"=>[{"email"=>owner.email.to_s, "amount"=> remaining.to_s, "primary" => true},
-    								 {"email"=>"daoud@daoud.com", "amount"=>fee.to_s}
+    	{"receiver"=>[{"email"=>owner.email.to_s, "amount"=> amount.to_s, "primary" => true},
+    								 {"email"=> @merchant, "amount"=>fee}
     		]}
     end
    	end
