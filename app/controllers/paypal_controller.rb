@@ -83,7 +83,8 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
-    query = params.to_param
+    queryhash = params.except("donation_id","user_id","charity_id","amount","comment","anonymous")
+    query = queryhash.to_param
     ipn = PaypalAdaptive::IpnNotification.new
     ipn.send_back(query)
     if ipn.verified?
