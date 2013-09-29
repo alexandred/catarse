@@ -19,7 +19,7 @@ Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.
     "receiverList" => receivers(owner,charity,amount),
     "cancelUrl"=> new_charity_donation_url(charity),
     "actionType"=>"PAY",
-    "ipnNotificationUrl"=> paypal2_url + "?donation_id=#{Donation.count + 1}&user_id=#{donation.user_id}&charity_id=#{charity.id}&amount=#{amount}&comment=#{CGI::escape(donation.comment)}&anonymous=#{donation.anomymous}"
+    "ipnNotificationUrl"=> paypal2_url + "?donation_id=#{Donation.count + 1}&user_id=#{donation.user_id}&charity_id=#{charity.id}&amount=#{amount}&comment=#{CGI::escape(donation.comment)}&anonymous=#{donation.anonymous}"
     }
     data["feesPayer"] = "PRIMARYRECEIVER" if !owner.subscribed
     pay_response = pay_request.pay(data)
