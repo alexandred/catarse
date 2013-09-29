@@ -1,5 +1,5 @@
 class PaypalController < ApplicationController
-  protect_from_forgery :except => :paypal_ipn#, :ipn2
+  protect_from_forgery :except => :paypal_ipn, :ipn2
 
   def sign_up_user(custom)
     logger.info("sign_up_user (#{custom})")
@@ -37,6 +37,16 @@ class PaypalController < ApplicationController
     user.save(validate: false)
   end
 
+  def new_charity_donation(params)
+    donation = Donation.new
+    donation.id = params[:donation_id]
+    donation.user_id = params[:user_id]
+    donation.charity_id = params[:charity_id]
+    donation.amount = params[:amount]
+    donation.comment = CGI::unescape(params[:comment])
+    donation.anonymous = params[:anonymous]
+    donation.save!
+  end
   # process the PayPal IPN POST
   def paypal_ipn
     # use the POSTed information to create a call back URL to PayPal
@@ -85,7 +95,6 @@ class PaypalController < ApplicationController
     params = request.params
     queryhash = params.except("donation_id","user_id","charity_id","amount","comment","anonymous")
     query = 'cmd=_notify-validate&' + queryhash.to_param
-    puts query
     #paypal_url = 'www.paypal.com'
     #if ENV['RAILS_ENV'] == 'development'
     paypal_url = 'www.sandbox.paypal.com'
@@ -98,9 +107,10 @@ class PaypalController < ApplicationController
     http.finish
 
     if response && response.body.chomp == 'VERIFIED' 
-      print 'verified'
+      if !params.has_key?(:txn_type)
+        new_charity_donation(params)
+      end
       render :text => 'OK'
-
     else
       print 'unverified'
       render :text => 'ERROR'
