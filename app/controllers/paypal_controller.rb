@@ -1,6 +1,7 @@
 class PaypalController < ApplicationController
+  require(File.dirname(__FILE__) + "/../../config/environment") unless defined?(Rails)
 
-  protect_from_forgery :except => :paypal_ipn
+  protect_from_forgery :except => :paypal_ipn, :ipn2
 
   def sign_up_user(custom)
     logger.info("sign_up_user (#{custom})")
@@ -79,6 +80,26 @@ class PaypalController < ApplicationController
 
     else
       render :text => 'ERROR'
+    end
+  end
+
+  def self.call(env)
+    if env["PATH_INFO"] =~ /^\/pages\/ipn2/
+      request = Rack::Request.new(env)
+      params = request.params
+      puts params
+      ipn = PaypalAdaptive::IpnNotification.new
+      ipn.send_back(env['rack.request.form_vars'])
+      if ipn.verified?
+        #mark transaction as completed in your DB
+        output = "Verified."
+      else
+        output = "Not Verified."
+      end
+
+      [200, {"Content-Type" => "text/html"}, [output]]
+    else
+      [404, {"Content-Type" => "text/html"}, ["Not Found"]]
     end
   end
 end

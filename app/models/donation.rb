@@ -4,19 +4,22 @@ Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.
   belongs_to :users
   belongs_to :charities
   attr_accessible :amount, :comment, :status, :anonymous
+  validates_presence_of :amount, :user_id, :charity_id
+  validates_numericality_of :amount, greater_than: 0.00
 
-  def payment(charity,amount)
+  def payment(charity,donation)
   	@merchant = "daoud@daoud.com"
+  	amount = donation.amount
   	pay_request = PaypalAdaptive::Request.new
     owner = User.find(charity.user_id)
     data = {
-    "returnUrl" => plansredirect2_url, 
+    "returnUrl" => return_charity_donations_url(charity.id) + "?charity_id=#{charity.id}&amt=#{amount}", 
     "requestEnvelope" => {"errorLanguage" => "en_US"},
     "currencyCode"=> charity.currency.to_s,  
     "receiverList" => receivers(owner,charity,amount),
     "cancelUrl"=> new_charity_donation_url(charity),
     "actionType"=>"PAY",
-    "ipnNotificationUrl"=>paypal_url
+    "ipnNotificationUrl"=> paypal2_url + "?donation_id=#{Donation.count + 1}&user_id=#{current_user.id}&charity_id=#{charity.id}&amount=#{amount}&comment=#{CGI::escape(charity.comment)}&anonymous=#{charity.anomymous}"
     }
     data["feesPayer"] = "PRIMARYRECEIVER" if !owner.subscribed
     pay_response = pay_request.pay(data)

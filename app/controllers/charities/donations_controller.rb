@@ -1,6 +1,6 @@
 class Charities::DonationsController < ApplicationController
   inherit_resources
-  actions :index, :new, :create
+  actions :index, :new, :create, :return
 	skip_before_filter :force_http, only: [:create]
   load_and_authorize_resource
 	belongs_to :charity
@@ -17,7 +17,7 @@ class Charities::DonationsController < ApplicationController
   end
 
   def create
-    response = @donation.payment(@charity, @donation.amount)
+    response = @donation.payment(@charity, @donation)
       if response.success?
         return redirect_to response.approve_paypal_payment_url
       else
@@ -27,14 +27,12 @@ class Charities::DonationsController < ApplicationController
   end
 
   def return
-    create! do |success,failure|
-      failure.html do
-        flash[:failure] = t('projects.backers.review.error')
-        return redirect_to new_charity_donation_path(@charity)
-      end
-      success.html do
-        return redirect_to charity_path(@charity)
-      end
+    if params.has_key?(:charity_id) and params.has_key?(:amt)
+      charity = Charity.find(params[:charity_id])
+      flash[:success] = "Thank you for your donation of #{params[:amt]} #{charity.currency} to #{charity.name}."
+      redirect_to charity_path(charity)
+    else
+      redirect_to root_path
     end
   end
 end

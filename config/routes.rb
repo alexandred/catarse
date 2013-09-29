@@ -65,6 +65,7 @@ Catarse::Application.routes.draw do
   match "/credits" => "credits#index", as: :credits
 
   match "/pages/paypal" => "paypal#paypal_ipn", :via => :post, as: :paypal
+  match "/pages/paypal2" => "paypal#ipn2", :via => :post, as: :paypal2
 
   match "/reward/:id" => "rewards#show", as: :reward
   resources :posts, only: [:index, :create]
@@ -96,7 +97,11 @@ Catarse::Application.routes.draw do
   resources :charities do
     resources :updates, only: [ :index, :create, :destroy ]
 
-    resources :donations, controller: 'charities/donations', only: [ :index, :new, :create ]
+    resources :donations, controller: 'charities/donations', only: [ :index, :new, :create ] do
+      collection do
+        get 'return'
+      end
+    end
 
     collection do
       get 'video'
