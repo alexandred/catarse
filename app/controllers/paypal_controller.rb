@@ -42,7 +42,7 @@ class PaypalController < ApplicationController
     donation.id = params["donation_id"]
     donation.user_id = params["user_id"]
     donation.charity_id = params["charity_id"]
-    donation.amount = params["amount"]
+    donation.amount = BigDecimal.new(params["amount"])
     donation.comment = CGI::unescape(params["comment"])
     if params["anonymous"] = "true"
       donation.anonymous = true
