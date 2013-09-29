@@ -1,5 +1,5 @@
 class PaypalController < ApplicationController
-  protect_from_forgery :except => :paypal_ipn, :ipn2
+  protect_from_forgery :except => :paypal_ipn#, :ipn2
 
   def sign_up_user(custom)
     logger.info("sign_up_user (#{custom})")
@@ -83,7 +83,7 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
-    params.each_pair {|key, value| query = query + '&' + key + '=' + value
+    params.each_pair {|key, value| query = query + '&' + key + '=' + value}
     ipn = PaypalAdaptive::IpnNotification.new
     ipn.send_back(query)
     if ipn.verified?
