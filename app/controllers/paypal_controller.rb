@@ -98,10 +98,14 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
-    puts params.to_param
-    queryhash = params.except("donation_id","user_id","charity_id","amount","comment","anonymous")
-    query = 'cmd=_notify-validate&' + queryhash.to_param
-    puts query
+    query = params.dup
+    query.delete("donation_id")
+    query.delete("charity_id")
+    query.delete("user_id")
+    query.delete("amount_id")
+    query.delete("comment")
+    query.delete("user")
+    parametres = 'cmd=_notify-validate&' + queryto_param
     #paypal_url = 'www.paypal.com'
     #if ENV['RAILS_ENV'] == 'development'
     paypal_url = 'www.sandbox.paypal.com'
@@ -110,7 +114,7 @@ class PaypalController < ApplicationController
     http = Net::HTTP.new(paypal_url, 443)
     http.use_ssl = true
     http.start
-    response = http.post('/cgi-bin/webscr', query)
+    response = http.post('/cgi-bin/webscr', parametres)
     http.finish
     if response && response.body.chomp == 'VERIFIED' 
       if params.has_key?("transaction")
