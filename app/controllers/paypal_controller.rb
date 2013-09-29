@@ -98,10 +98,11 @@ class PaypalController < ApplicationController
     http.finish
 
     if response && response.body.chomp == 'VERIFIED' 
-
+      print 'verified'
       render :text => 'OK'
 
     else
+      print 'unverified'
       render :text => 'ERROR'
     end
   end
