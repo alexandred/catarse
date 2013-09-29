@@ -83,17 +83,18 @@ class PaypalController < ApplicationController
     end
   end
 
-  def self.call(env)
-    if env["PATH_INFO"] =~ /^\/pages\/ipn2/
+  def ipn2
       request = Rack::Request.new(env)
       params = request.params
-      puts params
+      params.each_pair {|key, value| query = query + '&' + key + '=' + value
       ipn = PaypalAdaptive::IpnNotification.new
-      ipn.send_back(env['rack.request.form_vars'])
+      ipn.send_back(query)
       if ipn.verified?
         #mark transaction as completed in your DB
+        puts "Verified"
         output = "Verified."
       else
+        puts "not verified"
         output = "Not Verified."
       end
 
