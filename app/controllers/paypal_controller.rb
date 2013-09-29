@@ -39,12 +39,12 @@ class PaypalController < ApplicationController
 
   def new_charity_donation(params)
     donation = Donation.new
-    donation.id = params[:donation_id]
-    donation.user_id = params[:user_id]
-    donation.charity_id = params[:charity_id]
-    donation.amount = params[:amount]
-    donation.comment = CGI::unescape(params[:comment])
-    donation.anonymous = params[:anonymous]
+    donation.id = params["donation_id"]
+    donation.user_id = params["user_id"]
+    donation.charity_id = params["charity_id"]
+    donation.amount = params["amount"]
+    donation.comment = CGI::unescape(params["comment")
+    donation.anonymous = params["anonymous"]
     donation.save!
   end
   # process the PayPal IPN POST
