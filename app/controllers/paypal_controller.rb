@@ -104,4 +104,5 @@ class PaypalController < ApplicationController
     else
       render :text => 'ERROR'
     end
+  end
 end
