@@ -112,9 +112,9 @@ class PaypalController < ApplicationController
     http.finish
 
     if response && response.body.chomp == 'VERIFIED' 
-      if params.has_key?("transaction")
+    #  if params.has_key?("transaction")
         new_charity_donation(params)
-      end
+    #  end
       render :text => 'OK'
     else
       print 'unverified'
