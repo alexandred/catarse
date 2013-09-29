@@ -83,7 +83,7 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
-    params.each_pair {|key, value| query = '&' + key + '=' + value}
+    query = params.to_param
     ipn = PaypalAdaptive::IpnNotification.new
     ipn.send_back(query)
     if ipn.verified?
