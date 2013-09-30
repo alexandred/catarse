@@ -98,16 +98,7 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
-    query = params.dup
-    query.delete("donation_id")
-    query.delete("charity_id")
-    query.delete("user_id")
-    query.delete("amount_id")
-    query.delete("comment")
-    query.delete("user")
-    puts query
-    parametres = 'cmd=_notify-validate&' + query.to_param
-    puts parametres
+    parametres = 'cmd=_notify-validate&' + params.to_param
     #paypal_url = 'www.paypal.com'
     #if ENV['RAILS_ENV'] == 'development'
     paypal_url = 'www.sandbox.paypal.com'
@@ -122,6 +113,7 @@ class PaypalController < ApplicationController
       if params.has_key?("transaction")
         new_charity_donation(params)
       end
+      print 'verified'
       render :text => 'OK'
     else
       print 'unverified'
