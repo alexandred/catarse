@@ -105,7 +105,9 @@ class PaypalController < ApplicationController
     query.delete("amount_id")
     query.delete("comment")
     query.delete("user")
+    puts query
     parametres = 'cmd=_notify-validate&' + query.to_param
+    puts parametres
     #paypal_url = 'www.paypal.com'
     #if ENV['RAILS_ENV'] == 'development'
     paypal_url = 'www.sandbox.paypal.com'
