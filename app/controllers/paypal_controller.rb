@@ -98,7 +98,7 @@ class PaypalController < ApplicationController
 
   def ipn2
     params = request.params
-    parametres = 'cmd=_notify-validate&' + create_post_params(params)
+    parametres = 'cmd=_notify-validate&' + env['rack.request.form_vars']
     print parametres
     #paypal_url = 'www.paypal.com'
     #if ENV['RAILS_ENV'] == 'development'
@@ -121,13 +121,4 @@ class PaypalController < ApplicationController
       render :text => 'ERROR'
     end
   end
-
-def create_post_params(params, base = "")
-  toreturn = ''
-  params.each_key do |key|
-    keystring = base.blank? ? key : "#{base}[#{key}]"
-    toreturn << (params[key].class == Hash ? create_post_params(params[key], keystring) : "#{keystring}=#{CGI.escape(params[key])}&")
-  end
-  toreturn
-end
 end
