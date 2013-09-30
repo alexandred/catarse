@@ -66,7 +66,6 @@ Catarse::Application.routes.draw do
 
   match "/pages/paypal" => "paypal#paypal_ipn", :via => :post, as: :paypal
   #match "/pages/paypal2" => "paypal#ipn2", :via => :post, as: :paypal2
-  match "/ipn_notification" => PaypalIpn, as: :paypal2
 
   match "/reward/:id" => "rewards#show", as: :reward
   resources :posts, only: [:index, :create]
