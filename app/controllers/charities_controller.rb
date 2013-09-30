@@ -61,10 +61,12 @@ class CharitiesController < ApplicationController
       else
         return redirect_to charity_by_slug_path(resource.permalink)
       end
+      if @charity.state != 'online' and (@charity.user != current_user || current_user.admin == false)
+        return redirect_to root_path
+      end
 
       show!{
         @title = @charity.name
-        #@backers = @charity.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@charity.user.facebook_id) if @charity.user.facebook_id
         @updates = Array.new
         @charity.updates.order('created_at DESC').each do |update|

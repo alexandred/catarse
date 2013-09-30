@@ -32,7 +32,7 @@ class CharityDecorator < Draper::Decorator
   end
   
   def display_pledged
-    number_to_currency source.pledged, unit: currency.symbol, precision: 0, delimiter: currency.delimiter
+    number_to_currency source.donations_total, unit: currency.symbol, precision: 2, delimiter: currency.delimiter
   end
 end
 
