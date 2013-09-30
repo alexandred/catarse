@@ -55,7 +55,10 @@
           - @charity.projects.each do |project|
             = render '/projects/project', project: project
         #charity_donations.content style="display: none"
-          p="There are current no donations for this charity. You can be the first!"
+          - if @charity.donations.count == 0
+            p="There are current no donations for this charity. You can be the first!"
+          - else
+            = render template: 'charities/donations/index'
         #charity_comments.content style="display:none"
           .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
         #charity_contact.content style="display: none"
@@ -71,7 +74,6 @@
       .clearfix
 
     .clearfix
-= render 'show_embed'
 - content_for :js_templates do
   javascript:
     function switchSection(el, content) {

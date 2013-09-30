@@ -1,0 +1,24 @@
+<div id="page_content">
+	<div class="media_content_backers">
+		<ul class="collection_list">
+			<% for donation in @charity.donations %>
+			<% user = User.find(donation.user_id) %>
+			<li>
+				<div class="back_info">
+					<div id="backed">
+							<b>
+							<% if donation.anonymous == true %>
+								Anonymous
+							<% else %>
+								<%= link_to(user.name,user_path(user)) %>
+							<% end %>
+							</b>
+							<span style="float: right;"><%= "#{number_to_currency(donation.amount, unit: Charity.find(donation.charity_id).currency_symbol)} " %></span><br><br>
+							<i><%= donation.comment %></i>
+					</div>
+				</div>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

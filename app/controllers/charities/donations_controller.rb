@@ -14,6 +14,7 @@ class Charities::DonationsController < ApplicationController
   end
 
   def index
+    @donations = @charity.donations
   end
 
   def create
