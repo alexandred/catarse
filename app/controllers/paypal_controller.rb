@@ -99,7 +99,7 @@ class PaypalController < ApplicationController
   def ipn2
     params = request.params
     parametres = 'cmd=_notify-validate&' + env['rack.request.form_vars']
-    print request.form_vars
+    print env['rack.request.form_vars']
     #paypal_url = 'www.paypal.com'
     #if ENV['RAILS_ENV'] == 'development'
     paypal_url = 'www.sandbox.paypal.com'
