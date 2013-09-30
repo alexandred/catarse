@@ -50,7 +50,7 @@ class PaypalController < ApplicationController
     else
       donation.anonymous = false
     end
-    don.save!
+    donation.save!
   end
   # process the PayPal IPN POST
   def paypal_ipn
