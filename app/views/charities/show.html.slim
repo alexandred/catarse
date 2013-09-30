@@ -45,6 +45,13 @@
             li= link_to 'Contact Us', '#contact', id: 'menu-contact'
             - if can? :update, @charity
               li= link_to 'Edit Charity Details', '#edit', id: 'menu-edit'
+        .statistics
+          .item.backers
+            p= @charity.donators_total
+            em= 'have donated'
+          .item.goal
+            p= number_to_currency(@charity.donations_total, unit: @charity.currency_symbol)
+            em= 'has been donated'
 
     .main
       #charity_content

@@ -853,6 +853,36 @@
     margin-right: 20px
     .content
       padding-top: 10px
+    .statistics
+      background: #F3F3F3
+      width: 230px
+      float: left
+      padding: 10px 10px 10px 20px
+      margin-bottom: 10px
+      .item
+        font-family: Arial
+        font-size: 16px
+        color: #444
+        padding-left: 65px
+        margin-bottom: 5px
+        p
+          white-space: nowrap
+          font-family: "Lato"
+          font-weight: 700
+          font-size: 24px
+          color: #444
+          text-shadow: 1px 1px white
+        em
+          font-family: "Lato"
+          font-size: 14px
+          color: #444
+          text-shadow: 1px 1px white
+        &.backers
+          background: url($images_path+"sidebar_backers_icon26x19.png") left center no-repeat
+        &.goal
+          background: url($images_path+"goal_icon36x17.png") left center no-repeat
+        &.time
+          background: url($images_path+"time_icon19x30.png") left center no-repeat
     section
       h2
         font-size: 16px
@@ -885,7 +915,7 @@
 
 [data-namespace="null"][data-controller="charities"]
   .sidebar
-    margin-top: 123px
+    margin-top: 10px
     .content
       padding-top: 10px
     section

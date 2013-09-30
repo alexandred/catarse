@@ -113,8 +113,12 @@ class Charity < ActiveRecord::Base
     Rails.logger.info "-----> #{e.inspect}"
   end
 
-  def pledged
-    charity_total ? charity_total.pledged : 0.0
+  def donations_total
+    charity_total ? charity_total.donations_total: 0.0
+  end
+
+  def donators_total
+    charity_total ? charity_total.donators_total: 0.0
   end
 
   private
