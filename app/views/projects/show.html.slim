@@ -90,7 +90,7 @@
               p= @project.donators_total
               em= t('statistics.backers.subtitle')
             .item.goal
-              p= @project.donations_total
+              p= number_to_currency(@project.donations_total, unit: @project.currency_symbol)
               em= t('statistics.goal.subtitle', total: @project.display_goal).html_safe
             .item.time
               - if @project.draft? || @project.rejected?
