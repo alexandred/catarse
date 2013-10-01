@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
       format.html do
         @title = t("site.title")
         collection_projects = Project.recommended_for_home
+=begin
         unless collection_projects.empty?
           if current_user and current_user.recommended_projects
             @recommended_projects  ||= current_user.recommended_projects
@@ -23,9 +24,10 @@ class ProjectsController < ApplicationController
           end
           @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
         end
+=end
 
         project_ids = collection_projects.map{|p| p.id }
-        project_ids << @recommended_projects.last.id if @recommended_projects
+        #project_ids << @recommended_projects.last.id if @recommended_projects
 
         @projects_near = Project.online.near_of(current_user.address_state).order("random()").limit(3) if current_user
         @expiring = Project.expiring_for_home(project_ids)

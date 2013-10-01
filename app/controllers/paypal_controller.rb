@@ -52,6 +52,22 @@ class PaypalController < ApplicationController
     end
     donation.save!
   end
+
+  def new_project_donator(params)
+    donator = Donator.new
+    donator.id = params["donator_id"]
+    donator.user_id = params["user_id"]
+    donator.project_id = params["project_id"]
+    donator.amount = BigDecimal.new(params["amount"])
+    donator.comment = CGI::unescape(params["comment"])
+    if params["anonymous"] == "true"
+      donator.anonymous = true
+    else
+      donator.anonymous = false
+    end
+    donator.save!
+  end
+
   # process the PayPal IPN POST
   def paypal_ipn
     # use the POSTed information to create a call back URL to PayPal
@@ -112,6 +128,31 @@ class PaypalController < ApplicationController
     if response && response.body.chomp == 'VERIFIED' 
       if params.has_key?("transaction")
         new_charity_donation(params)
+      end
+      print 'verified'
+      render :text => 'OK'
+    else
+      print 'unverified'
+      render :text => 'ERROR'
+    end
+  end
+
+  def ipn3
+    params = request.params
+    parametres = 'cmd=_notify-validate&' + env['rack.request.form_vars']
+    #paypal_url = 'www.paypal.com'
+    #if ENV['RAILS_ENV'] == 'development'
+    paypal_url = 'www.sandbox.paypal.com'
+    #end
+    # Verify all this with paypal
+    http = Net::HTTP.new(paypal_url, 443)
+    http.use_ssl = true
+    http.start
+    response = http.post('/cgi-bin/webscr', parametres)
+    http.finish
+    if response && response.body.chomp == 'VERIFIED' 
+      if params.has_key?("transaction")
+        new_project_donator(params)
       end
       print 'verified'
       render :text => 'OK'

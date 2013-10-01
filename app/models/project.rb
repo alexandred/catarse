@@ -16,7 +16,7 @@ class Project < ActiveRecord::Base
   schema_associations
   belongs_to :user
   belongs_to :charity
-  has_many :backers, dependent: :destroy
+  has_many :donators, dependent: :destroy
   has_many :rewards, dependent: :destroy
   has_many :updates, dependent: :destroy
   has_many :notifications, dependent: :destroy
@@ -38,7 +38,7 @@ class Project < ActiveRecord::Base
     ignoring: :accents
 
   scope :not_deleted_projects, ->() { where("projects.state <> 'deleted'") }
-  scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
+  scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.donations_total >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
@@ -157,7 +157,7 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    project_total ? project_total.pledged : 0.0
+    project_total ? project_total.donations_total : 0.0
   end
 
   def total_backers
@@ -236,7 +236,7 @@ class Project < ActiveRecord::Base
       headline: headline,
       progress: progress,
       display_progress: display_progress,
-      pledged: display_pledged,
+      #pledged: display_pledged,
       created_at: created_at,
       time_to_go: time_to_go,
       remaining_text: remaining_text,
@@ -376,6 +376,14 @@ class Project < ActiveRecord::Base
 
   def new_project_received_notification_type
     channels.first ? :project_received_channel : :project_received
+  end
+
+  def donations_total
+    project_total ? project_total.donations_total: 0.0
+  end
+
+  def donators_total
+    project_total ? project_total.donators_total: 0.0
   end
 
   private
