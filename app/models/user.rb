@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
-  has_many :backs, class_name: "Backer"
+  has_many :donators
   has_many :donations
   has_one :user_total
 
@@ -262,8 +262,8 @@ class User < ActiveRecord::Base
         short_name: short_name,
         medium_name: medium_name,
         image: display_image,
-        total_backs: total_backs,
-        backs_text: backs_text,
+        #total_backs: total_backs,
+        #backs_text: backs_text,
         url: user_path(self),
         city: address_city,
         state: address_state
