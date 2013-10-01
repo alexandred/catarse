@@ -28,7 +28,6 @@
       .bootstrap-form
         = semantic_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
           .profile
-            = f.input :id, as: :string, input_html: { disabled:  'disabled'}
             = f.input :full_name, required: true, as: :string
             = f.input :name, required: false, as: :string
             = f.input :address_street, as: :string, label: "Address"
@@ -44,10 +43,6 @@
             .div
               = f.label :facebook_link, t('.facebook_link')
               = f.text_field :facebook_link
-            .div
-              = f.label :other_link, t('.other_link')
-              = f.text_field :other_link
-            = f.input :moip_login, label: (t('activerecord.attributes.user.moip_login') + '  ' +  link_to(t('activerecord.attributes.user.moip_login_hint'), "http://suporte.catarse.me/knowledgebase/articles/153570-como-criar-uma-conta-no-moip")).html_safe
             = f.input :phone_number, required: false, as: :string
             = f.input :email, as: :string
             = hidden_field_tag 'id', @user.id
