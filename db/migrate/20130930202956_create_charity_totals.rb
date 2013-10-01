@@ -1,6 +1,6 @@
 class CreateCharityTotals < ActiveRecord::Migration
   def up
-    drop_table :charity_totals
+    drop_view :charity_totals
     execute <<-SQL
       CREATE OR REPLACE VIEW charity_totals AS
         SELECT
