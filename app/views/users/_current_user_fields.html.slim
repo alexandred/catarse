@@ -30,7 +30,6 @@
             .div
               = f.label :facebook_link, t('.facebook_link')
               = f.text_field :facebook_link
-            = f.input :phone_number, required: false, as: :string
             = hidden_field_tag 'id', @user.id
             = f.input :newsletter, as: :boolean, label: t('.newsletter')
           .bootstrap-twitter
