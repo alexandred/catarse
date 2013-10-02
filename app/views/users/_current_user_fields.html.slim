@@ -31,6 +31,11 @@
             = f.input :full_name, required: true, as: :string
             = f.input :name, required: false, as: :string
             = f.input :email, as: :string
+            = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }            
+          .address
+            h1= "My Location"
+            br
+            br
             = f.input :address_street, as: :string, label: "Address"
             = f.input :address_neighbourhood, as: :string, label: "Address 2"
             = f.input :address_city, as: :string
@@ -38,6 +43,9 @@
             = f.input :address_zip_code, as: :string, input_html: {autocomplete: 'off'}
             = f.input :country, as: :country, priority_countries: ["United Kingdom"], :prompt => "Select Country..."
           .socialmidia
+            h1= "Social Media"
+            br
+            br
             .div
               = f.label :twitter, t('.twitter')
               = f.text_field :twitter
@@ -47,7 +55,6 @@
             = f.input :phone_number, required: false, as: :string
             = hidden_field_tag 'id', @user.id
             = f.input :newsletter, as: :boolean, label: t('.newsletter')
-            = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
 #change_password
