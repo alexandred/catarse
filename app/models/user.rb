@@ -200,23 +200,23 @@ class User < ActiveRecord::Base
   def recommended_projects(quantity = 1)
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
-    backs.includes(:project).order('created_at DESC').each do |back|
+    donators.includes(:project).order('created_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("
         SELECT count(*), project_id
-        FROM backers b
+        FROM donators b
         JOIN projects p ON b.project_id = p.id
         WHERE
           (p.expires_at) > current_timestamp AND
           p.id NOT IN (SELECT project_id
-                        FROM backers WHERE user_id = #{id}) AND
+                        FROM donators WHERE user_id = #{id}) AND
           b.user_id in (SELECT user_id
-                        FROM backers WHERE state='confirmed' AND project_id = #{back.project.id.to_i}) AND
+                        FROM backers WHERE project_id = #{back.project.id.to_i}) AND
           p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT #{quantity}")
       project_ids = Array.new
       project.values.each {|x| project_ids << x[1]}
       return Project.find(project_ids) unless project.count == 0
     end
-    Project.visible.online.where(category_id: backs.last.project.category.id).last(quantity) unless backs.count == 0
+    Project.visible.online.where(category_id: donators.last.project.category.id).last(quantity) unless donators.count == 0
   end
 
   def total_backs

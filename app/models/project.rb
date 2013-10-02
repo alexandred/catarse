@@ -383,7 +383,7 @@ class Project < ActiveRecord::Base
   end
 
   def donators_total
-    project_total ? project_total.donators_total: 0.0
+    project_total ? project_total.donators_total: 0
   end
 
   private

@@ -62,9 +62,6 @@ class CharitiesController < ApplicationController
       else
         return redirect_to charity_by_slug_path(resource.permalink)
       end
-      if @charity.state != 'online' and (@charity.user != current_user || current_user.admin == false)
-        return redirect_to root_path
-      end
 
       show!{
         @title = @charity.name

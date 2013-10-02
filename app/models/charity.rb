@@ -118,7 +118,7 @@ class Charity < ActiveRecord::Base
   end
 
   def donators_total
-    charity_total ? charity_total.donators_total: 0.0
+    charity_total ? charity_total.donators_total: 0
   end
 
   private
