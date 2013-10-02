@@ -21,6 +21,7 @@ class Charity < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validates_uniqueness_of :permalink
+  validates_presence_of :uploaded_image
 
   scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
   scope :by_country, ->(country) { where(country: country) }

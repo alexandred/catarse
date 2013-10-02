@@ -30,6 +30,7 @@
           .profile
             = f.input :full_name, required: true, as: :string
             = f.input :name, required: false, as: :string
+            = f.input :email, as: :string
             = f.input :address_street, as: :string, label: "Address"
             = f.input :address_neighbourhood, as: :string, label: "Address 2"
             = f.input :address_city, as: :string
@@ -44,7 +45,6 @@
               = f.label :facebook_link, t('.facebook_link')
               = f.text_field :facebook_link
             = f.input :phone_number, required: false, as: :string
-            = f.input :email, as: :string
             = hidden_field_tag 'id', @user.id
             = f.input :newsletter, as: :boolean, label: t('.newsletter')
             = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }

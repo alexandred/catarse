@@ -98,7 +98,7 @@ class Project < ActiveRecord::Base
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
-  validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
+  validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink, :uploaded_image
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days
   validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false

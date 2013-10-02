@@ -105,6 +105,9 @@
               = form.label :uploaded_image, t('formtastic.labels.project.uploaded_image')
               = form.file_field :uploaded_image, class: "#{'error' if @project.errors[:uploaded_image].present?}"
               p.inline-hints= t('formtastic.hints.project.uploaded_image').html_safe
+              - if @project.errors[:uploaded_image].present?
+                .bootstrap-twitter
+                  p.text-error= "You must upload an image"
 
             .clearfix
             .submit

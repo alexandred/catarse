@@ -82,6 +82,10 @@
             .important= t('.thumbnail_important')
         = form.label :uploaded_image, t('formtastic.labels.charity.uploaded_image')
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
+        - if @charity.errors[:uploaded_image]
+            .bootstrap-twitter
+              p.text-error= "You must provide an image"
+
         
       .input
         = form.label :currency, t('formtastic.labels.charity.currency')
