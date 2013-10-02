@@ -1,6 +1,6 @@
 class Donation < ActiveRecord::Base
 include Rails.application.routes.url_helpers
-Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.herokuapp.com' }
+Rails.application.routes.default_url_options = { :host => Configuration[:base_domain] || request.domain }
   belongs_to :users
   belongs_to :charities
   attr_accessible :amount, :comment, :status, :anonymous
