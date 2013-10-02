@@ -40,7 +40,7 @@ class Charity < ActiveRecord::Base
     end
   }
   
-  pg_search_scope :pg_search, :against => :name
+  pg_search_scope :pg_search, :against => [:name, :about]
 
   delegate :display_image, :display_video_embed_url, :currency_symbol, :currency_delimiter, :display_pledged,
            to: :decorator
