@@ -27,6 +27,9 @@ class Charity < ActiveRecord::Base
   scope :by_country, ->(country) { where(country: country) }
   scope :recommended, -> { where(recommended: true) }
   scope :not_deleted_charities, ->() { where("charities.state <> 'deleted'") }
+  scope :by_id, ->(id) { where(id: id) }
+  scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
+  scope :by_state, ->(state) { where(state: state) }
   scope :order_table, ->(sort) {
     if sort == 'desc'
       order('goal desc')
@@ -46,6 +49,11 @@ class Charity < ActiveRecord::Base
     self.state_machine.states.map do |state|
       state.name if state.name != :deleted
     end.compact!
+  end
+
+  def self.between_created_at(start_at, ends_at)
+    return scoped unless start_at.present? && ends_at.present?
+    where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
 
   state_machine :state, initial: :draft do
