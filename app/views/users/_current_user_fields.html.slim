@@ -1,26 +1,3 @@
-#my_avatar
-  h1 = t('.local_avatar')
-  ul
-    li
-      .bootstrap-form
-        = semantic_form_for @user do |f|
-          = f.inputs do
-            p= f.input :uploaded_image, as: :file, label: t('.submit_text')
-          = f.actions do
-            .bootstrap-twitter
-              p= f.action :submit, button_html: {value: t('.submit'), class: 'btn', id: 'image_upload_btn'}
-    li
-      #gravatar_hint.alert.alert-info
-        = link_to 'http://gravatar.com/', target: :_blank do
-          = image_tag 'gravatar.png', id: 'gravatar_logo'
-        p= t('.gravatar_hint_html', link: link_to('Gravatar', 'http://gravatar.com/', target: :_blank))
-        .clearfix
-- unless @user.has_facebook_authentication?
-  #my_facebook
-    h1= t('.my_facebook')
-    ul
-      li
-        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), class: 'facebook_start'
 #my_data
   h1= t('.my_data')
   ul
@@ -31,7 +8,8 @@
             = f.input :full_name, required: true, as: :string
             = f.input :name, required: false, as: :string
             = f.input :email, as: :string
-            = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }            
+            = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }      
+            = f.input :uploaded_image, as: :file, label: t('.submit_text')      
           .address
             h1= "My Location"
             br
