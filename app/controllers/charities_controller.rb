@@ -1,7 +1,7 @@
 # coding: utf-8
 class CharitiesController < ApplicationController
   include ActionView::Helpers::DateHelper
-  load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
+  load_and_authorize_resource only: [:create, :update, :destroy ]
 
   inherit_resources
   has_scope :pg_search, :by_country
@@ -10,6 +10,7 @@ class CharitiesController < ApplicationController
   skip_before_filter :detect_locale, only: [:backers]
   
   def new
+    return redirect_to plans_path if !current_user
     new! do
       @title = t('charities.new.title')
     end

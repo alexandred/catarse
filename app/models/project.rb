@@ -236,7 +236,7 @@ class Project < ActiveRecord::Base
       headline: headline,
       progress: progress,
       display_progress: display_progress,
-      #pledged: display_pledged,
+      pledged: display_pledged,
       created_at: created_at,
       time_to_go: time_to_go,
       remaining_text: remaining_text,

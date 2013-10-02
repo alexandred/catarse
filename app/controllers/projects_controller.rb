@@ -1,7 +1,7 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
-  load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
+  load_and_authorize_resource only: [:create, :update, :destroy ]
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired, :near_of, :by_country
@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
       format.html do
         @title = t("site.title")
         collection_projects = Project.recommended_for_home
-=begin
         unless collection_projects.empty?
           if current_user and current_user.recommended_projects
             @recommended_projects  ||= current_user.recommended_projects
@@ -24,10 +23,9 @@ class ProjectsController < ApplicationController
           end
           @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
         end
-=end
 
         project_ids = collection_projects.map{|p| p.id }
-        #project_ids << @recommended_projects.last.id if @recommended_projects
+        project_ids << @recommended_projects.last.id if @recommended_projects
 
         @projects_near = Project.online.near_of(current_user.address_state).order("random()").limit(3) if current_user
         @expiring = Project.expiring_for_home(project_ids)
@@ -43,6 +41,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    return redirect_to plans_path if !current_user
     new! do
       @title = t('projects.new.title')
       @project.rewards.build
