@@ -56,6 +56,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     }
 
   },
+
   
   submitDropDown: function(e) {
     e.preventDefault();
