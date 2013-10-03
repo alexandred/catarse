@@ -1,4 +1,50 @@
+javascript:
+  $(document).ready(function () {
+    $("a.explore").hover(
+      function () {
+         $('.dropdown.explore-projects').stop(true,true).show();
+        $('.dropdown.submit-project').stop(true,true).hide();
+      }, 
+      function () {
+        var timer = setInterval(function() {
+        if ($('.dropdown.explore-projects').is(":hover") == false) {
+         $('.dropdown.explore-projects').stop(true,true).hide();
+         clearInterval(timer);
+        }
+        },150);
+      }
+    )
 
+    $("a.submit_project").hover(
+      function () {
+         $('.dropdown.submit-project').stop(true,true).show();
+         $('.dropdown.explore-projects').stop(true,true).hide();
+      }, 
+      function () {
+        var timer = setInterval(function() {
+        if ($('.dropdown.submit-project').is(":hover") == false) {
+         $('.dropdown.submit-project').stop(true,true).hide();
+         clearInterval(timer);
+        }
+        },150);
+      }
+    );
+
+    $("a.my_profile_link").hover(
+      function () {
+         $('.dropdown.user').stop(true,true).show();
+      }, 
+      function () {
+        var timer = setInterval(function() {
+        if ($('.dropdown.user').is(":hover") == false) {
+         $('.dropdown.user').stop(true,true).hide();
+         clearInterval(timer);
+        }
+        },150);
+      }
+    );
+
+  });
 #header
   <div class="wrap-top-menu">
   <div class="container_12 clearfix">
@@ -46,6 +92,21 @@
       ul.dropdown.submit-project
         li= link_to "submit new project", new_project_path
         li= link_to "submit new charity", new_charity_path
+      li.dropdown
+        a.dropdown-toggle data-close-others="false" data-delay="1000" data-hover="dropdown" data-toggle="dropdown" href="#"
+          | Account
+          b.caret
+        ul.dropdown-menu
+          li
+            a href="#" tabindex="-1"
+          li.divider
+          li
+            a href="#" tabindex="-1"
+          li
+            a href="#" tabindex="-1"
+          li.divider
+          li
+            a href="#" tabindex="-1"
     .searchbar
       = form_tag explore_path(:anchor => "search"), :method => 'post', :class=>'search_input' do
         = select_tag "option", "<option>projects</option><option>charities</option>".html_safe
