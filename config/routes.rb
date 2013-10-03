@@ -185,7 +185,7 @@ Catarse::Application.routes.draw do
   match "/mudancadelogin" => "users#set_email", as: :set_email_users
   match "/:permalink" => "projects#show", as: :project_by_slug
   match "/charities/:permalink" => "charities#show", as: :charity_by_slug
-  match "/charities/search/:search" => "charities#search"
+  match "/charities/search/:search" => "charities#search", as: :charity_search
   match "/charities/filter/recommended" => "charities#recommended"
   match "/charities/filter/nearby" => "charities#nearby"
   match "/charities/filter/:country" => "charities#country"
