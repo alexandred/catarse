@@ -1,6 +1,6 @@
 .media
   .video
-    - if @project.video_embed_url != ""
+    - if @project.video_embed_url != "" || != nil 
       iframe src="#{@project.display_video_embed_url}" id="ytplayer" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
     - else
       = image_tag(@project.display_image)
