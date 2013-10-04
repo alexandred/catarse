@@ -1,9 +1,37 @@
+javascript:
+  $(document).ready(function () {
+    $('#donator_amount').focus()
+    $('#donator_anonymous').click(function(){
+      if($(this).is(':checked')){
+        $('#anonymous_warning').slideDown(200)
+      } else {
+        $('#anonymous_warning').slideUp(200)
+      }
+    })
+    $('input[type=radio]:checked').parent().parent().addClass('selected')
+
+    // Colapse all faq texts
+    $('.back_faq p').hide();
+
+    $('.back_faq h3').click(function(event){
+      $(event.target).next('p').slideToggle('slow');
+    });
+
+  });
+sass:
+  #comment textarea
+    margin-left: 50px
+    width: 517px
+    height: 100px
+    border-radius: 10px
+    padding: 10px
+    font-size: 16px
 #page_content
   .container
     .backer_content
       .title
-        h1= t('.header.title')
-        h2= t('.header.subtitle')
+        h1= t('projects.backers.new.header.title')
+        h2= t('projects.backers.new.header.subtitle')
       #back_options.bootstrap-form
         = semantic_form_for @donator, url: @create_url, html: { id: 'backer_form' } do |form|
           = form.inputs do
@@ -11,9 +39,14 @@
             = form.input :amount, required: true, as: :string, label: false,  input_html: { autocomplete: 'off' }
             .simbol
               p= @project.currency_symbol
-            = form.input :anonymous
-            .clearfix
-            = form.input :comment, label: "Leave a comment with this donation:"
+            #anonymous
+              = form.input :anonymous
+            br
+            br
+            br
+            br
+            #comment
+              = form.input :comment, label: "Leave a comment with this donation:"
          
             #anonymous_warning.important.hide
               .bootstrap-alert
