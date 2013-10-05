@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
       [:about, 'C']
     ],
     associated_against:  {user: [:name, :address_city ]},
-    using: {tsearch: {dictionary: "portuguese"}},
+    using: {tsearch: {prefix: true}},
     ignoring: :accents
 
   scope :not_deleted_projects, ->() { where("projects.state <> 'deleted'") }

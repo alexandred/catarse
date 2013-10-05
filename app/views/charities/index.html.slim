@@ -21,6 +21,7 @@
                 p=item.about_html
                 p=link_to 'More information', charity_path(item.permalink)
               .clearfix
+          = "No charities found" if @charities == []
     .sidebar
       .content
         section.highlights
