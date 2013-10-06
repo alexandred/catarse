@@ -46,7 +46,9 @@ javascript:
 
     $('#dropdown').focus(function(e) {
         $(this).blur();
-        $(this).trigger('blur');
+        $(this).css({'display':'none'});
+        $(this).focus().click();
+        $(this).css({'display':'block'});
         var index = $("#dropdown").prop("selectedIndex");
         if(index == 0) {
           $("#dropdown").prop("selectedIndex", 1);
