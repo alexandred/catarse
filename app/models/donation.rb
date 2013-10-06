@@ -4,7 +4,7 @@ Rails.application.routes.default_url_options = { :host => Configuration[:base_do
   belongs_to :users
   belongs_to :charities
   attr_accessible :amount, :comment, :status, :anonymous
-  validates_presence_of :amount, :user_id, :charity_id
+  validates_presence_of :amount, :charity_id
   validates_numericality_of :amount, greater_than: 0.00
 
   def payment(charity,donation,user_id)
