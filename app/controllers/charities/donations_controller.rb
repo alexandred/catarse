@@ -19,7 +19,7 @@ class Charities::DonationsController < ApplicationController
 
   def create
     user_id = current_user ? current_user.id : nil
-    response = @donation.payment(@charity, @donation,current_user.user_id)
+    response = @donation.payment(@charity, @donation,user_id)
       if response.success?
         return redirect_to response.approve_paypal_payment_url
       else
