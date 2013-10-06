@@ -1,6 +1,6 @@
 class BackersController < ApplicationController
   inherit_resources
-  defaults resource_class: Backer, collection_name: 'backs', instance_name: 'back'
+  defaults resource_class: Donator, collection_name: 'backs', instance_name: 'back'
   belongs_to :user
   actions :index
   respond_to :json, only: [:index]
