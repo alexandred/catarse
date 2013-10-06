@@ -9,7 +9,7 @@
 							<b>
 							<% if donation.anonymous == true %>
 								Anonymous
-							<% if donation.user_id == nil %>
+							<% elsif donation.user_id == nil %>
 								Guest
 							<% else %>
 								<%= link_to(user.name,user_path(user)) %>
