@@ -2,7 +2,7 @@
 	<div class="media_content_backers">
 		<ul class="collection_list">
 			<% for donation in @charity.donations %>
-			<% user = User.find(donation.user_id) %>
+			<% user = User.find(donation.user_id) unless donation.user_id == nil %>
 			<li>
 				<div class="back_info">
 					<div id="backed">
