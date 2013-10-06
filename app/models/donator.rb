@@ -1,10 +1,10 @@
 class Donator < ActiveRecord::Base
 include Rails.application.routes.url_helpers
-Rails.application.routes.default_url_options = { :host => Configuration[:base_domain] || request.domain }
+Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.herokuapp.com' } #Configuration[:base_domain] || request.domain }
   belongs_to :users
   belongs_to :projects
   attr_accessible :amount, :comment, :status, :anonymous
-  validates_presence_of :amount, :user_id, :project_id
+  validates_presence_of :amount, :project_id
   validates_numericality_of :amount, greater_than: 0.00
 
   def payment(project,donator,user_id)

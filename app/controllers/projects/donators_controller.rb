@@ -18,7 +18,8 @@ class Projects::DonatorsController < ApplicationController
   end
 
   def create
-    response = @donator.payment(@project, @donator,current_user.id)
+    user_id = current_user ? current_user.id : nil
+    response = @donator.payment(@project, @donator,user_id)
       if response.success?
         return redirect_to response.approve_paypal_payment_url
       else

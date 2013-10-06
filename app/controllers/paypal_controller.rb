@@ -56,7 +56,7 @@ class PaypalController < ApplicationController
   def new_project_donator(params)
     donator = Donator.new
     donator.id = params["donator_id"]
-    donator.user_id = params["user_id"]
+    donator.user_id = params["user_id"] unless params["user_id"] == ""
     donator.project_id = params["project_id"]
     donator.amount = BigDecimal.new(params["amount"])
     donator.comment = CGI::unescape(params["comment"])
