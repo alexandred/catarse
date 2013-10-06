@@ -1,6 +1,6 @@
 class Donation < ActiveRecord::Base
 include Rails.application.routes.url_helpers
-Rails.application.routes.default_url_options = { :host => Configuration[:base_domain] || request.domain }
+Rails.application.routes.default_url_options = { :host => request.domain }
   belongs_to :users
   belongs_to :charities
   attr_accessible :amount, :comment, :status, :anonymous
