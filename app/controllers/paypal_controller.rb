@@ -41,7 +41,7 @@ class PaypalController < ApplicationController
   def new_charity_donation(params)
     donation = Donation.new
     donation.id = params["donation_id"]
-    donation.user_id = params["user_id"] unless params["user_id"] == "nil"
+    donation.user_id = params["user_id"]
     donation.charity_id = params["charity_id"]
     donation.amount = BigDecimal.new(params["amount"])
     donation.comment = CGI::unescape(params["comment"])
