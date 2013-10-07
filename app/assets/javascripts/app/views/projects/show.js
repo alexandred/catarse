@@ -174,12 +174,12 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
 
   backers: function() {
     this.selectItem("backers");
-    this.backersView = new this.BackersView({
-      modelView: this.BackerView,
-      collection: new CATARSE.Backers({url: '/' + CATARSE.locale + '/projects/' + this.project.id + '/backers'}),
-      loading: this.$("#loading"),
-      el: this.$("#project_backers")
-    })
+   // this.backersView = new this.BackersView({
+   //   modelView: this.BackerView,
+   //   collection: new CATARSE.Backers({url: '/' + CATARSE.locale + '/projects/' + this.project.id + '/backers'}),
+   //   loading: this.$("#loading"),
+   //   el: this.$("#project_backers")
+   // })
   },
 
   embed: function(){
