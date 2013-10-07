@@ -74,8 +74,12 @@
           #project_edit.content.hide= render 'project_edit'
 
         #project_updates.content.hide= render 'project_updates'
-        .media_content_backers
-          #project_backers.content.hide
+        //.media_content_backers
+        #project_backers.content.hide
+          - if @project.donators.count == 0
+            p="There are currently no donations for this project. You can be the first!"
+          - else
+            = render template: 'projects/donators/index'
         #project_comments.content.hide= render 'comments'
         #project_about.content= render 'project_about'
 
