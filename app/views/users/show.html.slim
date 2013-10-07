@@ -53,6 +53,8 @@
       .clearfix
       #user_profile_content
         #user_backed_projects.content
+          - @user.donators.projects.each do |project|
+            = render '/projects/project', project: project
         #user_created_projects.content
         - if can? :manage, @user
           #user_unsubscribes.content.hide
