@@ -67,7 +67,7 @@ class Ability
     can :create, :donations# if current_user.persisted?
     # NOTE: Backer authorizations
     cannot :show, :backers
-    can :create, :donators if current_user.persisted?
+    can :create, :donators# if current_user.persisted?
     can [ :request_refund, :credits_checkout, :show, :update_info ], :backers do |backer|
       backer.user == current_user
     end
