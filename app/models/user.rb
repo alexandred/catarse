@@ -200,7 +200,7 @@ class User < ActiveRecord::Base
   def recommended_projects(quantity = 1)
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
-    donators.includes(:project).order('created_at DESC').each do |back|
+    donators.includes(:projects).order('created_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("
         SELECT count(*), project_id
         FROM donators b
