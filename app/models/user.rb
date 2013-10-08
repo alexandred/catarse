@@ -216,7 +216,7 @@ class User < ActiveRecord::Base
       project.values.each {|x| project_ids << x[1]}
       return Project.find(project_ids) unless project.count == 0
     end
-    Project.visible.online.where(category_id: donators.last.project.category.id).last(quantity) unless donators.count == 0
+    Project.visible.online.where(category_id: donators.last.projects.category.id).last(quantity) unless donators.count == 0
   end
 
   def total_backs
