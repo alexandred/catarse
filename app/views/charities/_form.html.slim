@@ -91,6 +91,20 @@
         = form.label :currency, t('formtastic.labels.charity.currency')
         = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @charity.errors[:currency].present?}"
 
+      .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= "Free plans have a 5% fee on all donations made to the charity"
+        = form.label :subscribe, "Subscription plan"
+        = form.radio_button :plan, "free", :checked => 'checked'
+        = "&nbsp;".html_safe
+        = "Free"
+        = "&emsp;".html_safe
+        = form.radio_button :plan, "free"
+        = "&nbsp;".html_safe
+        = "Paid"
+
       .clearfix
       .submit
         fieldset.accept

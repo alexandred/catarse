@@ -1,6 +1,6 @@
 class PaypalController < ApplicationController
   require 'bigdecimal'
-  protect_from_forgery :except => [:paypal_ipn, :ipn2]
+  protect_from_forgery :except => [:paypal_ipn, :ipn2, :ipn3]
 
   def sign_up_user(custom)
     logger.info("sign_up_user (#{custom})")
@@ -8,34 +8,46 @@ class PaypalController < ApplicationController
 
   # This will be called if someone cancels a payment
   def cancel_subscription(custom)
-    logger.info("cacnel_subscription (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = false
-    user.save(validate: false)
+    case custom
+      when /(.*)<(.*)>/
+        logger.info("cacnel_subscription (#{custom})")
+        model = $1.constantize.find($2.to_i)
+        model.subscribed = false
+        model.save(validate: false)
+    end
   end
 
   # This will be called if a subscription expires
   def subscription_expired(custom)
-    logger.info("subscription_expired (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = false
-    user.save(validate: false)
+    case custom
+      when /(.*)<(.*)>/
+        logger.info("expired_subscription (#{custom})")
+        model = $1.constantize.find($2.to_i)
+        model.subscribed = false
+        model.save(validate: false)
+    end
   end
 
   # Called if a subscription fails
   def subscription_failed(custom)
-    logger.info("subscription_failed (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = false
-    user.save(validate: false)
+    case custom
+      when /(.*)<(.*)>/
+        logger.info("failed_subscription (#{custom})")
+        model = $1.constantize.find($2.to_i)
+        model.subscribed = false
+        model.save(validate: false)
+    end
   end
 
   # Called each time paypal collects a payment
   def subscription_payment(custom)
-    logger.info("recurrent_payment_received (#{custom})")
-    user = User.find(custom.to_i)
-    user.subscribed = true
-    user.save(validate: false)
+    case custom
+      when /(.*)<(.*)>/
+        logger.info("success_subscription (#{custom})")
+        model = $1.constantize.find($2.to_i)
+        model.subscribed = true
+        model.save(validate: false)
+    end
   end
 
   def new_charity_donation(params)

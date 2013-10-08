@@ -44,7 +44,13 @@ class CharitiesController < ApplicationController
     @charity = current_user.charities.new(params[:charity])
 
     create!(notice: t('charities.create.success')) do |success, failure|
-      success.html{ return redirect_to charity_by_slug_path(@charity.permalink) }
+      success.html do
+        if params[:plan] == 'paid'
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Charity<#{charity.id}>&notify_url=#{paypal_url}"
+        else
+          return redirect_to charity_by_slug_path(@charity.permalink)
+        end
+      end
     end
   end
   

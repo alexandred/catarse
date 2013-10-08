@@ -4,6 +4,7 @@ class Charity < ActiveRecord::Base
   extend CatarseAutoHtml
   include PgSearch
   attr_accessor :accepted_terms
+  attr_accessor :plan
   schema_associations
   belongs_to :user
   has_many :projects, dependent: :destroy
