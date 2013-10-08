@@ -46,7 +46,7 @@ class CharitiesController < ApplicationController
     create!(notice: t('charities.create.success')) do |success, failure|
       success.html do
         if params[:charity][:plan] == 'paid'
-          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Charity<#{charity.id}>&notify_url=#{paypal_url}"
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Charity<#{@charity.id}>&notify_url=#{paypal_url}"
         else
           return redirect_to charity_by_slug_path(@charity.permalink)
         end
