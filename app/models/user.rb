@@ -200,7 +200,7 @@ class User < ActiveRecord::Base
   def recommended_projects(quantity = 1)
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
-    donators.order('created_at DESC').each do |back|
+    donators.includes(:project).order('created_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("
         SELECT count(*), project_id
         FROM donators b
@@ -210,7 +210,7 @@ class User < ActiveRecord::Base
           p.id NOT IN (SELECT project_id
                         FROM donators WHERE user_id = #{id}) AND
           b.user_id in (SELECT user_id
-                        FROM backers WHERE project_id = #{back.project.id.to_i}) AND
+                        FROM donators WHERE project_id = #{back.project_id.to_i}) AND
           p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT #{quantity}")
       project_ids = Array.new
       project.values.each {|x| project_ids << x[1]}
