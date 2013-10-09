@@ -64,6 +64,7 @@ class CharitiesController < ApplicationController
         else
           return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit')
         end
+      end
       failure.html{ return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') }
     end
   end
