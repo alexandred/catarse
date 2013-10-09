@@ -57,7 +57,7 @@ class CharitiesController < ApplicationController
   def update
     update! do |success, failure|
       success.html do 
-        if params[:charity][:plan] == "paid" and @charity.subscribed == false
+        if params[:charity][:plan] == "paid" and !@charity.subscribed
           return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Charity<#{@charity.id}>&notify_url=#{paypal_url}"
         elsif params[:charity][:plan] == "free" and @charity.subscribed
           return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=5TKJEMHLBYLB6"
