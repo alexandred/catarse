@@ -10,9 +10,9 @@ class CharitiesController < ApplicationController
   skip_before_filter :detect_locale, only: [:backers]
   
   def new
-    return redirect_to plans_path if !current_user
     new! do
       @title = t('charities.new.title')
+      @plan = false
     end
   end
   
@@ -56,7 +56,14 @@ class CharitiesController < ApplicationController
   
   def update
     update! do |success, failure|
-      success.html{ return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') }
+      success.html do 
+        if params[:charity][:plan] == "paid" and @charity.subscribed == false
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Charity<#{@charity.id}>&notify_url=#{paypal_url}"
+        elsif params[:charity][:plan] == "free" and @charity.subscribed
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=5TKJEMHLBYLB6"
+        else
+          return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit')
+        end
       failure.html{ return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') }
     end
   end
@@ -77,6 +84,7 @@ class CharitiesController < ApplicationController
           @updates << update if can? :see, update
         end
         @update = @charity.updates.where(id: params[:update_id]).first if params[:update_id].present?
+        @plan = @charity.subscribed ? true : false
       }
     rescue ActiveRecord::RecordNotFound
       return render_404

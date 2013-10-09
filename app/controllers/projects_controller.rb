@@ -41,7 +41,6 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    return redirect_to plans_path if !current_user
     new! do
       @title = t('projects.new.title')
       @project.rewards.build
