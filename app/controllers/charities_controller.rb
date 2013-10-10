@@ -12,7 +12,6 @@ class CharitiesController < ApplicationController
   def new
     new! do
       @title = t('charities.new.title')
-      @plan = false
     end
   end
   
@@ -85,7 +84,6 @@ class CharitiesController < ApplicationController
           @updates << update if can? :see, update
         end
         @update = @charity.updates.where(id: params[:update_id]).first if params[:update_id].present?
-        @plan = @charity.subscribed ? true : false
       }
     rescue ActiveRecord::RecordNotFound
       return render_404

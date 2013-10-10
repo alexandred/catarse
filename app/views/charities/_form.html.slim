@@ -97,11 +97,11 @@
           .alert
             .important= "Free plans have a 5% fee on all donations made to the charity"
         = form.label :subscribe, "Subscription plan"
-        = form.radio_button :plan, "free", :checked => !@plan
+        = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@charity.subscribed)
         = "&nbsp;".html_safe
         = "Free"
         = "&emsp;".html_safe
-        = form.radio_button :plan, "paid", :checked => @plan
+        = form.radio_button :plan, "paid", :checked => @charity.subscribed
         = "&nbsp;".html_safe
         = "Paid"
 
