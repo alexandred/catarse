@@ -158,7 +158,7 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    project_total ? project_total.donations_total : 0.0
+    project_total ? project_total.donators_total : 0.0
   end
 
   def total_backers
