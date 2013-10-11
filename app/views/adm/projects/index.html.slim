@@ -1,3 +1,14 @@
+javascript:
+  $(document).ready(function () {
+  $('.subscription').each( function( index ) {
+    $(this).get(0).addEventListener("click", function(e){
+      if (confirm('Are you sure you want to change the subscription of ' + $(this).data('name') + '?')) {
+      } else {
+          e.stopPropagation();
+      }
+    }, true);
+  });
+  });
 #page_content
   .container
     .title
@@ -62,6 +73,7 @@
                 th= t('.pledged')
                 th= t('.total_backs')
                 th= t('.recommended')
+                th= "Subscribed"
                 th= t('.online_date')
                 th= t('.expires_at')
                 th= t('.state')
@@ -76,6 +88,9 @@
                   td= "#{project.donations_total} (#{project.progress}%)"
                   td= project.donators_total
                   td.checkbox= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
+                  td.checkbox
+                    .subscription data-name=(project.name)
+                      = best_in_place [:adm, project], :subscribed, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td= project.online_date.strftime('%d/%m/%Y') if project.online_date
                   td= project.display_expires_at
                   td
