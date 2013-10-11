@@ -10,6 +10,15 @@
         = form.input :permalink, as: :string
       - if can? :update, @project, :name
         = form.input :name, as: :string, required: false
+      .subscription
+        = form.label :subscribe, "Subscription plan"
+        = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@project.subscribed)
+        = "&nbsp;".html_safe
+        = "Free"
+        = "&emsp;".html_safe
+        = form.radio_button :plan, "paid", :checked => @project.subscribed
+        = "&nbsp;".html_safe
+        = "Paid"
       - if can? :update, @project, :headline
         = form.input :headline, as: :string, required: false
       - if can? :update, @project, :category
