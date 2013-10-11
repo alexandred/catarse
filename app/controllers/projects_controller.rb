@@ -51,13 +51,27 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.new(params[:project])
 
     create!(notice: t('projects.create.success')) do |success, failure|
-      success.html{ return redirect_to project_by_slug_path(@project.permalink) }
+      success.html do
+        if params[:project][:plan] == 'paid'
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
+        else
+          return redirect_to project_by_slug_path(@project.permalink)
+        end
+      end
     end
   end
 
   def update
     update! do |success, failure|
-      success.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
+      success.html do
+        if params[:project][:plan] == "paid" and !@project.subscribed
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
+        elsif params[:project][:plan] == "free" and @project.subscribed
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=5TKJEMHLBYLB6"
+        else
+          return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit')
+        end
+      end
       failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
     end
   end

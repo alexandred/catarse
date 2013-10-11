@@ -93,6 +93,7 @@ class Project < ActiveRecord::Base
   }
 
   attr_accessor :accepted_terms
+  attr_accessor :plan
 
   validates_acceptance_of :accepted_terms, on: :create
 
@@ -158,7 +159,7 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    project_total ? project_total.donators_total : 0.0
+    project_total ? project_total.donations_total : 0.0
   end
 
   def total_backers

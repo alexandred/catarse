@@ -109,6 +109,20 @@
                 .bootstrap-twitter
                   p.text-error= "You must upload an image"
 
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= "Free plans have a 5% fee on all donations made to the project"
+              = form.label :subscribe, "Subscription plan"
+              = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@project.subscribed)
+              = "&nbsp;".html_safe
+              = "Free"
+              = "&emsp;".html_safe
+              = form.radio_button :plan, "paid", :checked => @project.subscribed
+              = "&nbsp;".html_safe
+              = "Paid"
+
             .clearfix
             .submit
               fieldset.accept

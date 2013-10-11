@@ -21,14 +21,14 @@ Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.
     "actionType"=>"PAY",
     "ipnNotificationUrl"=> paypal3_url + "?donator_id=#{Donator.count + 1}&user_id=#{user_id}&project_id=#{project.id}&amount=#{amount}&comment=#{CGI::escape(donator.comment)}&anonymous=#{donator.anonymous}"
     }
-    data["feesPayer"] = "PRIMARYRECEIVER" if !owner.subscribed
+    data["feesPayer"] = "PRIMARYRECEIVER" if !project.subscribed
     pay_response = pay_request.pay(data)
     return pay_response
 
    end
 
    def receivers(owner,project,amount)
-     if owner.subscribed
+     if project.subscribed
       {"receiver"=>[{"email"=>owner.email.to_s, "amount"=> amount.to_s}]}
     else
       fee = (0.05*amount).round(2)
