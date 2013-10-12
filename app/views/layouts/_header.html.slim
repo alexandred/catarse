@@ -121,12 +121,12 @@ javascript:
         ul.dropdown.user
           li= link_to t('layouts.header.profile'), current_user
           - if current_user.admin?
-              li= link_to t("en.adm.projects.index.menu"), adm_projects_path
-              li= link_to t("en.adm.charities.index.menu"), adm_charities_path
+              li= link_to t("adm.projects.index.menu"), adm_projects_path
+              li= link_to t("adm.charities.index.menu"), adm_charities_path
           - if current_user.trustee?
             - for menu, path in Channels::Adm::ProjectsController.menu do
               li.channel_trustee= link_to menu, path
-          li.divider
+          li.divider style="width: 82%"
           li= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
       - else
         = link_to t('layouts.header.signup'), new_user_session_path(active_register: true)
