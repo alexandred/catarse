@@ -341,6 +341,7 @@ en:
         first_backers: "To reach your financial goal it’s indispensable to engaje the people who are close to you and the project. So if you can list here who will be your first 20 backers that would be a great sign ;) "
         headline: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct :)"
         name: "Be as objective as you can. Leave explanations for the About section."
+        email: "Email dummy text"
         uploaded_image: "Upload a 512x400 image(.jpg)."
         video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We recommend Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video the best you can and make a video specifically for your campaign</strong>. If there is a single thing that differentiates the projects that reach the goal from the others is the video. Observe ;)"
       reward:
@@ -367,6 +368,7 @@ en:
         goal: "How much do you intend to raise? (use only numbers)"
         currency: "What currency do you want to use for donations?"
         name: "Project's Name"
+        email: "Paypal Email"
         online_days: 'How Many Campaign Days?'
         video_url: 'Video URL'
         uploaded_image: "Project thumbnail"
@@ -639,6 +641,7 @@ en:
       permalink_important: 'Try not to use underline, hyphen etc.'
       permalink_hint: 'Go simple. Your supporters should be able to remmember the URL to your project ;)'
       name_important: "Do not exceed  50 characters"
+      email_important: "Email dummy text"
       online_days_important: "60 days is the maximum"
       about_important: "Don't make it too long! Indicate links so people can know more about your work"
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'

@@ -34,6 +34,15 @@ sass:
               = form.label :name, t('formtastic.labels.project.name')
               = form.text_field :name, class: "#{'error' if @project.errors[:name].present?}"
               p.inline-hints= t('formtastic.hints.project.name')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.email_important')
+              = form.label :email, t('formtastic.labels.project.email')
+              = form.text_field :email, class: "#{'error' if @project.errors[:email].present?}"
+              p.inline-hints= t('formtastic.hints.project.email')
               
             .input
               .bootstrap-alert
