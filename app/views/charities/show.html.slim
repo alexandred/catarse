@@ -27,8 +27,9 @@
             = submit_tag "Donate"
       h1= @charity.name
       h4
-        = "Registration Number #{@charity.registration_number}"
-        br
+        - if @charity.registration_number != ""
+          = "Registration Number #{@charity.registration_number}"
+          br
         = "Registered since #{@charity.created_at.strftime("%B %Y")}"
       .clearfix
     
