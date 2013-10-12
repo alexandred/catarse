@@ -3,6 +3,10 @@ en:
     charities:
       index:
         submit: 'Submit'
+        menu: "Charities"
+    projects:
+      index:
+        menu: "Projects"
   uservoice_gadget:
     user:
       name: 'User'
