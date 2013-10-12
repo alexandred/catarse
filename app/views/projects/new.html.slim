@@ -1,3 +1,6 @@
+sass:
+  #country
+    display: inline
 #page_content
   .container
     .start_content
@@ -68,18 +71,37 @@
               = form.select :category_id, Category.array, class: "#{'error' if @project.errors[:category].present?}"
               p.inline-hints= t('formtastic.hints.project.category')
 
-            = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @project.errors[:country].present?}"
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.country_important')
+              = form.label :country, t('.country')
+              = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @project.errors[:category].present?}"}
+              p.inline-hints= t('formtastic.hints.project.country')
 
             .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.goal_important')
               = form.label :goal, t('formtastic.labels.project.goal')
               = form.text_field :goal, class: "#{'error' if @project.errors[:goal].present?}"
               p.inline-hints= t('formtastic.hints.project.goal').html_safe
               
             .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.currency_important')
               = form.label :currency, t('formtastic.labels.project.currency')
               = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @project.errors[:currency].present?}"
 
             .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.days_important')
               = form.label :online_days, t('formtastic.labels.project.expires_at')
               .input-append
                 = form.text_field :online_days, class: "#{'error' if @project.errors[:online_days].present?}"
