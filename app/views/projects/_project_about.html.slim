@@ -3,7 +3,7 @@
     - if @project.video_embed_url != "" and @project.video_embed_url != nil
       iframe src="#{@project.display_video_embed_url}" id="ytplayer" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
     - else
-      = image_tag(display_image(version = 'project_logo'))
+      = image_tag(@project.display_image(version = 'project_logo'))
   .social
     #project_share
       #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: I18n.locale)
