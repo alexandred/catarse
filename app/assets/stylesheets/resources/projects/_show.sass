@@ -213,7 +213,6 @@
           li
             width: 286px
             float: left
-            border-bottom: 1px #CCCCCC solid
             min-height: 67px
             padding-right: 25px
             padding-bottom: 30px
@@ -221,6 +220,11 @@
             &:last-child
               margin-left: 1px
               padding-right: 0px
+            .comment
+              font-family: "Lato"
+              font-weight: 300
+              color: #444
+              font-size: 12px
             .backer_avatar
               float: left
               width: 70px
@@ -230,14 +234,15 @@
               float: left
               width: 200px
               #text
+                font-family: "Lato"
+                font-weight: 700
+                color: #444
+                text-decoration: none
                 a, .anon
                   font-family: "Lato"
                   font-weight: 700
-                  font-size: 18px
                   color: #444
                   text-decoration: none
-                  margin-bottom: 15px
-                  display: block
                   &:hover
                     color: $pink
                     text-decoration: underline

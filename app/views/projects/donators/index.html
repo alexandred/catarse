@@ -4,21 +4,32 @@
 			<% for donator in @project.donators %>
 			<% user = User.find(donator.user_id) unless donator.user_id == nil %>
 			<li>
+				<div class="backer_avatar">
+					<%= image_tag user.uploaded_image.thumb_avatar.url || user.image_url || user.gravatar_url || '/assets/user.png' %>
+				</div>
 				<div class="back_info">
+				<span id="text">
+					<% if donator.anonymous == true %>
+						Anonymous
+					<% elsif donator.user_id == nil %>
+						Guest
+					<% else %>
+						<%= link_to(user.name,user_path(user)) %>
+					<% end %>
+					</span>
+					<span style="float: right;"><%= "#{number_to_currency(donator.amount, unit: Project.find(donator.project_id).currency_symbol)} " %></span><br><br>
+					<div id="confirmed">
+						<%= donator.created_at %>
+					</div>
 					<div id="backed">
-							<b>
-							<% if donator.anonymous == true %>
-								Anonymous
-							<% elsif donator.user_id == nil %>
-								Guest
-							<% else %>
-								<%= link_to(user.name,user_path(user)) %>
-							<% end %>
-							</b>
-							<span style="float: right;"><%= "#{number_to_currency(donator.amount, unit: Project.find(donator.project_id).currency_symbol)} " %></span><br><br>
-							<i><%= donator.comment %></i>
+						<% if (user.donators.count + user.donations.count) == 1 %>
+							Donated only to this project so far.
+						<% else %>
+							Donated to this and <%= (user.donators.count + user.donations.count) - 1 %> other projects and charities.
+						<% end %>
 					</div>
 				</div>
+				<div class="comment"><i><%= donator.comment %></i></div>
 			</li>
 			<% end %>
 		</ul>
