@@ -6,6 +6,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   version :project_thumb, if: :is_project?
   version :project_thumb_small, if: :is_project?
   version :project_thumb_facebook, if: :is_project?
+  version :project_logo, if: :is_project?
   version :thumb, if: :is_user?
   version :thumb_avatar, if: :is_user?
 
