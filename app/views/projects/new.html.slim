@@ -68,13 +68,12 @@
               = form.select :category_id, Category.array, class: "#{'error' if @project.errors[:category].present?}"
               p.inline-hints= t('formtastic.hints.project.category')
 
+            = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @project.errors[:country].present?}"
+
             .input
               = form.label :goal, t('formtastic.labels.project.goal')
               = form.text_field :goal, class: "#{'error' if @project.errors[:goal].present?}"
               p.inline-hints= t('formtastic.hints.project.goal').html_safe
-
-            .input
-              = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @project.errors[:country].present?}"
               
             .input
               = form.label :currency, t('formtastic.labels.project.currency')
