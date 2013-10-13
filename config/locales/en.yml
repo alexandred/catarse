@@ -66,6 +66,7 @@ en:
       info: "Useful Information"
       opendata: "nice statistics"
       social: "do you like Catarse?"
+      browse: "Browse"
       newsletter: "receive our newsletter"
     stats:
       backers: Backers
@@ -83,6 +84,10 @@ en:
       terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
       policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy'
       contact: Contact
+      charities: "Explore charities"
+      newcharity: "Submit your charity"
+      projects: "Explore projects"
+      newproject: "Submit your project"
   main:
     links:
       selected: "explore more projects selected"
