@@ -12,8 +12,6 @@
         .input-prepend.permalink
           span.add-on= "#{::Configuration[:base_url]}/"
           = form.text_field :permalink, class: "permalink #{'error' if @charity.errors[:permalink].present?}"
-          p.inline-hints
-            = t('.permalink_hint')
 
       / div class="input control-group #{ 'error' if @charity.errors[:name].present?}"
       .input
@@ -25,38 +23,74 @@
         = form.text_field :name, class: "#{'error' if @charity.errors[:name].present?}"
 
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.regnumber_important')
         = form.label :registration_number, t('formtastic.labels.charity.registration_number')
         = form.text_field :registration_number, class: "#{'error' if @charity.errors[:registration_number].present?}"
 
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.url_important')
         = form.label :charity_url, t('formtastic.labels.charity.charity_url')
         = form.text_field :charity_url, class: "#{'error' if @charity.errors[:charity_url].present?}"
         
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.email_important')
         = form.label :email, t('formtastic.labels.charity.email')
         = form.text_field :email, class: "#{'error' if @charity.errors[:email].present?}"
 
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.phone_important')
         = form.label :phone, t('formtastic.labels.charity.phone')
         = form.text_field :phone, class: "#{'error' if @charity.errors[:phone].present?}"
         
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.address_important')
         = form.label :address, t('formtastic.labels.charity.address')
         = form.text_field :address, class: "#{'error' if @charity.errors[:address].present?}"
         
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.town_important')
         = form.label :town, t('formtastic.labels.charity.town')
         = form.text_field :town, class: "#{'error' if @charity.errors[:town].present?}"
 
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.province_important')
         = form.label :province, t('formtastic.labels.charity.province')
         = form.text_field :province, class: "#{'error' if @charity.errors[:province].present?}"
 
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.zip_important')
         = form.label :zip, t('formtastic.labels.charity.zip')
         = form.text_field :zip, class: "#{'error' if @charity.errors[:zip].present?}"
 
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.country_important')
         = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @charity.errors[:country].present?}"
 
       .input
@@ -82,12 +116,13 @@
             .important= t('.thumbnail_important')
         = form.label :uploaded_image, t('formtastic.labels.charity.uploaded_image')
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
-        - if @charity.errors[:uploaded_image]
-            .bootstrap-twitter
-              p.text-error= "You must provide an image"
 
         
       .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.currency_important')
         = form.label :currency, t('formtastic.labels.charity.currency')
         = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @charity.errors[:currency].present?}"
 
@@ -95,7 +130,7 @@
         .bootstrap-alert
           span
           .alert
-            .important= "Free plans have a 5% fee on all donations made to the charity"
+            .important= t('.subscription_important')
         = form.label :subscribe, "Subscription plan"
         = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@charity.subscribed)
         = "&nbsp;".html_safe
