@@ -68,6 +68,7 @@ javascript:
                 th style="width: 200px;"
                   = t('.name')
                 th= t('.user_id')
+                th= t('.user_name')
                 th= t('.pledged')
                 th= t('.recommended')
                 th= "Subscribed"
@@ -79,6 +80,7 @@ javascript:
                 tr id=charity.id class=cycle("even", "odd")
                   td= link_to charity.name, charity_by_slug_path(permalink: charity.permalink)
                   td= best_in_place [:adm, charity], :user_id, method: :put, type: :input
+                  td= "#{User.find(charity.user_id).name}"
                   td= "#{charity.display_pledged}"
                   td.checkbox= best_in_place [:adm, charity], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td.checkbox
