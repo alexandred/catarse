@@ -52,6 +52,9 @@ sass:
                     If this project is for a charity registered on the site, please select it here.
               = form.label :charity_id, "Charity"
               = form.select :charity_id, [["Select Charity...", ""]] + Charity.where(state: "online").map {|c| [c.name, c.id]}, class: "#{'error' if @project.errors[:charity_id].present?}"
+              - if @project.errors[:charity_id].present?
+                .bootstrap-twitter
+                  p.text-error= "You must select a charity"
 
             .input
               .bootstrap-alert
@@ -79,6 +82,9 @@ sass:
               = form.label :category, t('.category')
               = form.select :category_id, Category.array, class: "#{'error' if @project.errors[:category].present?}"
               p.inline-hints= t('formtastic.hints.project.category')
+              - if @project.errors[:category_id].present?
+                .bootstrap-twitter
+                  p.text-error= "You must select a category"
 
             .input
               .bootstrap-alert
@@ -88,6 +94,9 @@ sass:
               = form.label :country, t('.country')
               = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @project.errors[:category].present?}"}
               p.inline-hints= t('formtastic.hints.project.country')
+              - if @project.errors[:country].present?
+                .bootstrap-twitter
+                  p.text-error= "You must select a country"
 
             .input
               .bootstrap-alert
@@ -105,6 +114,9 @@ sass:
                   .important= t('.currency_important')
               = form.label :currency, t('formtastic.labels.project.currency')
               = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @project.errors[:currency].present?}"
+              - if @project.errors[:charity_id].present?
+                .bootstrap-twitter
+                  p.text-error= "You must select a currency"
 
             .input
               .bootstrap-alert
