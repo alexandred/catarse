@@ -89,6 +89,11 @@ en:
       expiring: "explore more expiring projects"
       recents: "explore more recent projects"
       near: "explore more near me projects"
+      charities: "explore more charities"
+    social:
+      twitter: "Twitter"
+      facebook: "Facebook"
+      blog: "Blog"
   sidebar:
     titles:
       blog: blog
@@ -103,6 +108,7 @@ en:
       title: near me
     selection:
       title: selection
+      charities: "Recommended Charities"
     expiring:
       title: expiring
     recents:

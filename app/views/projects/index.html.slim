@@ -18,6 +18,16 @@
       .selected_projects.list
         .list_title
           .title
+            h2= t('sections.selection.charities')
+        .projects
+          - @recommendedcharities.each do |charity|
+              = render partial: 'charity', locals: {project: charity, custom_class: 'first' }
+        .explore_link
+          hr
+          = link_to t('main.links.charities'), charities_path
+      .selected_projects.list
+        .list_title
+          .title
             h2= t('sections.selection.title')
         .projects
           = render partial: 'project', locals: {project: @first_project, custom_class: 'first' } if @first_project
@@ -49,22 +59,23 @@
           hr
           = link_to t('main.links.recents'), explore_path(anchor: :recent)
     .sidebar
-      <div class="content" style="padding-top:0 !important;">
-        <div class="twitter">
-          <h3>Tweet, tweet...</h3>
-          <a class="twitter-timeline" data-dnt="true" data-widget-id="360799322792673280" height="330" href="https://twitter.com/Neighborly"></a>
+      erb:
+        <div class="content" style="padding-top:0 !important;">
+          <div class="twitter">
+            <h3><%= t('main.social.twitter') %></h3>
+            <a class="twitter-timeline" data-dnt="true" data-widget-id="360799322792673280" height="330" href="https://twitter.com/Neighborly"></a>
+          </div>
+          
+          <div class="facebook">
+            <h3><%= t('main.social.facebook') %></h3>
+            <div class="fb-like-box" data-header="false" data-height="300" data-href="http://www.facebook.com/NEIGHBORdotLY" data-show-border="false" data-show-faces="true" data-stream="false" data-width="198"></div>
+          </div>
+          
+          <div class="blog">
+            <h3><%= t('main.social.blog') %></h3>
+          </div>
+          
         </div>
-        
-        <div class="facebook">
-          <h3>On Facebook...</h3>
-          <div class="fb-like-box" data-header="false" data-height="300" data-href="http://www.facebook.com/NEIGHBORdotLY" data-show-border="false" data-show-faces="true" data-stream="false" data-width="198"></div>
-        </div>
-        
-        <div class="blog">
-          <h3>Around the &#39;hood...</h3>
-        </div>
-        
-      </div>
     .clearfix
 
     erb:
