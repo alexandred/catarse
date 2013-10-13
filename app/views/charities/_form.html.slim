@@ -19,7 +19,7 @@
           span
           .alert
             .important= t('.name_important')
-        = form.label :name, t('formtastic.labels.charity.name')
+        = form.label :name, "#{t('formtastic.labels.charity.name')} *"
         = form.text_field :name, class: "#{'error' if @charity.errors[:name].present?}"
 
       .input
@@ -43,7 +43,7 @@
           span
           .alert
             .important= t('.email_important')
-        = form.label :email, t('formtastic.labels.charity.email')
+        = form.label :email, "#{t('formtastic.labels.charity.email')} *"
         = form.text_field :email, class: "#{'error' if @charity.errors[:email].present?}"
 
       .input
@@ -59,7 +59,7 @@
           span
           .alert
             .important= t('.address_important')
-        = form.label :address, t('formtastic.labels.charity.address')
+        = form.label :address, "#{t('formtastic.labels.charity.address')} *"
         = form.text_field :address, class: "#{'error' if @charity.errors[:address].present?}"
         
       .input
@@ -67,7 +67,7 @@
           span
           .alert
             .important= t('.town_important')
-        = form.label :town, t('formtastic.labels.charity.town')
+        = form.label :town, "#{t('formtastic.labels.charity.town')} *"
         = form.text_field :town, class: "#{'error' if @charity.errors[:town].present?}"
 
       .input
@@ -83,7 +83,7 @@
           span
           .alert
             .important= t('.zip_important')
-        = form.label :zip, t('formtastic.labels.charity.zip')
+        = form.label :zip, "#{t('formtastic.labels.charity.zip')} *"
         = form.text_field :zip, class: "#{'error' if @charity.errors[:zip].present?}"
 
       .input
@@ -91,14 +91,15 @@
           span
           .alert
             .important= t('.country_important')
-        = form.input :country, as: :country, priority_countries: ["United Kingdom"], class: "#{'error' if @charity.errors[:country].present?}"
+        = form.label :country, "#{t('formtastic.labels.charity.country')} *"
+        = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @charity.errors[:country].present?}"}
 
       .input
         .bootstrap-alert
           span
           .alert
             .important= t('.about_important')
-        = form.label :about, t('formtastic.labels.charity.about')
+        = form.label :about, "#{t('formtastic.labels.charity.about')} *"
         = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
         
       /.input
@@ -114,7 +115,7 @@
           span
           .alert
             .important= t('.thumbnail_important')
-        = form.label :uploaded_image, t('formtastic.labels.charity.uploaded_image')
+        = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
 
         
@@ -123,15 +124,15 @@
           span
           .alert
             .important= t('.currency_important')
-        = form.label :currency, t('formtastic.labels.charity.currency')
+        = form.label :currency, "#{t('formtastic.labels.charity.currency')} *"
         = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @charity.errors[:currency].present?}"
 
       .input
         .bootstrap-alert
           span
           .alert
-            .important= t('.subscription_important')
-        = form.label :subscribe, "Subscription plan"
+            .important= "t('.subscription_important')"
+        = form.label :subscribe, "#{t('formtastic.labels.charity.subscription')} *"
         = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@charity.subscribed)
         = "&nbsp;".html_safe
         = "Free"
@@ -151,5 +152,5 @@
         fieldset
           .bootstrap-twitter
             .send
-              = submit_tag "Save", id: 'charity_submit', class: 'btn_send'
+              = submit_tag t('formtastic.labels.charity.submit'), id: 'charity_submit', class: 'btn_send'
             /= form.submit t('.submit'), disabled: true, class: 'btn-large btn-block btn btn-warning', id: 'charity_submit', style: 'width: 100%;'

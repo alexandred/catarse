@@ -92,7 +92,7 @@ sass:
                 .alert
                   .important= t('.country_important')
               = form.label :country, t('.country')
-              = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @project.errors[:category].present?}"}
+              = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @project.errors[:country].present?}"}
               p.inline-hints= t('formtastic.hints.project.country')
               - if @project.errors[:country].present?
                 .bootstrap-twitter

@@ -391,6 +391,12 @@ en:
         charity_email: "Charity email address"
         phone: "Telephone Number"
         email: "Paypal email"
+        address: "Address"
+        town: "Town"
+        zip: "Zip Code"
+        country: "Country"
+        subscription: "Subscription Plan"
+        submit: "Submit this charity"
       reward:
         maximum_backers: "Maximum backers (optional)"
         days_to_delivery: "Days to delivery"
