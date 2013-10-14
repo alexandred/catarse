@@ -1,5 +1,68 @@
+sass:
+  .bootstrap-form
+    li#project_user_id_input.input
+      border: none
+    .input 
+      float: left
+      margin-bottom: 30px
+      padding-bottom: 40px
+      width: 600px
+      width: 100%
+      border-bottom: 1px dotted #CCCCCC
+      .input-prepend
+        float: left
+        width: 42%
+        .inline-hints
+          margin-left: 0px
+      .heart, .date
+        display: block
+        margin-left: 40px
+      .calc, .tag
+        display: block
+        margin-left: 52px
+      .gift
+        display: block
+        margin-left: 59px
+      .video, .social, .link, .logo
+        display: block
+        margin-left: 50px
+      .chanels
+        height: 80px
+      label
+        font-family: 'Lato'
+        font-style: italic
+        width: 160px
+        float: left
+        margin-right: 20px
+        text-align: center
+        font-size: 18px
+        color: #F28D0B
+        line-height: 21px
+    #addresstitle
+      padding-bottom: 30px
+      border-bottom: 1px dotted #CCCCCC
+    #socialtitle
+      padding-bottom: 30px
+      border-bottom: 1px dotted #CCCCCC
+    #user_submit
+      border-bottom: none !important
+  #title
+    padding-bottom: 30px
+    border-bottom: 1px dotted #CCCCCC
+  #user_uploaded_image_input
+    border-bottom: none !important
+    padding-bottom: 10px
+  #user_country_input
+    border-bottom: none !important
+    padding-bottom: 10px
+  ul
+    border-bottom: none !important
+    padding-bottom: 10px
+  #unsubscribes
+    border-top: 1px dotted #CCCCCC
 #my_data
-  h1= t('.my_data')
+  #title
+    h1= t('.my_data')
   ul
     li
       .bootstrap-form
@@ -8,10 +71,11 @@
             = f.input :full_name, required: true, as: :string
             = f.input :name, required: false, as: :string
             = f.input :email, as: :string
-            = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }      
-            = f.input :uploaded_image, as: :file, label: t('.submit_text')      
+            = f.input :bio, as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }      
+            = f.input :uploaded_image, as: :file, label: t('.submit_text'), id: "last"      
           .address
-            h1= "My Location"
+            #addresstitle
+              h1= "My Location"
             br
             br
             = f.input :address_street, as: :string, label: "Address"
@@ -19,21 +83,19 @@
             = f.input :address_city, as: :string
             = f.input :address_state, as: :string, input_html: {style: 'margin-right: 20px'}
             = f.input :address_zip_code, as: :string, input_html: {autocomplete: 'off'}
-            = f.input :country, as: :country, priority_countries: ["United Kingdom"], :prompt => "Select Country..."
+            = f.input :country, as: :country, priority_countries: ["United Kingdom"], :prompt => "Select Country...", id: "last"
           .socialmidia
-            h1= "Social Media"
+            #socialtitle
+              h1= "Social Media"
             br
             br
-            .div
-              = f.label :twitter, t('.twitter')
-              = f.text_field :twitter
-            .div
-              = f.label :facebook_link, t('.facebook_link')
-              = f.text_field :facebook_link
+            = f.input :twitter, label: t('.twitter')
+            = f.input :facebook_link, label: t('.facebook_link')
             = hidden_field_tag 'id', @user.id
-            = f.input :newsletter, as: :boolean, label: t('.newsletter')
+            = f.input :newsletter, as: :boolean, label: t('.newsletter'), id: "last"
           .bootstrap-twitter
-            p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
+            br
+            = f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
 #change_password
   h1= t('.change_password')
   ul
@@ -42,14 +104,42 @@
         = form_for(@user, url: {action: "update_password"}, html: { method: :put, class: 'skip_feed_event', id: 'password_form' }) do |f|
           span.hint= t('.current_password_hint').html_safe
           br
-          .div
+          .input
             = f.label :current_password
             = f.password_field :current_password, class:'empty'
-          .div
+          .input
             = f.label :password, t('passwords.edit.label_new_password')
             = f.password_field :password, class:'empty'
-          .div
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation, class:'empty'
+          .input
+            .last
+              = f.label :password_confirmation
+              = f.password_field :password_confirmation, class:'empty'
           .bootstrap-twitter
-            p= f.submit 'OK', class: 'btn', id: 'password_submit'
+            br
+            = f.submit 'OK', class: 'btn', id: 'user_submit'
+#unsubscribes
+  #my_data
+    ul
+      = I18n.t('users.unsubscribes.title')
+    ul
+      li
+        .bootstrap-form
+        = semantic_form_for(@user, url: user_unsubscribes_path(user_id: @user.id), html:{ method: :post}) do |f|
+          = f.inputs do
+            = f.semantic_fields_for :unsubscribes, @subscribed_to_updates do |u|
+              - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
+              #subscribed_check
+                = u.input :subscribed, as: :boolean, input_html: checked, label: I18n.t('users.unsubscribes.updates')
+            - if @unsubscribes
+              = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
+                = u.inputs do
+                  - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
+                  .subscribed_projects
+                    = u.input :subscribed, as: :boolean, input_html: checked, label: Project.find(u.object.project_id).name
+                  = u.input :project_id, as: :hidden
+                  = u.input :user_id, as: :hidden
+                  = u.input :notification_type_id, as: :hidden
+          br
+          br
+          br
+          = f.submit t('users.current_user_fields.update_social_info'), class: 'btn', id: "user_submit"
