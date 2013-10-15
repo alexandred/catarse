@@ -18,7 +18,7 @@
                 =link_to image_tag(item.display_image('project_thumb')), charity_path(item.permalink)
               .charity-index
                 h2= link_to item.name, charity_path(item.permalink)
-                p=truncate(item.about_html, length: 550)
+                p=truncate_html(item.about_html, length: 550)
                 p=link_to 'More information', charity_path(item.permalink)
               .clearfix
           = "No charities found" if @charities == []

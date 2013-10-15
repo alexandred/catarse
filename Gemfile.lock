@@ -426,6 +426,7 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    truncate_html (0.9.2)
     tzinfo (0.3.37)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -517,6 +518,7 @@ DEPENDENCIES
   slim-rails (~> 1.1.1)
   spectator-validates_email
   state_machine
+  truncate_html (~> 0.9.2)
   uglifier
   unicorn
   validation_reflection!

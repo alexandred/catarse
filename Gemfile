@@ -85,6 +85,9 @@ gem 'httpclient',     '>= 2.2.5'
 gem 'money'
 gem 'paypal_adaptive', require: 'paypal_adaptive'
 
+#Others
+gem "truncate_html", "~> 0.9.2"
+
 group :production do
 
   # Gem used to handle image uploading
