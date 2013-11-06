@@ -39,10 +39,14 @@
           h2 Menu
           ul
             li= link_to 'About', '#about', class: 'selected', id: 'menu-about'
-            li= link_to 'Updates', '#updates', id: 'menu-updates'
-            li= link_to 'Projects in Support', '#projects', id: 'menu-projects'
-            li= link_to 'Donations', '#donations', id: 'menu-donations'
-            li= link_to 'Comments', '#comments', id: 'menu-comments'
+            li= link_to "Updates (#{@charity.updates.count})", '#updates', id: 'menu-updates'
+            li= link_to "Projects in Support (#{@charity.projects.count})", '#projects', id: 'menu-projects'
+            li= link_to "Donations (#{@charity.donations.count})", '#donations', id: 'menu-donations'
+            li= link_to '#comments', id: 'menu-comments' do
+              = "Comments"
+              | &nbsp; (
+              fb:comments-count href="#{request.url}"
+              | )
             li= link_to 'Contact Us', '#contact', id: 'menu-contact'
             - if can? :update, @charity
               li= link_to 'Edit Charity Details', '#edit', id: 'menu-edit'
