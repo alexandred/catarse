@@ -69,7 +69,6 @@
             = render template: 'charities/donations/index'
         #charity_comments.content style="display:none"
           .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
-        .clearfix
         #charity_contact.content style="display: none"
           h2="Contact #{@charity.name}"
           br
@@ -101,3 +100,14 @@
       $('#menu-updates').click(function(){ switchSection(this, '#charity_updates') })
       $('#menu-edit').click(function(){ switchSection(this, '#charity_edit') })
     })
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+sass:
+  .fb-comments, .fb-comments span, .fb-comments iframe 
+    width: 100% !important
