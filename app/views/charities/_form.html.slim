@@ -131,7 +131,7 @@
         .bootstrap-alert
           span
           .alert
-            .important= "t('.subscription_important')"
+            .important= t('.subscription_important')
         = form.label :subscribe, "#{t('formtastic.labels.charity.subscription')} *"
         = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@charity.subscribed)
         = "&nbsp;".html_safe
