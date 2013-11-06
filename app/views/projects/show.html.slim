@@ -123,10 +123,10 @@
               /| #{@project.user.address_city}
         .user_social
           ul
-            - if @project.user.facebook_link
+            - if @project.user.facebook_link != ""
               li
                 = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
-            - if @project.user.twitter
+            - if @project.user.twitter = ""
               li
                 = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
             - if @project.user.email
