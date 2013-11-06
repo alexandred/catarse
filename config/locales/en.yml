@@ -1,4 +1,8 @@
 en:
+  faq:
+    header: "Header"
+    subheader: "Subheader"
+    html: "<ul class=\"questions\"><li>Question 1<p>Answer 1</p></li><br><li>Question2</li></ul>"
   adm:
     charities:
       index:
