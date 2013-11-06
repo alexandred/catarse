@@ -18,6 +18,10 @@ class Projects::DonatorsController < ApplicationController
   end
 
   def create
+    if params[:donator][:amount] == "" || 0
+      flash[:error] = "You must enter a donation"
+      return redirect_to new_project_donator_path(@project)
+    end
     user_id = current_user ? current_user.id : nil
     response = @donator.payment(@project, @donator,user_id)
       if response.success?
