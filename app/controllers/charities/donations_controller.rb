@@ -18,7 +18,7 @@ class Charities::DonationsController < ApplicationController
   end
 
   def create
-    if params[:donation][:amount] == "" || 0
+    if params[:donation][:amount] == "" || params[:donation][:amount] == "0"
       flash[:error] = "You must enter a donation"
       return redirect_to new_charity_donation_path(@charity)
     end
