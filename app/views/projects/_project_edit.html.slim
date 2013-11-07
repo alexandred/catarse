@@ -23,6 +23,10 @@
         = form.input :headline, as: :string, required: false
       - if can? :update, @project, :category
         = form.input :category, as: :select, required: false
+      - if can? :update, @project, :email
+        = form.input :email, as: :string, required: false
+      - if can? :update, @project, :charity
+        = form.input :charity, as: :select, required: false
       - if can? :update, @project, :video_url
         = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
       - if can? :update, @project, :uploaded_image
