@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :force_http
+  before_filter :store_location
+
+def store_location
+  # store last url as long as it isn't a /users path
+  if !request.xhr?
+    session[:return_to] = request.env['REQUEST_PATH'].gsub("/video_embed","").gsub("/embed","") unless request.fullpath =~ /\/users/
+  end
+end
 
   # TODO: Change this way to get the opendata
   before_filter do

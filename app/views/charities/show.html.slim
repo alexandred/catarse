@@ -103,6 +103,23 @@
       $('#menu-contact').click(function(){ switchSection(this, '#charity_contact') })
       $('#menu-updates').click(function(){ switchSection(this, '#charity_updates') })
       $('#menu-edit').click(function(){ switchSection(this, '#charity_edit') })
+
+      $("#pledge").click(function(){
+        if(#{current_user ? true : false}) {
+          return true;
+        } else {
+          var r=confirm("Would you like to sign in to donate?")
+          if (r==true)
+            {
+            window.location.href="#{new_charity_donation_path(@charity)}" + "?redirect=true"
+            return false;
+            }
+          else
+            {
+            return true;
+            }
+          }
+      });
     })
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

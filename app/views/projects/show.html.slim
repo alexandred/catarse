@@ -147,3 +147,20 @@
 
     .clearfix
 = render 'show_embed'
+javascript:
+      $("#pledge").click(function(){
+        if(#{current_user ? true : false}) {
+          return true;
+        } else {
+          var r=confirm("Would you like to sign in to donate?")
+          if (r==true)
+            {
+            window.location.href= "#{new_project_donator_path(@project)}" + "?redirect=true"
+            return false;
+            }
+          else
+            {
+            return true;
+            }
+          }
+      });

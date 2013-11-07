@@ -5,6 +5,10 @@ class Charities::DonationsController < ApplicationController
   load_and_authorize_resource
 	belongs_to :charity
   def new
+    if params[:redirect] == "true"
+      session[:return_to] = new_charity_donation_path(@charity)
+     return redirect_to new_user_session_path
+    end
     @create_url = ::Configuration[:secure_review_host] ?
       charity_donations_url(@charity, {host: ::Configuration[:secure_review_host], protocol: 'https'}) :
       charity_donations_path(@charity)

@@ -5,6 +5,10 @@ class Projects::DonatorsController < ApplicationController
   load_and_authorize_resource
   belongs_to :project
   def new
+    if params[:redirect] == "true"
+      session[:return_to] = new_project_donator_path(@project)
+     return redirect_to new_user_session_path
+    end
     @create_url = ::Configuration[:secure_review_host] ?
       project_donators_url(@project, {host: ::Configuration[:secure_review_host], protocol: 'https'}) :
       project_donators_path(@project)
