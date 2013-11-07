@@ -44,7 +44,7 @@
           / = link_to t('.tabs.comments'), '#comments', id: 'comments_link'
           - if can? :manage, @user
             = link_to t('.tabs.settings'), '#settings', id: 'settings_link'
-          /  = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link'
+            = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link'
       .clearfix
       #user_profile_content
         #user_backed_projects.content
