@@ -48,9 +48,15 @@
       .clearfix
       #user_profile_content
         #user_backed_projects.content
-          - Project.joins(:donators).where(donators: { :user_id => @user.id } ).each do |project|
+          - Project.joins(:donators).where(donators: { :user_id => @user.id } ).uniq.each do |project|
             = render '/projects/project', project: project
+          - Charity.joins(:donations).where(donations: { :user_id => @user.id } ).uniq.each do |charity|
+            = render '/projects/box2', project: charity          
         #user_created_projects.content
+          - Project.where(:user_id => @user.id).uniq.each do |project|
+            = render '/projects/project', project: project
+          - Charity.where(:user_id => @user.id).uniq.each do |charity|
+            = render '/projects/box2', project: charity   
         - if can? :manage, @user
           #user_unsubscribes.content.hide
             = render 'unsubscribes'

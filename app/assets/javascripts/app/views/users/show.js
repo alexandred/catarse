@@ -89,9 +89,11 @@ CATARSE.UsersShowView = Backbone.View.extend({
   },
 
   backs: function() {
+    this.$("#loading").children().hide();
     if(this.backsView)
       this.backsView.destroy()
     this.selectItem("backed_projects")
+
   //  this.backsView = new this.BacksView({
   //    modelView: this.BackView,
   //    collection: this.user.donators,
@@ -104,12 +106,12 @@ CATARSE.UsersShowView = Backbone.View.extend({
     if(this.projectsView)
       this.projectsView.destroy()
     this.selectItem("created_projects")
-    this.projectsView = new this.ProjectsView({
-      modelView: this.ProjectView,
-      collection: this.user.projects,
-      loading: this.$("#loading"),
-      el: this.$("#user_created_projects")
-    })
+ //   this.projectsView = new this.ProjectsView({
+ //     modelView: this.ProjectView,
+ //     collection: this.user.projects,
+  //    loading: this.$("#loading"),
+  //    el: this.$("#user_created_projects")
+  //  })
   },
 
   credits: function() {

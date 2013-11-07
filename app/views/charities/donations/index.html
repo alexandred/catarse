@@ -19,17 +19,17 @@
 					</span>
 					<span style="float: right;"><%= "#{number_to_currency(donation.amount, unit: Charity.find(donation.charity_id).currency_symbol)} " %></span><br><br>
 					<div id="confirmed">
-						<%= donation.created_at %>
+						<%= donation.created_at.strftime("%d/%m/%Y") %>
 					</div>
 					<div id="backed">
 						<% if (user.donations.count + user.donators.count) == 1 %>
-							Donated only to this charity so far.
+							Donated only to this cause so far.
 						<% else %>
-							Donated to this and <%= (user.donations.count + user.donators.count) - 1 %> other projects and charities.
+							Donated to this and <%= (user.donations.count + user.donators.count) - 1 %> other causes.
 						<% end %>
 					</div>
 				</div>
-				<div class="comment"><i><%= donation.comment %></i></div>
+				<div class="comment" style="padding-left:5px;"><i><%= donation.comment %></i></div>
 			</li>
 			<% end %>
 		</ul>

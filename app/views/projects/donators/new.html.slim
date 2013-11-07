@@ -27,15 +27,15 @@ sass:
     padding: 10px
     font-size: 16px
   #donation_submit
-    width: 300px
+    width: 245px
     height: 55px
     border-radius: 15px
     box-shadow: 0px
-    margin: 12px auto 0px
+    margin: 0px 50px
     float: none
     border: none
     display: block
-    background: #64CB64
+    background: url("/assets/catarse/submit_back_icon25x22.png") no-repeat scroll 20px center rgb(100, 203, 100)
     font-family: "Lato"
     font-size: 15px
     text-transform: uppercase
@@ -51,8 +51,8 @@ sass:
             = form.input :amount, required: true, as: :string, label: false,  input_html: { autocomplete: 'off' }
             .simbol
               p= @project.currency_symbol
-            #anonymous
-              = form.input :anonymous
+            #anonymous style="font-size: 16px"
+              = form.input :anonymous, label: "Donate Anonymously"
             br
             br
             br
@@ -66,7 +66,7 @@ sass:
                   = render 'anonymous_warning'
           = form.actions do
             .bootstrap-twitter
-              = form.submit 'Submit', disabled: false, class: 'btn btn-primary btn-large', id: "donation_submit"
+              = form.submit 'Donate', disabled: false, class: 'btn btn-primary btn-large', id: "donation_submit"
       #back_info
         #project_info
           .project_name= link_to @project.name, project_by_slug_path(permalink: @project.permalink)

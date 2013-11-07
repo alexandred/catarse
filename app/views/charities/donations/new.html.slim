@@ -61,15 +61,15 @@ sass:
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
     //width: 462px
   #donation_submit
-    width: 300px
+    width: 245px
     height: 55px
     border-radius: 15px
     box-shadow: 0px
-    margin: 12px auto 0px
-    float: none
+    margin: 0px 50px
+    float: left
     border: none
     display: block
-    background: #64CB64
+    background: url("/assets/catarse/submit_back_icon25x22.png") no-repeat scroll 20px center rgb(100, 203, 100)
     font-family: "Lato"
     font-size: 15px
     text-transform: uppercase
@@ -85,7 +85,8 @@ sass:
             = form.input :amount, required: false, as: :string, label: false,  input_html: { autocomplete: 'on' }
             .simbol
               p= @charity.currency_symbol
-            = form.input :anonymous
+            #donation_anonymous_input
+              = form.input :anonymous, label: "Donate Anonymously", input_html: { style: "font-size: 16px"}
             .clearfix
             #comment
               = form.input :comment, label: "Leave a comment with this donation:"

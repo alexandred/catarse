@@ -12,7 +12,11 @@ class Ability
       (update.project && update.project.user_id == current_user.id) || (update.charity && update.charity.user_id == current_user.id)
     end
     can :see, :updates do |update|
-      !update.exclusive || !current_user.backs.confirmed.where(project_id: update.project.id).empty?
+      if update.project
+        !update.exclusive || !current_user.donators.where(project_id: update.project.id).empty?
+      else
+        !update.exclusive || !current_user.donations.where(charity_id: update.charity.id).empty?
+      end
     end
 
     # NOTE: Project authorizations
