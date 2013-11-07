@@ -150,7 +150,7 @@
             .bootstrap-twitter
               p.text-error= @charity.errors[:accepted_terms].to_sentence
         fieldset
-          .form-actions.bootstrap-twitter
+          .form-actions.bootstrap-twitter style="background-color: none; border-top: none;"
             .send
               = submit_tag t('formtastic.labels.charity.submit'), id: 'charity_submit', class: 'btn btn_send', style: "float: none"
             /= form.submit t('.submit'), disabled: true, class: 'btn-large btn-block btn btn-warning', id: 'charity_submit', style: 'width: 100%;'
