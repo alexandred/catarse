@@ -211,12 +211,13 @@
         ul.collection_list
           margin-top: 20px
           li
-            width: 286px
+            width: 90%
             float: left
             min-height: 67px
             padding-right: 25px
-            padding-bottom: 30px
-            margin-bottom: 30px
+            padding-bottom: 20px
+            margin-bottom: 20px
+            border-bottom: 1px #cccccc dotted
             &:last-child
               margin-left: 1px
               padding-right: 0px
@@ -225,6 +226,10 @@
               font-weight: 300
               color: #444
               font-size: 12px
+              margin-top: 100px
+              background: #f3f3f3
+              padding: 15px
+              width: 99%
             .backer_avatar
               float: left
               width: 70px
@@ -232,7 +237,7 @@
               margin-right: 15px
             .back_info
               float: left
-              width: 200px
+              width: 85%
               #text
                 font-family: "Lato"
                 font-weight: 700
@@ -246,14 +251,18 @@
                   &:hover
                     color: $pink
                     text-decoration: underline
+              span
+                float: right
+                margin-right: -25px
               #confirmed, #backed
                 padding-top: 4px
                 height: 16px
                 text-indent: 25px
                 background: url($images_path+'confirmed_icon.png') left top no-repeat
+                width: 100%
               #backed
                 background: url($images_path+'backed_icon.png') left 4px no-repeat
-                width: 125px
+                width: 100%
                 line-height: 120%
                 text-indent: 0px
                 height: auto
@@ -824,7 +833,7 @@
     #pledge
       width: 280px
       float: left
-      padding-top: 20px
+      padding-top: 10px
       padding-bottom: 20px
       input[type="submit"][disabled="disabled"]
         +opacity(0.6)
@@ -862,6 +871,8 @@
   .section_header
     width: 930px !important
     border-bottom: 1px #dfdfdf solid
+    padding-top: 20px !important
+    padding-bottom: 10px !important
   .sidebar
     margin-left: 0 !important
     margin-right: 20px
@@ -878,12 +889,12 @@
         font-size: 16px
         color: #444
         padding-left: 65px
-        margin-bottom: 5px
+        margin-bottom: 20px
         p
           white-space: nowrap
           font-family: "Lato"
           font-weight: 700
-          font-size: 24px
+          font-size: 36px
           color: #444
           text-shadow: 1px 1px white
         em

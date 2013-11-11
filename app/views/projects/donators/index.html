@@ -23,7 +23,7 @@
 					</span>
 					<span style="float: right;"><%= "#{number_to_currency(donator.amount, unit: Project.find(donator.project_id).currency_symbol)} " %></span><br><br>
 					<div id="confirmed">
-						<%= donator.created_at.strftime("%d/%m/%Y") %>
+						Donated on<%= donator.created_at.strftime("%d/%m/%Y") %>.
 					</div>
 					<div id="backed">
 						<% if (user.donators.count + user.donations.count) == 1 %>
