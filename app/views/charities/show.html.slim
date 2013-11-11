@@ -34,6 +34,11 @@
         br
         = @charity.country
       .clearfix
+      .social
+        #project_share
+          #facebook_share= render_facebook_like href: charity_by_slug_url(@charity.permalink, locale: I18n.locale)
+          #twitter_share style="position: absolute; margin-left: 370px, margin-top: -28px"= render_twitter(url: charity_by_slug_url(permalink: @charity.permalink))
+          .clearfix
     
     .sidebar style="margin-right: 20px"
       .content
