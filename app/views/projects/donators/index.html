@@ -12,7 +12,7 @@
 				<% end %>
 				</div>
 				<div class="back_info">
-				<span id="text">
+				<span id="text" style="float: left;">
 					<% if donator.anonymous == true %>
 						Anonymous
 					<% elsif donator.user_id == nil %>
@@ -21,9 +21,9 @@
 						<%= link_to(user.name,user_path(user)) %>
 					<% end %>
 					</span>
-					<span style="float: right;"><%= "#{number_to_currency(donator.amount, unit: Project.find(donator.project_id).currency_symbol)} " %></span><br><br>
+					<span style="float: right; margin-right: -25px;"><%= "#{number_to_currency(donator.amount, unit: Project.find(donator.project_id).currency_symbol)} " %></span><br><br>
 					<div id="confirmed">
-						Donated on<%= donator.created_at.strftime("%d/%m/%Y") %>.
+						Donated on <%= donator.created_at.strftime("%d/%m/%Y") %>.
 					</div>
 					<div id="backed">
 						<% if (user.donators.count + user.donations.count) == 1 %>
@@ -34,7 +34,7 @@
 					</div>
 				</div>
 				<% if donator.comment %>
-					<div class="comment" style="padding-left:5px;"><i><%= donator.comment %></i></div>
+					<div class="comment" style="padding-left:20px; font-weight: bold;"><%= donator.comment %></div>
 				<% end %>
 			</li>
 			<% end %>
