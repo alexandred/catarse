@@ -5,7 +5,11 @@
 			<% user = User.find(donation.user_id) unless donation.user_id == nil %>
 			<li>
 				<div class="backer_avatar">
+				<% if donation.anonymous == false %>
 					<%= image_tag user.uploaded_image.thumb_avatar.url || user.image_url || user.gravatar_url || '/assets/user.png' %>
+				<% else %>
+					<%= image_tag '/assets/user.png' %>
+				<% end %>
 				</div>
 				<div class="back_info">
 				<span id="text">
