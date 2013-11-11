@@ -33,7 +33,9 @@
 						<% end %>
 					</div>
 				</div>
-				<div class="comment" style="padding-left:5px;"><i><%= donator.comment %></i></div>
+				<% if donator.comment %>
+					<div class="comment" style="padding-left:5px;"><i><%= donator.comment %></i></div>
+				<% end %>
 			</li>
 			<% end %>
 		</ul>
