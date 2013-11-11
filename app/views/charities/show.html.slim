@@ -31,6 +31,8 @@
           = "Registration Number #{@charity.registration_number}"
           br
         = "Registered since #{@charity.created_at.strftime("%B %Y")}"
+        br
+        = @charity.country
       .clearfix
     
     .sidebar style="margin-right: 20px"
