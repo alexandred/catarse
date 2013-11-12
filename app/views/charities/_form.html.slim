@@ -1,8 +1,20 @@
+sass:
+  #country
+    display: inline
+  .section-header
+    background: #e5e5e5
+    color: #4c4c4c
+    text-transform: uppercase
+    clear: both
+    padding: 18px
+    margin-bottom: 30px
+    font-size: 36px
 .bootstrap-form
   .clearfix
   = semantic_form_for @charity, html: { id: 'charity_form' } do |form|
     = form.inputs do
-      .input.control-group.error
+      .section-header
+        = "#1. Charity Overview"
       .input
         .bootstrap-alert
           span
@@ -11,7 +23,7 @@
         = form.label :permalink, "#{t('activerecord.attributes.charity.permalink')} *"
         .input-prepend.permalink
           span.add-on= "#{::Configuration[:base_url]}/"
-          = form.text_field :permalink, class: "permalink #{'error' if @charity.errors[:permalink].present?}"
+          = form.text_field :permalink, class: "permalink #{'error' if @charity.errors[:permalink].present?}", style: "width: auto;"
 
       / div class="input control-group #{ 'error' if @charity.errors[:name].present?}"
       .input
@@ -34,26 +46,29 @@
         .bootstrap-alert
           span
           .alert
-            .important= t('.url_important')
-        = form.label :charity_url, t('formtastic.labels.charity.charity_url')
-        = form.text_field :charity_url, class: "#{'error' if @charity.errors[:charity_url].present?}"
-        
-      .input
-        .bootstrap-alert
-          span
-          .alert
-            .important= t('.email_important')
-        = form.label :email, "#{t('formtastic.labels.charity.email')} *"
-        = form.text_field :email, class: "#{'error' if @charity.errors[:email].present?}"
+            .important= t('.about_important')
+        = form.label :about, "#{t('formtastic.labels.charity.about')} *"
+        = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
 
       .input
         .bootstrap-alert
           span
           .alert
-            .important= t('.phone_important')
-        = form.label :phone, t('formtastic.labels.charity.phone')
-        = form.text_field :phone, class: "#{'error' if @charity.errors[:phone].present?}"
-        
+            .important= t('.thumbnail_important')
+        = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
+        = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
+
+      .section-header
+        = "#2. Location"
+
+      .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.country_important')
+        = form.label :country, "#{t('formtastic.labels.charity.country')} *"
+        = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @charity.errors[:country].present?}"}
+
       .input
         .bootstrap-alert
           span
@@ -61,7 +76,7 @@
             .important= t('.address_important')
         = form.label :address, "#{t('formtastic.labels.charity.address')} *"
         = form.text_field :address, class: "#{'error' if @charity.errors[:address].present?}"
-        
+
       .input
         .bootstrap-alert
           span
@@ -86,39 +101,28 @@
         = form.label :zip, "#{t('formtastic.labels.charity.zip')} *"
         = form.text_field :zip, class: "#{'error' if @charity.errors[:zip].present?}"
 
-      .input
-        .bootstrap-alert
-          span
-          .alert
-            .important= t('.country_important')
-        = form.label :country, "#{t('formtastic.labels.charity.country')} *"
-        = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @charity.errors[:country].present?}"}
+      .section-header
+        = "#3. Contact"
 
       .input
         .bootstrap-alert
           span
           .alert
-            .important= t('.about_important')
-        = form.label :about, "#{t('formtastic.labels.charity.about')} *"
-        = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
-        
-      /.input
-        .bootstrap-alert
-          span
-          .alert
-            .important= t('.video_important')
-        = form.label :video_url, t('formtastic.labels.charity.video_url')
-        = form.text_field :video_url, class: "#{'error' if @charity.errors[:video_url].present?}"
+            .important= t('.phone_important')
+        = form.label :phone, t('formtastic.labels.charity.phone')
+        = form.text_field :phone, class: "#{'error' if @charity.errors[:phone].present?}"
 
       .input
         .bootstrap-alert
           span
           .alert
-            .important= t('.thumbnail_important')
-        = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
-        = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
+            .important= t('.url_important')
+        = form.label :charity_url, t('formtastic.labels.charity.charity_url')
+        = form.text_field :charity_url, class: "#{'error' if @charity.errors[:charity_url].present?}"
 
-        
+      .section-header
+        = "#4. Subscription"
+
       .input
         .bootstrap-alert
           span
@@ -140,6 +144,22 @@
         = form.radio_button :plan, "paid", :checked => @charity.subscribed
         = "&nbsp;".html_safe
         = "Paid"
+        
+      .input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.email_important')
+        = form.label :email, "#{t('formtastic.labels.charity.email')} *"
+        = form.text_field :email, class: "#{'error' if @charity.errors[:email].present?}"
+        
+      /.input
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.video_important')
+        = form.label :video_url, t('formtastic.labels.charity.video_url')
+        = form.text_field :video_url, class: "#{'error' if @charity.errors[:video_url].present?}"
 
       .clearfix
       .submit
