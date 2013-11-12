@@ -102,7 +102,7 @@ javascript:
         span submit
         = image_tag('dropdown.png', :class => 'dropdown_arrow')
       ul.dropdown.submit-project
-        li= link_to "submit new project", new_project_path
+        li= link_to "submit new project", guidelines_start_path
         li= link_to "submit new charity", new_charity_path
     .searchbar
       = form_tag explore_path(:anchor => "search"), :method => 'post', :class=>'search_input' do
