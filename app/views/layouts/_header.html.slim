@@ -103,7 +103,7 @@ javascript:
         = image_tag('dropdown.png', :class => 'dropdown_arrow')
       ul.dropdown.submit-project
         li= link_to "submit new project", guidelines_start_path
-        li= link_to "submit new charity", new_charity_path
+        li= link_to "submit new charity", guidelines_charity_path
     .searchbar
       = form_tag explore_path(:anchor => "search"), :method => 'post', :class=>'search_input' do
         = select_tag "option", "<option id=\"1\">projects</option><option id=\"2\">charities</option>".html_safe, :id=> 'dropdown'
