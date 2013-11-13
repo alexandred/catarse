@@ -8,26 +8,29 @@
         .clearfix
         .bootstrap-twitter
           .alert.alert-info
-            p Lembrando que todo post de novidade vai diretamente para o email de seus apoiadores.
-            | Por isso, revise bem seu texto antes de enviá-lo.
+            #infoheader style="margin-top: -20px"
+              = t('formtastic.infobox.title')
+              label style="float: right"
+                = link_to '(click here)', 'javascript: void(0);', onclick: "$('#info_text').toggle();", style: "color: inherit; width: auto; float: right;"
+            #info_text style="display: none;"
+              = t('formtastic.infobox.text')
+
         .tips
-          h3 Dicas de Formatação
-          = image_tag "catarse/icon_media.png"
-          p Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
-          = image_tag "catarse/icon_url.png"
-          p Ao colar uma url qualquer, ela virará um link. Por exemplo, http://meulink.com virará <a href="http://www.meulink.com.br">http://www.meulink.com.br</a>
-          = image_tag "catarse/icon_linktext.png"
-          p Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, 'meu link':http://meulink.com virará <a href="http://www.meulink.com.br">meu link</a>.
-          = image_tag "catarse/icon_bold.png"
-          p
-            |Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como
-            strong meu texto em negrito
-            |.
-          = image_tag "catarse/icon_italic.png"
-          p
-            |Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como
-            i meu texto em itálico
-            |.
+          h3
+            = t('formtastic.tips.title')  
+            label style="float: right"
+              = link_to '(click here)', 'javascript: void(0);', onclick: "$('#project_warning_text').toggle();", style: "color: inherit; width: auto; float: right;"
+          #project_warning_text style="display: none"
+            = image_tag "catarse/icon_media.png"
+            p= t('formtastic.tips.first').html_safe
+            = image_tag "catarse/icon_url.png"
+            p= t('formtastic.tips.second').html_safe
+            = image_tag "catarse/icon_linktext.png"
+            p= t('formtastic.tips.third').html_safe
+            = image_tag "catarse/icon_bold.png"
+            p= t('formtastic.tips.fourth').html_safe
+            = image_tag "catarse/icon_italic.png"
+            p= t('formtastic.tips.fifth').html_safe
       = form.actions do
         .bootstrap-twitter
           = form.submit t('projects.project_updates.submit'), class: "btn", id: "update_submit"

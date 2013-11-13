@@ -13,9 +13,9 @@ sass:
   .clearfix
   = semantic_form_for @charity, html: { id: 'charity_form' } do |form|
     = form.inputs do
-      .section-header
-        = "#1. Charity Overview"
       - if current_user.admin? || params[:action] == "new"
+        .section-header
+          = "#1. Charity Overview"
         .input
           .bootstrap-alert
             span
@@ -59,9 +59,9 @@ sass:
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
 
 
-      .section-header
-        = "#2. Location"
       - if current_user.admin? || params[:action] == "new"
+        .section-header
+          = "#2. Location"
         .input
           .bootstrap-alert
             span
@@ -101,11 +101,9 @@ sass:
               .important= t('.zip_important')
           = form.label :zip, "#{t('formtastic.labels.charity.zip')} *"
           = form.text_field :zip, class: "#{'error' if @charity.errors[:zip].present?}"
-      - else
-        = "Not editable"
-
-      .section-header
-        = "#3. Contact"
+      - if current_user.admin
+        .section-header
+          = "#3. Contact"
 
       .input
         .bootstrap-alert
@@ -123,9 +121,9 @@ sass:
         = form.label :charity_url, t('formtastic.labels.charity.charity_url')
         = form.text_field :charity_url, class: "#{'error' if @charity.errors[:charity_url].present?}"
 
-      .section-header
-        = "#4. Subscription"
       - if current_user.admin? || params[:action] == "new"
+        .section-header
+          = "#4. Subscription"
         .input
           .bootstrap-alert
             span

@@ -341,6 +341,16 @@ en:
     project:
       empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"
   formtastic:
+    infobox:
+      title: "Info"
+      text: "Lembrando que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo."
+    tips:
+      title: "Dicas de Formatação"
+      first: "Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!"
+      second: "Ao colar uma url qualquer, ela virará um link. Por exemplo, http://meulink.com virará <a href='http://www.meulink.com.br'>http://www.meulink.com.br</a>"
+      third: "Se você quiser colocar um texto no link, basta usar o seguinte formato: 'texto que você quer':http://sua.url. Por exemplo, 'meu link':http://meulink.com virará <a href='http://www.meulink.com.br'>meu link</a>."
+      fourth: |Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como <strong>meu texto em negrito</strong>|.
+      fifth:  |Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como<i>meu texto em itálico</i>|.
     hints:
       backer:
         credits: "You have <strong>%{credits}</strong> in credits and can back with up to this amount without needing to make a new payment."

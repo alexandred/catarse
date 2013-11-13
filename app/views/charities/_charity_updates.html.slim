@@ -15,6 +15,31 @@ sass:
         = form.input :comment, as: :text, label: t('projects.project_updates.comment'), input_html: {rows: 10}
         = form.input :exclusive, label: t('projects.project_updates.exclusive')
         .clearfix
+      br
+      .bootstrap-twitter
+        .alert.alert-info style="display: inline-block !important; width: 94.5%"
+          #infoheader style="margin-top: -20px"
+            = t('formtastic.infobox.title')
+            label style="float: right"
+              = link_to '(click here)', 'javascript: void(0);', onclick: "$('#info_text').toggle();", style: "color: inherit; width: auto; float: right;"
+          #info_text style="display: none;"
+            = t('formtastic.infobox.text')
+      .tips
+        h3
+          = t('formtastic.tips.title')  
+          label style="float: right"
+            = link_to '(click here)', 'javascript: void(0);', onclick: "$('#project_warning_text').toggle();", style: "color: inherit; width: auto; float: right;"
+        #project_warning_text style="display: none"
+          = image_tag "catarse/icon_media.png"
+          p= t('formtastic.tips.first').html_safe
+          = image_tag "catarse/icon_url.png"
+          p= t('formtastic.tips.second').html_safe
+          = image_tag "catarse/icon_linktext.png"
+          p= t('formtastic.tips.third').html_safe
+          = image_tag "catarse/icon_bold.png"
+          p= t('formtastic.tips.fourth').html_safe
+          = image_tag "catarse/icon_italic.png"
+          p= t('formtastic.tips.fifth').html_safe
       = form.actions do
         .bootstrap-twitter
           = form.submit t('projects.project_updates.submit'), class: "btn", id: "update_submit"
