@@ -33,7 +33,7 @@
 						<% end %>
 					</div>
 				</div>
-				<% if donator.comment %>
+				<% if donator.comment != "" || donator.comment != nil %>
 					<div class="comment" style="padding-left:20px; font-weight: bold;"><%= donator.comment %></div>
 				<% end %>
 			</li>
