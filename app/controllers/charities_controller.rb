@@ -21,7 +21,7 @@ class CharitiesController < ApplicationController
   end
   
   def recommended
-    @charities = Kaminari.paginate_array(Charitywhere(state: 'online').recommended).page(params[:page]).per(10)
+    @charities = Kaminari.paginate_array(Charity.where(state: 'online').recommended).page(params[:page]).per(10)
     render :index 
   end
   
