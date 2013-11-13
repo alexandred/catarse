@@ -86,10 +86,11 @@ sass:
           .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
         #charity_contact.content style="display: none"
           h2="Contact #{@charity.name}"
+          - if @charity.charity_url != ""
+            br
+            p="- Visit #{link_to @charity.charity_url}".html_safe
           br
-          p="- Visit #{link_to @charity.charity_url}".html_safe
-          br
-          p="- Or email us at #{link_to @charity.email, "mailto:#{@charity.email}"}".html_safe
+          p="- Email us at #{link_to @charity.email, "mailto:#{@charity.email}"}".html_safe
         - if can? :update, @charity
           #charity_edit.content.hide= render 'form'
             
