@@ -16,7 +16,7 @@ class CharitiesController < ApplicationController
   end
   
   def search
-    @charities = Kaminari.paginate_array(Charity.pg_search(params[:search])).page(params[:page]).per(10)
+    @charities = Kaminari.paginate_array(Charity.where(state: 'online').pg_search(params[:search])).page(params[:page]).per(10)
     render :index 
   end
   
@@ -27,7 +27,7 @@ class CharitiesController < ApplicationController
   
   def nearby
     if current_user
-      @charities = Kaminari.paginate_array(Charity.by_country(current_user.country)).page(params[:page]).per(10)
+      @charities = Kaminari.paginate_array(Charity.where(state: 'online').by_country(current_user.country)).page(params[:page]).per(10)
     else
       redirect_to charities_path and return
     end
@@ -35,14 +35,14 @@ class CharitiesController < ApplicationController
   end
   
   def country
-    @charities = Kaminari.paginate_array(Charity.by_country(params[:country])).page(params[:page]).per(10)
+    @charities = Kaminari.paginate_array(Charity.where(state: 'online').by_country(params[:country])).page(params[:page]).per(10)
     render :index 
   end
 
   def index
     index! do
       @title = "Charities"
-      @charities = Kaminari.paginate_array(Charity.all).page(params[:page]).per(10)
+      @charities = Kaminari.paginate_array(Charity.where(state: 'online').all).page(params[:page]).per(10)
     end
   end
   
