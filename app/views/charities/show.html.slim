@@ -18,7 +18,6 @@ sass:
     .bootstrap-form textarea {
       width: 90%;
     }
-  
 #page_content
   .container
     #charity_description[data-charity=@charity.to_json]
@@ -106,7 +105,9 @@ sass:
       $(el).addClass('selected')
       $(content).show()
     }
-    
+    bootbox.alert("Hello world!", function() {
+        console.log("Alert Callback");
+    });
     $('document').ready(function(){
       $('#menu-projects').click(function(){ switchSection(this, '#charity_projects') })
       $('#menu-about').click(function(){ switchSection(this, '#charity_about') })
@@ -115,8 +116,35 @@ sass:
       $('#menu-contact').click(function(){ switchSection(this, '#charity_contact') })
       $('#menu-updates').click(function(){ switchSection(this, '#charity_updates') })
       $('#menu-edit').click(function(){ switchSection(this, '#charity_edit') })
-
       $("#pledge").click(function(){
+      bootbox.dialog({
+        message: "I am a custom dialog",
+        title: "Custom title",
+        buttons: {
+          success: {
+            label: "Success!",
+            className: "btn-success",
+            callback: function() {
+              alert('1');
+            }
+          },
+          danger: {
+            label: "Danger!",
+            className: "btn-danger",
+            callback: function() {
+              alert('2');
+            }
+          },
+          main: {
+            label: "Click ME!",
+            className: "btn-primary",
+            callback: function() {
+              alert('3');
+            }
+          }
+        }
+      });
+      /*
         if(#{current_user ? true : false}) {
           return true;
         } else {
@@ -131,6 +159,7 @@ sass:
             return true;
             }
           }
+          */
       });
     })
     (function(d, s, id) {
