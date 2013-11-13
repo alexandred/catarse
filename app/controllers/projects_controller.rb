@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
         project_ids = collection_projects.map{|p| p.id }
         project_ids << @recommended_projects.last.id if @recommended_projects
 
-        @projects_near = Project.not_expired.where(state: online, country: current_user.country).order("random()").limit(3) if current_user
+        @projects_near = apply_scopes(Project).visible.not_expired.by_country(current_user.country).order("random()").limit(3) if current_user
         @expiring = Project.expiring.order("random()").limit(3)
         @recent   = Project.recent_for_home(project_ids)
         @blog_posts = blog_posts

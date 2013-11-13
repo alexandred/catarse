@@ -70,7 +70,8 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.replaceTitleBy("near")
     this.selectItem("near")
     this.initializeView({
-      near_of: $('#nearOfData').data('state')
+      by_country: $('#nearOfData').data('state'),
+      not_expired: true
     })
   },
 
