@@ -1,12 +1,12 @@
 sass:
-  .project
-    height: auto
-    margin-left: 0px
-    margin-right: 0px !important
-    margin-bottom: 45px !important
-    overflow: visible !important
-    &:nth-of-type(3n+1)
-      margin-left: -10px
+  #charity_projects
+    width: 110%
+    margin-left: -20px
+    .project
+      height: auto
+      margin-left: 0px !important
+      margin-right: 6px !important
+      margin-bottom: 45px !important
 - if can? :update, @charity
   .bootstrap-form
     = semantic_form_for [@charity, Update.new(user_id: current_user.id)] do |form|
