@@ -27,10 +27,10 @@
           - if can? :manage, @user
             li.email
               = mail_to @user.email, @user.email, target: '_blank'
-          - if @user.facebook_link != ""
+          - if @user.facebook_link
             li.facebook
               = link_to t('.user_social.facebook'), @user.facebook_link, target: '_blank'
-          - if @user.twitter != ""
+          - if @user.twitter
             li.twitter
               = link_to t('.user_social.twitter'), @user.twitter_link, target: '_blank'
           - if @user.other_link
