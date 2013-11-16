@@ -8,18 +8,13 @@
         .clearfix
         .bootstrap-twitter
           .alert.alert-info
-            #infoheader style="margin-top: -20px"
-              = t('formtastic.infobox.title')
-              label style="float: right"
-                = link_to '(click here)', 'javascript: void(0);', onclick: "$('#info_text').toggle();", style: "color: inherit; width: auto; float: right;"
-            #info_text style="display: none;"
+            #info_text
               = t('formtastic.infobox.text')
 
         .tips
           h3
             = t('formtastic.tips.title')  
-            label style="float: right"
-              = link_to '(click here)', 'javascript: void(0);', onclick: "$('#project_warning_text').toggle();", style: "color: inherit; width: auto; float: right;"
+            = link_to '(click here)', 'javascript: void(0);', onclick: "$('#project_warning_text').toggle();", style: "width: auto; float: right; font-style: normal"
           #project_warning_text style="display: none"
             = image_tag "catarse/icon_media.png"
             p= t('formtastic.tips.first').html_safe

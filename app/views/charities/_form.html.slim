@@ -9,6 +9,8 @@ sass:
     padding: 18px
     margin-bottom: 30px
     font-size: 36px
+  .tips
+    margin: 10px 0px !important
 .bootstrap-form
   .clearfix
   = semantic_form_for @charity, html: { id: 'charity_form' } do |form|
@@ -41,15 +43,7 @@ sass:
               .important= t('.regnumber_important')
           = form.label :registration_number, t('formtastic.labels.charity.registration_number')
           = form.text_field :registration_number, class: "#{'error' if @charity.errors[:registration_number].present?}"
-
-      .input
-        .bootstrap-alert
-          span
-          .alert
-            .important= t('.about_important')
-        = form.label :about, "#{t('formtastic.labels.charity.about')} *"
-        = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
-      
+          
       .input
         .bootstrap-alert
           span
@@ -58,6 +52,28 @@ sass:
         = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
 
+      .input style="border-bottom: none"
+        .bootstrap-alert
+          span
+          .alert
+            .important= t('.about_important')
+        = form.label :about, "#{t('formtastic.labels.charity.about')} *"
+        = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
+      .tips
+        h3
+          = t('formtastic.tips.title')
+          = link_to '(click here)', 'javascript: void(0);', onclick: "$('#charity_warning_text').toggle();", style: "width: auto; float: right; font-style: normal"
+        #charity_warning_text style="display: none"
+          = image_tag "catarse/icon_media.png"
+          p= t('formtastic.tips.first').html_safe
+          = image_tag "catarse/icon_url.png"
+          p= t('formtastic.tips.second').html_safe
+          = image_tag "catarse/icon_linktext.png"
+          p= t('formtastic.tips.third').html_safe
+          = image_tag "catarse/icon_bold.png"
+          p= t('formtastic.tips.fourth').html_safe
+          = image_tag "catarse/icon_italic.png"
+          p= t('formtastic.tips.fifth').html_safe
 
       - if current_user.admin? || params[:action] == "new"
         .section-header

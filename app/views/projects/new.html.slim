@@ -9,6 +9,44 @@ sass:
     padding: 18px
     margin-bottom: 30px
     font-size: 36px
+  .tips
+    background: #F7F7F7
+    border: 1px solid #EDEDED
+    float: left
+    margin-right: 10px
+    padding: 10px
+    width: 70%
+    color: #666666
+    h3
+      border-bottom: 1px dotted #CCCCCC
+      font-family: "Lato"
+      font-style: italic
+      font-size: 18px
+      margin-bottom: 25px
+      margin-top: 10px
+      padding-bottom: 0px
+      text-shadow: 1px 1px white
+      line-height: 25px
+    p
+      font-family: "Arial"
+      font-size: 13px
+      line-height: 18px
+      margin-bottom: 20px
+      margin-left: 60px
+      margin-right: 15px
+      margin-top: 10px
+      padding-bottom: 10px
+    a
+      color: #E75297
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+    img
+      float: left
+    strong
+      font-weight: bold
+    i
+      font-style: italic
 #page_content
   .container
     .start_content
@@ -31,9 +69,6 @@ sass:
               .input-prepend.permalink
                 span.add-on= "#{::Configuration[:base_url]}/"
                 = form.text_field :permalink, class: "permalink #{'error' if @project.errors[:permalink].present?}"
-                p.inline-hints
-                  = t('.permalink_hint')
-
             / div class="input control-group #{ 'error' if @project.errors[:name].present?}"
             .input
               .bootstrap-alert
@@ -42,8 +77,6 @@ sass:
                   .important= t('.name_important')
               = form.label :name, t('formtastic.labels.project.name') + " *"
               = form.text_field :name, class: "#{'error' if @project.errors[:name].present?}"
-              p.inline-hints= t('formtastic.hints.project.name')
-
             .input
               .bootstrap-alert
                 span
@@ -51,7 +84,7 @@ sass:
                   .important= t('.country_important')
               = form.label :country, t('.country') + ' *'
               = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @project.errors[:country].present?}"}
-              p.inline-hints= t('formtastic.hints.project.country')
+              p.inline-hints
               - if @project.errors[:country].present?
                 .bootstrap-twitter
                   p.text-error= "You must select a country"
@@ -63,7 +96,7 @@ sass:
                   .important= t('.tags_important', href: "http://www.catarse.me/explore").html_safe
               = form.label :category, t('.category') + " *"
               = form.select :category_id, Category.array, class: "#{'error' if @project.errors[:category].present?}"
-              p.inline-hints= t('formtastic.hints.project.category')
+              p.inline-hints
               - if @project.errors[:category_id].present?
                 .bootstrap-twitter
                   p.text-error= "You must select a category"
@@ -87,16 +120,29 @@ sass:
                   .important= t('.headline_important')
               = form.label :headline, t('formtastic.labels.project.headline') + " *"
               = form.text_field :headline, { maxlength: 140, class: "#{'error' if @project.errors[:headline].present?}" }
-              p.inline-hints= t('formtastic.hints.project.headline')
 
-            .input
+            .input style="border-bottom: none"
               .bootstrap-alert
                 span
                 .alert
                   .important= t('.about_important')
               = form.label :about, t('formtastic.labels.project.about') + " *"
               = form.text_area :about, class: "#{'error' if @project.errors[:about].present?}"
-              p.inline-hints= t('formtastic.hints.project.about')
+            .tips
+              h3
+                = t('formtastic.tips.title')
+                = link_to '(click here)', 'javascript: void(0);', onclick: "$('#project_warning_text').toggle();", style: "width: auto; float: right; font-style: normal"
+              #project_warning_text style="display: none"
+                = image_tag "catarse/icon_media.png"
+                p= t('formtastic.tips.first').html_safe
+                = image_tag "catarse/icon_url.png"
+                p= t('formtastic.tips.second').html_safe
+                = image_tag "catarse/icon_linktext.png"
+                p= t('formtastic.tips.third').html_safe
+                = image_tag "catarse/icon_bold.png"
+                p= t('formtastic.tips.fourth').html_safe
+                = image_tag "catarse/icon_italic.png"
+                p= t('formtastic.tips.fifth').html_safe
             .section-header
               = "#2. Supporting Media"
             .input
@@ -106,7 +152,7 @@ sass:
                   .important= t('.thumbnail_important')
               = form.label :uploaded_image, t('formtastic.labels.project.uploaded_image') + " *"
               = form.file_field :uploaded_image, class: "#{'error' if @project.errors[:uploaded_image].present?}"
-              p.inline-hints= t('formtastic.hints.project.uploaded_image').html_safe
+              p.inline-hints
               - if @project.errors[:uploaded_image].present?
                 .bootstrap-twitter
                   p.text-error= "You must upload an image"
@@ -118,7 +164,6 @@ sass:
                   .important= t('.video_important')
               = form.label :video_url, t('formtastic.labels.project.video_url')
               = form.text_field :video_url, class: "#{'error' if @project.errors[:video_url].present?}"
-              p.inline-hints= t('formtastic.hints.project.video_url').html_safe
             .section-header
               = "#3. Goal & Timeframe"
             .input
@@ -128,7 +173,6 @@ sass:
                   .important= t('.goal_important')
               = form.label :goal, t('formtastic.labels.project.goal') + " *"
               = form.text_field :goal, class: "#{'error' if @project.errors[:goal].present?}"
-              p.inline-hints= t('formtastic.hints.project.goal').html_safe
             .input
               .bootstrap-alert
                 span
@@ -151,7 +195,6 @@ sass:
               .input-append
                 = form.select :online_days, [["15", 15],["30", 30],["45", 45],["60", 60],["75", 75],["90", 90],["105", 105],["120", 120]], class: "#{'error' if @project.errors[:online_days].present?}"
                 span.add-on= t('days')
-              p.inline-hints= t('formtastic.hints.project.online_days')
 
             .section-header
               = "#4. Subscription"
@@ -175,7 +218,6 @@ sass:
                   .important= t('.email_important')
               = form.label :email, t('formtastic.labels.project.email') + " *"
               = form.text_field :email, class: "#{'error' if @project.errors[:email].present?}"
-              p.inline-hints= t('formtastic.hints.project.email')
 
             .clearfix
             .submit

@@ -9,8 +9,8 @@ sass:
     padding: 18px
     margin-bottom: 30px
     font-size: 36px
-  #project_about_input
-    border-bottom: none !important
+  .tips
+    margin: 10px 0px !important
 //.bootstrap-twitter
   .alert.alert-info
       = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
@@ -40,8 +40,7 @@ sass:
         .tips
           h3
             = t('formtastic.tips.title')  
-            label style="float: right"
-              = link_to '(click here)', 'javascript: void;', onclick: "$('#update_warning_text').toggle();", style: "color: inherit; width: auto; float: right;"
+            = link_to '(click here)', 'javascript: void;', onclick: "$('#update_warning_text').toggle();", style: "width: auto; float: right;"
           #update_warning_text style="display: none"
             = image_tag "catarse/icon_media.png"
             p= t('formtastic.tips.first').html_safe
