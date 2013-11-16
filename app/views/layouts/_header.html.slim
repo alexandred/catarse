@@ -63,13 +63,13 @@ javascript:
   <div class="grid_12">
   <nav class="top-menu">
   <ul id="main-menu" class="nav nav-horizontal clearfix">
-  <li class="active"><a href="/">Home</a></li>
+  <li class="active"><a href="/"> #{t('layouts.header.home')}</a></li>
   <li class="sep"></li>
-  <li><a href="/all-pages.html">All Pages</a></li>
+  <li><a href="/all-pages.html">#{t('layouts.header.allpages')}</a></li>
   <li class="sep"></li>
-  <li><a href="/how-it-work.html">Help</a></li>
+  <li><a href="/how-it-work.html">#{t('layouts.header.help')}</a></li>
   <li class="sep"></li>
-  <li><a href="/contact.html">Contact</a></li>
+  <li><a href="/contact.html">#{t('layouts.header.contact')}</a></li>
   </ul>
   <a id="btn-toogle-menu" class="btn-toogle-menu" href="#alternate-menu">
   <span class="line-bar"></span>
@@ -90,20 +90,20 @@ javascript:
   </div>
   #header-inner
     /= render 'layouts/announcement'
-    = link_to "Home", root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
+    = link_to t('layouts.header.home'), root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
     nav.actions
       = link_to '#', class: 'explore' do
         span explore
         = image_tag('dropdown.png', :class => 'dropdown_arrow')
       ul.dropdown.explore-projects
-        li= link_to "explore projects", explore_path
-        li= link_to "explore charities", charities_path
+        li= link_to t('layouts.header.exploreprojects'), explore_path
+        li= link_to t('layouts.header.explorecharities'), charities_path
       = link_to '#', class: 'submit_project' do
         span submit
         = image_tag('dropdown.png', :class => 'dropdown_arrow')
       ul.dropdown.submit-project
-        li= link_to "submit new project", guidelines_start_path
-        li= link_to "submit new charity", guidelines_charity_path
+        li= link_to t('layouts.header.submitproject'), guidelines_start_path
+        li= link_to t('layouts.header.submitcharity'), guidelines_charity_path
     .searchbar
       = form_tag explore_path(:anchor => "search"), :method => 'post', :class=>'search_input' do
         = select_tag "option", "<option id=\"1\">projects</option><option id=\"2\">charities</option>".html_safe, :id=> 'dropdown'

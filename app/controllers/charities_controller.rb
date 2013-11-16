@@ -16,18 +16,18 @@ class CharitiesController < ApplicationController
   end
   
   def search
-    @charities = Kaminari.paginate_array(Charity.where(state: 'online').pg_search(params[:search])).page(params[:page]).per(10)
+    @charities = Kaminari.paginate_array(Charity.where(state: 'online').pg_search(params[:search]).sort_by{|e| e[:name]}).page(params[:page]).per(10)
     render :index 
   end
   
   def recommended
-    @charities = Kaminari.paginate_array(Charity.where(state: 'online').recommended).page(params[:page]).per(10)
-    render :index 
+    @charities = Kaminari.paginate_array(Charity.where(state: 'online').recommended.sort_by{|e| e[:name]}).page(params[:page]).per(10)
+    render :index
   end
   
   def nearby
     if current_user
-      @charities = Kaminari.paginate_array(Charity.where(state: 'online').by_country(current_user.country)).page(params[:page]).per(10)
+      @charities = Kaminari.paginate_array(Charity.where(state: 'online').by_country(current_user.country).sort_by{|e| e[:name]}).page(params[:page]).per(10)
     else
       redirect_to charities_path and return
     end
@@ -35,14 +35,19 @@ class CharitiesController < ApplicationController
   end
   
   def country
-    @charities = Kaminari.paginate_array(Charity.where(state: 'online').by_country(params[:country])).page(params[:page]).per(10)
+    @charities = Kaminari.paginate_array(Charity.where(state: 'online').by_country(params[:country]).sort_by{|e| e[:name]}).page(params[:page]).per(10)
     render :index 
+  end
+
+  def recent
+    @charities = Kaminari.paginate_array(Charity.where("current_timestamp - charities.online_date <= '5 days'::interval").sort_by{|e| e[:name]}).page(params[:page]).per(10)
+    render :index
   end
 
   def index
     index! do
       @title = "Charities"
-      @charities = Kaminari.paginate_array(Charity.where(state: 'online').all).page(params[:page]).per(10)
+      @charities = Kaminari.paginate_array(Charity.where(state: 'online').all.sort_by{|e| e[:name]}).page(params[:page]).per(10)
     end
   end
   

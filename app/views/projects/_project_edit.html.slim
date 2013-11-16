@@ -19,24 +19,24 @@ sass:
     = form.inputs do
       - if current_user.admin
         .section-header
-          = "#0. Admin"
+          = t("projects.new.header0")
       - if current_user.admin
         = form.input :user_id
         = form.input :permalink, as: :string
         .section-header
-          = "#1. Project Overview"
+          = t("projects.new.header1")
       - if can? :update, @project, :name
-        = form.input :name, as: :string, required: false
+        = form.input :name, as: :string, required: false, hint: t('projects.new.name_important')
       - if can? :update, @project, :country
-        = form.input :country, as: :country, priority_countries: ['United Kingdom'], required: false
+        = form.input :country, as: :country, priority_countries: ['United Kingdom'], required: false, hint: t('projects.new.country_important')
       - if can? :update, @project, :category
-        = form.input :category, as: :select, required: false
+        = form.input :category, as: :select, required: false, hint: t('projects.new.tags_important') 
       - if can? :update, @project, :charity
-        = form.input :charity, as: :select, required: false
+        = form.input :charity, as: :select, required: false, hint: t('projects.new.charity_important')
       - if can? :update, @project, :headline
-        = form.input :headline, as: :string, required: false
+        = form.input :headline, as: :string, required: false, hint: t('projects.new.headline_important')
       - if can? :update, @project, :about
-        = form.input :about, required: false
+        = form.input :about, required: false, hint: t('projects.new.about_important')
         .tips
           h3
             = t('formtastic.tips.title')  
@@ -54,35 +54,36 @@ sass:
             p= t('formtastic.tips.fifth').html_safe
       - if current_user.admin
         .section-header
-          = "#2. Supporting Media"
+          = t("projects.new.header2")
       - if can? :update, @project, :uploaded_image
         = form.input :uploaded_image, as: :file, required: false,
-          hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') )
+          hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('projects.new.thumbnail_important') )
       - if can? :update, @project, :video_url
-        = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
+        = form.input :video_url, as: :string, hint: t('projects.new.video_important'),required: false
       - if current_user.admin
         .section-header
-          = "#3. Goal & Timeframe"
+          = t("projects.new.header3")
       - if can? :update, @project, :goal
-        = form.input :goal, as: :number, required: false, hint: t('formtastic.hints.project.goal').html_safe
+        = form.input :goal, as: :number, required: false, hint: t('projects.new.goal_important')
       - if can? :update, @project, :currency
-        = form.input :currency, as: :select, collection: (Project.major_currencies + Project.all_currencies).map {|c| c.upcase }, required: false
+        = form.input :currency, as: :select, collection: (Project.major_currencies + Project.all_currencies).map {|c| c.upcase }, required: false, hint: t('projects.new.currency_important')
       - if can? :update, @project, :online_days
-        = form.input :online_days, as: :number, required: false
+        = form.input :online_days, as: :number, required: false, hint: t('projects.new.days_important')
       - if current_user.admin
         .section-header
-          = "#4. Subscription"
+          = t("projects.new.header4")
       .subscription
-        = form.label :subscribe, "Subscription plan"
+        = form.label :subscribe, t('projects.new.subscription.label')
         = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@project.subscribed)
         = "&nbsp;".html_safe
-        = "Free"
+        = t('projects.new.subscription.free')
         = "&emsp;".html_safe
         = form.radio_button :plan, "paid", :checked => @project.subscribed
         = "&nbsp;".html_safe
-        = "Paid"
+        = t('projects.new.subscription.paid')
+        p.inline-hints style="margin-top: 10px"= t('projects.new.subscription_important')
       - if can? :update, @project, :email
-        = form.input :email, as: :string, required: false
+        = form.input :email, as: :string, required: false, hint: t('projects.new.email_important')
 
       .clearfix
       .form-actions.bootstrap-twitter

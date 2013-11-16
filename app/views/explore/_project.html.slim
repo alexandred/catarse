@@ -30,7 +30,7 @@ script type="text/template" id="project_template"
             | <%= name %>
         p.author
           = "#{t('projects.box.by')} "
-          span[itemprop="author"] <%= user['name'] %>
+          span[itemprop="author"] <%= user['name'] + ", " + country%>
         p.description[itemprop="description"]
           | <%= headline %>
         p.where[itemprop="contentLocation"]

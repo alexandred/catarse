@@ -10,14 +10,59 @@ sass:
     margin-bottom: 30px
     font-size: 36px
   .tips
-    margin: 10px 0px !important
+    background: #F7F7F7
+    border: 1px solid #EDEDED
+    float: left
+    padding: 10px
+    width: 70%
+    color: #666666
+    margin: 10px 0px
+    h3
+      border-bottom: 1px dotted #CCCCCC
+      font-family: "Lato"
+      font-style: italic
+      font-size: 18px
+      margin-bottom: 25px
+      margin-top: 10px
+      padding-bottom: 0px
+      text-shadow: 1px 1px white
+      line-height: 25px
+    p
+      font-family: "Arial"
+      font-size: 13px
+      line-height: 18px
+      margin-bottom: 20px
+      margin-left: 60px
+      margin-right: 15px
+      margin-top: 10px
+      padding-bottom: 10px
+    a
+      color: #E75297
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+    img
+      float: left
+    strong
+      font-weight: bold
+    i
+      font-style: italic
+  .inline-hints
+    color: rgb(119, 119, 119)
+    float: right
+    margin-right: 20px
+    font-family: "Lato"
+    font-size: 12px
+    line-height: 18px
+    width: 70%
+    display: inline !important
 .bootstrap-form
   .clearfix
   = semantic_form_for @charity, html: { id: 'charity_form' } do |form|
     = form.inputs do
       - if current_user.admin? || params[:action] == "new"
         .section-header
-          = "#1. Charity Overview"
+          = t('charities.new.header1')
         .input
           .bootstrap-alert
             span
@@ -27,6 +72,8 @@ sass:
           .input-prepend.permalink
             span.add-on= "#{::Configuration[:base_url]}/"
             = form.text_field :permalink, class: "permalink #{'error' if @charity.errors[:permalink].present?}", style: "width: auto;"
+          - if params[:action] != 'new'
+            .inline-hints= t('.permalink_important')
 
         .input
           .bootstrap-alert
@@ -35,7 +82,8 @@ sass:
               .important= t('.name_important')
           = form.label :name, "#{t('formtastic.labels.charity.name')} *"
           = form.text_field :name, class: "#{'error' if @charity.errors[:name].present?}"
-
+          - if params[:action] != 'new'
+            .inline-hints= t('.name_important')
         .input
           .bootstrap-alert
             span
@@ -43,6 +91,8 @@ sass:
               .important= t('.regnumber_important')
           = form.label :registration_number, t('formtastic.labels.charity.registration_number')
           = form.text_field :registration_number, class: "#{'error' if @charity.errors[:registration_number].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.regnumber_important')
           
       .input
         .bootstrap-alert
@@ -52,7 +102,9 @@ sass:
         = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
         - if @charity.uploaded_image.present?
-          image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172')
+          = image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172')
+          - if params[:action] != 'new'
+            .inline-hints= t('.thumbnail_important')
 
       .input style="border-bottom: none"
         .bootstrap-alert
@@ -61,6 +113,8 @@ sass:
             .important= t('.about_important')
         = form.label :about, "#{t('formtastic.labels.charity.about')} *"
         = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
+        - if params[:action] != 'new'
+          .inline-hints= t('.about_important')
       .tips
         h3
           = t('formtastic.tips.title')
@@ -79,7 +133,7 @@ sass:
 
       - if current_user.admin? || params[:action] == "new"
         .section-header
-          = "#2. Location"
+          = t('charities.new.header2')
         .input
           .bootstrap-alert
             span
@@ -87,6 +141,8 @@ sass:
               .important= t('.country_important')
           = form.label :country, "#{t('formtastic.labels.charity.country')} *"
           = form.country_select :country, priority_countries = ["United Kingdom"], {}, {class: "#{'error' if @charity.errors[:country].present?}"}
+          - if params[:action] != 'new'
+            .inline-hints= t('.country_important')
 
         .input
           .bootstrap-alert
@@ -95,6 +151,8 @@ sass:
               .important= t('.address_important')
           = form.label :address, "#{t('formtastic.labels.charity.address')} *"
           = form.text_field :address, class: "#{'error' if @charity.errors[:address].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.address_important')
 
         .input
           .bootstrap-alert
@@ -103,6 +161,8 @@ sass:
               .important= t('.town_important')
           = form.label :town, "#{t('formtastic.labels.charity.town')} *"
           = form.text_field :town, class: "#{'error' if @charity.errors[:town].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.town_important')
 
         .input
           .bootstrap-alert
@@ -111,6 +171,8 @@ sass:
               .important= t('.province_important')
           = form.label :province, t('formtastic.labels.charity.province')
           = form.text_field :province, class: "#{'error' if @charity.errors[:province].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.province_important')
 
         .input
           .bootstrap-alert
@@ -119,9 +181,11 @@ sass:
               .important= t('.zip_important')
           = form.label :zip, "#{t('formtastic.labels.charity.zip')} *"
           = form.text_field :zip, class: "#{'error' if @charity.errors[:zip].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.zip_important')
       - if current_user.admin || params[:action] == "new"
         .section-header
-          = "#3. Contact"
+          = t('charities.new.header3')
 
       .input
         .bootstrap-alert
@@ -130,6 +194,8 @@ sass:
             .important= t('.phone_important')
         = form.label :phone, t('formtastic.labels.charity.phone')
         = form.text_field :phone, class: "#{'error' if @charity.errors[:phone].present?}"
+        - if params[:action] != 'new'
+          .inline-hints= t('.phone_important')
 
       .input
         .bootstrap-alert
@@ -138,10 +204,12 @@ sass:
             .important= t('.url_important')
         = form.label :charity_url, t('formtastic.labels.charity.charity_url')
         = form.text_field :charity_url, class: "#{'error' if @charity.errors[:charity_url].present?}"
+        - if params[:action] != 'new'
+          .inline-hints= t('.url_important')
 
       - if current_user.admin? || params[:action] == "new"
         .section-header
-          = "#4. Subscription"
+          = t('charities.new.header4')
         .input
           .bootstrap-alert
             span
@@ -149,6 +217,8 @@ sass:
               .important= t('.currency_important')
           = form.label :currency, "#{t('formtastic.labels.charity.currency')} *"
           = form.select :currency, options_for_select((Project.major_currencies + Project.all_currencies).map {|cur| cur.upcase }), class: "#{'error' if @charity.errors[:currency].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.currency_important')
 
       .input
         .bootstrap-alert
@@ -158,11 +228,13 @@ sass:
         = form.label :subscribe, "#{t('formtastic.labels.charity.subscription')} *"
         = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@charity.subscribed)
         = "&nbsp;".html_safe
-        = "Free"
+        = t('projects.new.subscription.free')
         = "&emsp;".html_safe
         = form.radio_button :plan, "paid", :checked => @charity.subscribed
         = "&nbsp;".html_safe
-        = "Paid"
+        = t('projects.new.subscription.paid')
+        - if params[:action] != 'new'
+          .inline-hints= t('.subscription_important')
       - if current_user.admin? || params[:action] == "new" 
         .input
           .bootstrap-alert
@@ -171,6 +243,8 @@ sass:
               .important= t('.email_important')
           = form.label :email, "#{t('formtastic.labels.charity.email')} *"
           = form.text_field :email, class: "#{'error' if @charity.errors[:email].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.email_important')
         
       /.input
         .bootstrap-alert
@@ -179,6 +253,8 @@ sass:
             .important= t('.video_important')
         = form.label :video_url, t('formtastic.labels.charity.video_url')
         = form.text_field :video_url, class: "#{'error' if @charity.errors[:video_url].present?}"
+        - if params[:action] != 'new'
+          .inline-hints= t('.video_important')
 
       .clearfix
       .submit

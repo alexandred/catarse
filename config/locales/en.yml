@@ -1,4 +1,16 @@
 en:
+  donations:
+    infobox: "Please note dummy text..."
+    donate_to: "Donate to"
+    donate_anonymously: "Donate anonymously"
+    leave_comment: "Leave a comment with this donation"
+    donate: "Donate"
+    sidebar:
+      header: I want to donate, what’s next?
+      question1: How can I donate to this cause?
+      answer1: First, choose how much you want to donate. Then click on “Review and make a payment”  to redirect you to the next page to complete your payment.
+      question2: When is the donation accepted?
+      answer2: Once Paypal confirms the transaction (card and bank transfer confirmation is on the same day, lead slips to 4 working days to be confirmed).
   faq:
     header: "Header"
     subheader: "Subheader"
@@ -445,6 +457,13 @@ en:
       submit_project: submit
       profile: "my profile"
       account: "my account"
+      home: "home"
+      allpages: all pages
+      contact: contact
+      exploreprojects: explore projects
+      explorecharities: explore charities
+      submitproject: submit project
+      submitcharity: submit charity
     user:
       logout: Logout
       my_credits: "My credit"
@@ -672,6 +691,7 @@ en:
     new:
       legend_html: "After filling in the form below, you will receive a project page in Draft mode. You can share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go live on the site."
       permalink_important: 'Try not to use underline, hyphen etc.'
+      subscription_important: "subscription dummy text"
       permalink_hint: 'Go simple. Your supporters should be able to remmember the URL to your project ;)'
       name_important: "Do not exceed  50 characters"
       email_important: "Email dummy text"
@@ -690,6 +710,7 @@ en:
       goal_important: "Dummy goal text"
       currency_important: "Dummy currency text"
       days_important: "Dummy days text"
+      charity_important: "charity dummy text"
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
       about: "Describe your project and how much do you need"
@@ -714,6 +735,15 @@ en:
       submit: "Submit the project"
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
+      header0: "#0. Admin"
+      header1: "#1. Project Overview"
+      header2: "#2. Supporting Media"
+      header3: "#3. Goal and Timeframe"
+      header4: "#4. Subscription"
+      subscription:
+        label: "Subscription Plan"
+        free: "Free"
+        paid: "Paid"
     twitter:
       take_a_look: "Check out the project %{name} on @catarse"
     video_embed:
@@ -780,6 +810,11 @@ en:
       rewards_hint: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
       submit: "Submit the Charity"
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      header0: "#0. Admin"
+      header1: "#1. Charity Overview"
+      header2: "#2. Location"
+      header3: "#3. Contact"
+      header4: "#4. Subscription"
     charity_updates:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
@@ -788,6 +823,36 @@ en:
       title: "Title of the update"
       destroy: "Remove update"
       destroy_confirmation: "Do you want to remove the update?"
+    index:
+      title: "Discover charities etc"
+      subtitle: "subtitle for charities"
+      nocharitiesfound: "No charities found"
+      quick_explore: "Quick search"
+      recommended: "Recommended"
+      recent: "Recent"
+      near: "Near me"
+      browse_by_country: "browse by country"
+      charities: "charities"
+      projects: "projects"
+      more_information: "more information"
+      type: 'type'
+    show:
+      donate: "Donate"
+      registration_number: "Registration Number"
+      menu: "menu"
+      about: "About"
+      updates: "Updates"
+      projects: "Projects in Support"
+      donations: "Donations"
+      comments: "Comments"
+      contact_us: "Contact Us"
+      edit_charity: "Edit Charity Details"
+      people_donated: "have donated"
+      amount_donated: "has been donated"
+      no_donations: "There are currently no donations for this charity"
+      contact_owner: "Contact"
+      visit_us: "Visit us at"
+      email_us: "Email us at"
   projects_mailer:
     start_project_email:
       subject: "Project sent by %{name}"

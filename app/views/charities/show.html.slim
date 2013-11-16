@@ -1,7 +1,9 @@
 sass:
-  .fb-share-button 
-    top: -10px
-    margin-right: 10px
+  .social
+    li
+      display: inline
+      height: 20px
+      vertical-align: top
 = content_for :meta_tags do
   meta name="description" content=@charity.about
   meta property="og:title" content=@charity.name
@@ -28,46 +30,49 @@ sass:
       #pledge
         = form_tag(new_charity_donation_path(@charity), method: :get, id: 'back_charity_form') do
           fieldset
-            = submit_tag "Donate"
+            = submit_tag t('.donate')
       h1= @charity.name
       h4
         - if @charity.registration_number != ""
-          = "Registration Number #{@charity.registration_number}"
+          = t('.registration_number') + " #{@charity.registration_number}"
           br
-        = "Registered since #{@charity.created_at.strftime("%B %Y")}"
+        = t('.registered_since') + " #{@charity.created_at.strftime("%B %Y")}"
         br
         = @charity.country
       .clearfix
       .social
         #project_share
-          #facebook_share style="float: left;"= render_facebook_like href: charity_by_slug_url(@charity.permalink, locale: I18n.locale)
-          #twitter_share style="display: inline;"= render_twitter(url: charity_by_slug_url(permalink: @charity.permalink))
-          .clearfix
+          ul
+            li
+              #facebook_share style="width: 360px; float: left"= render_facebook_like href: charity_by_slug_url(@charity.permalink, locale: I18n.locale)
+            li 
+              #twitter_share style="width: 40px; display: inline"= render_twitter(url: charity_by_slug_url(permalink: @charity.permalink))
+        .clearfix
     
     .sidebar style="margin-right: 20px"
       .content
         section.highlights
-          h2 Menu
+          h2= t('.menu')
           ul
-            li= link_to 'About', '#about', class: 'selected', id: 'menu-about'
-            li= link_to "Updates (#{@charity.updates.count})", '#updates', id: 'menu-updates'
-            li= link_to "Projects in Support (#{@charity.projects.count})", '#projects', id: 'menu-projects'
-            li= link_to "Donations (#{@charity.donations.count})", '#donations', id: 'menu-donations'
+            li= link_to t('.about'), '#about', class: 'selected', id: 'menu-about'
+            li= link_to t('.updates') + " (#{@charity.updates.count})", '#updates', id: 'menu-updates'
+            li= link_to t('.projects') + " (#{@charity.projects.count})", '#projects', id: 'menu-projects'
+            li= link_to t('.donations') + " (#{@charity.donations.count})", '#donations', id: 'menu-donations'
             li= link_to '#comments', id: 'menu-comments' do
-              = "Comments"
+              = t('.comments')
               | &nbsp; (
               fb:comments-count href="#{request.url}"
               | )
-            li= link_to 'Contact Us', '#contact', id: 'menu-contact'
+            li= link_to t('.contact'), '#contact', id: 'menu-contact'
             - if can? :update, @charity
-              li= link_to 'Edit Charity Details', '#edit', id: 'menu-edit'
+              li= link_to t('.edit_charity'), '#edit', id: 'menu-edit'
         .statistics
           .item.backers
             p= @charity.donators_total
-            em= 'have donated'
+            em= t('.people_donated')
           .item.goal
             p= number_to_currency(@charity.donations_total, unit: @charity.currency_symbol)
-            em= 'has been donated'
+            em= t('.amount_donated')
 
     .main
       #charity_content
@@ -79,18 +84,20 @@ sass:
             = render '/projects/project', project: project
         #charity_donations.content style="display: none"
           - if @charity.donations.count == 0
-            p="There are current no donations for this charity. You can be the first!"
+            p= t('.no_donations')
           - else
             = render template: 'charities/donations/index'
         #charity_comments.content style="display:none"
           .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
         #charity_contact.content style="display: none"
-          h2="Contact #{@charity.name}"
+          h2= t('.contact_owner') + " #{@charity.name}"
           - if @charity.charity_url != ""
             br
-            p="- Visit #{link_to @charity.charity_url}".html_safe
+            p= t('.vist_us') + " #{link_to @charity.charity_url}".html_safe
           br
-          p="- Email us at #{link_to @charity.email, "mailto:#{@charity.email}"}".html_safe
+          p
+           = t('.email_us') + " "
+           = link_to @charity.email, "mailto:#{@charity.email}".html_safe
         - if can? :update, @charity
           #charity_edit.content.hide= render 'form'
             

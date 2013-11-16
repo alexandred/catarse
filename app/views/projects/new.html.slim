@@ -105,8 +105,7 @@ sass:
               .bootstrap-alert
                 span
                 .alert
-                  .important
-                    If this project is for a charity registered on the site, please select it here.
+                  .important= t('.charity_important')
               = form.label :charity_id, "Charity"
               = form.select :charity_id, [["None", ""]] + Charity.where(state: "online").map {|c| [c.name, c.id]}, class: "#{'error' if @project.errors[:charity_id].present?}"
               - if @project.errors[:charity_id].present?
@@ -202,7 +201,7 @@ sass:
               .bootstrap-alert
                 span
                 .alert
-                  .important= "Free plans have a 5% fee on all donations made to the project"
+                  .important= t('.subscription_important')
               = form.label :subscribe, "Subscription plan *"
               = form.radio_button :plan, "free", :checked => (controller.action_name == "new" || !@project.subscribed)
               = "&nbsp;".html_safe

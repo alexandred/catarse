@@ -12,8 +12,8 @@ sass:
       .list
         .list_title
           .title
-            h2= "Discover amazing Charities"
-            h4= "Search for the charity you want to support"
+            h2= t('.title')
+            h4= t('.subtitle')
           .search-box
             input type="text" id="explore-search" 
             input type="submit" value="Search" class="btn" id="explore-search-sub"
@@ -27,30 +27,33 @@ sass:
               .charity-index
                 h2= link_to item.name, charity_path(item.permalink)
                 p=truncate_html(item.about_html.gsub(/<img .*?>/, '').gsub(/<iframe .*?>/, ''), length: 550)
-                p=link_to 'More information', charity_path(item.permalink)
+                p=link_to t('.more_information'), charity_path(item.permalink)
               .clearfix
-          = "No charities found" if @charities == []
+          = t('.nocharitiesfound') if @charities == []
           = paginate @charities
     .sidebar
       .content
         section.highlights
-          h2 browse by country
+          h2= t('.browse_by_country')
           select#charity_country_filter name="country_filter" style="margin-bottom: 20px"
             option value="" 
               = "Select country..."
             - Charity.all.map {|c| c.country }.sort.uniq.each do |country|
               option=country
         section.highlights
-          h2 type
+          h2= t('.type')
           ul
-            li=link_to 'charities', charities_path, class: 'type-selected'
-            li=link_to 'projects', explore_path
+            li=link_to t('.charities'), charities_path, class: 'type-selected'
+            li=link_to t('.projects'), explore_path
         section.highlights
           h2= t('.quick_explore')
           ul#explore_quick
             li
               a href='/charities/filter/recommended'
                 = t('.recommended')
+            li
+              a href='/charities/filter/recent'
+                = t('.recent')
             - if current_user
               li.no_margin
                 a href="/charities/filter/nearby"

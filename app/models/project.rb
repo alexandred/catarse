@@ -234,6 +234,7 @@ class Project < ActiveRecord::Base
       name: name,
       user: user,
       category: category,
+      country: country,
       image: display_image,
       headline: headline,
       progress: progress,

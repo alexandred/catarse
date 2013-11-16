@@ -10,8 +10,6 @@ javascript:
     })
     $('input[type=radio]:checked').parent().parent().addClass('selected')
 
-    // Colapse all faq texts
-    $('.back_faq p').hide();
 
     $('.back_faq h3').click(function(event){
       $(event.target).next('p').slideToggle('slow');
@@ -39,11 +37,22 @@ sass:
     font-family: "Lato"
     font-size: 15px
     text-transform: uppercase
+  .alertinfo
+    background-color: rgb(247, 247, 247)
+    border: 1px solid rgb(237, 237, 237)
+    color: rgb(102, 102, 102)
+    border-radius: 0px 0px 0px 0px
+    font-family: "Lato"
+    font-size: 13px
+    line-height: 21px
+    padding: 20px
+    margin-top: 20px
+    height: 90px
 #page_content
   .container
     .backer_content
       .title
-        h1= "Donate to " + @project.name
+        h1= t('donations.donate_to') + @project.name
       #back_options.bootstrap-form
         = semantic_form_for @donator, url: @create_url, html: { id: 'backer_form' } do |form|
           = form.inputs do
@@ -52,13 +61,13 @@ sass:
             .simbol
               p= @project.currency_symbol
             #anonymous style="font-size: 16px"
-              = form.input :anonymous, label: "Donate Anonymously"
+              = form.input :anonymous, label: t('donations.donate_anonymously')
             br
             br
             br
             br
             #comment
-              = form.input :comment, label: "Leave a comment with this donation:"
+              = form.input :comment, label: t('donations.leave_comment')
          
             #anonymous_warning.important.hide
               .bootstrap-alert
@@ -66,7 +75,10 @@ sass:
                   = render 'anonymous_warning'
           = form.actions do
             .bootstrap-twitter
-              = form.submit 'Donate', disabled: false, class: 'btn btn-primary btn-large', id: "donation_submit"
+              = form.submit t('donations.donate'), disabled: false, class: 'btn btn-primary btn-large', id: "donation_submit"
+            .alertinfo style="display: inline-block !important; width: 94.5%"
+              #info_text
+                = t('donations.infobox')
       #back_info
         #project_info
           .project_name= link_to @project.name, project_by_slug_path(permalink: @project.permalink)

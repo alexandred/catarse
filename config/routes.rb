@@ -188,6 +188,7 @@ Catarse::Application.routes.draw do
   match "/charities/search/:search" => "charities#search", as: :charity_search
   match "/charities/filter/recommended" => "charities#recommended"
   match "/charities/filter/nearby" => "charities#nearby"
+  match "/charities/filter/recent" => "charities#recent"
   match "/charities/filter/:country" => "charities#country"
 
   # Root path
