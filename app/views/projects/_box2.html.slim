@@ -11,7 +11,7 @@
       p.author
         = t('.by')
         |&nbsp;
-        span[itemprop="author"]= project.user.name
+        span[itemprop="author"]= link_to project.user.name, user_path(project.user)
       p.description[itemprop="description"]= truncate(project.about, length: 140)
       p.where[itemprop="contentLocation"]
         - unless project.user.address_city.blank?
