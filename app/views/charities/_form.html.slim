@@ -51,6 +51,7 @@ sass:
             .important= t('.thumbnail_important')
         = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
+        = @charity.uploaded_image.present? ? image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image')
 
       .input style="border-bottom: none"
         .bootstrap-alert
