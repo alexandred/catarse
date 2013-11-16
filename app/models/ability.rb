@@ -34,7 +34,7 @@ class Ability
     can :create, :charities if current_user.persisted?
 
     can :update, :charities, [:about, :uploaded_image, :phone, :charity_url, :subscribed] do |charity|
-      charity.user == current_user && charity.online?    
+      charity.user == current_user && ( charity.draft? || charity.online? )
     end
 
 
