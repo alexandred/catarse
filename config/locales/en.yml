@@ -422,6 +422,7 @@ en:
         country: "Country"
         subscription: "Subscription Plan"
         submit: "Submit this charity"
+        update: "Update Charity"
       reward:
         maximum_backers: "Maximum backers (optional)"
         days_to_delivery: "Days to delivery"

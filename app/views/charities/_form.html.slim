@@ -51,7 +51,8 @@ sass:
             .important= t('.thumbnail_important')
         = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
-        = @charity.uploaded_image.present? ? image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image')
+        - if @charity.uploaded_image.present?
+          image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172')
 
       .input style="border-bottom: none"
         .bootstrap-alert
@@ -118,7 +119,7 @@ sass:
               .important= t('.zip_important')
           = form.label :zip, "#{t('formtastic.labels.charity.zip')} *"
           = form.text_field :zip, class: "#{'error' if @charity.errors[:zip].present?}"
-      - if current_user.admin
+      - if current_user.admin || params[:action] == "new"
         .section-header
           = "#3. Contact"
 
@@ -190,5 +191,8 @@ sass:
         fieldset
           .form-actions.bootstrap-twitter style="background-color: transparent; border-top: none;"
             .send
-              = submit_tag t('formtastic.labels.charity.submit'), id: 'charity_submit', class: 'btn btn_send', style: "float: none"
+              - if params[:action] == "new"
+                = submit_tag t('formtastic.labels.charity.submit'), id: 'charity_submit', class: 'btn btn_send', style: "float: none"
+              - else
+                = submit_tag t('formtastic.labels.charity.update'), id: 'charity_submit', class: 'btn btn_send', style: "float: right"
             /= form.submit t('.submit'), disabled: true, class: 'btn-large btn-block btn btn-warning', id: 'charity_submit', style: 'width: 100%;'
