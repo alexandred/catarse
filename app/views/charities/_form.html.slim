@@ -107,29 +107,48 @@ sass:
             .inline-hints= t('.thumbnail_important')
 
       .input style="border-bottom: none"
-        .bootstrap-alert
-          span
-          .alert
-            .important= t('.about_important')
-        = form.label :about, "#{t('formtastic.labels.charity.about')} *"
-        = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
-        - if params[:action] != 'new'
-          .inline-hints= t('.about_important')
-      .tips
-        h3
-          = t('formtastic.tips.title')
-          = link_to '(click here)', 'javascript: void(0);', onclick: "$('#charity_warning_text').toggle();", style: "width: auto; float: right; font-style: normal"
-        #charity_warning_text style="display: none"
-          = image_tag "catarse/icon_media.png"
-          p= t('formtastic.tips.first').html_safe
-          = image_tag "catarse/icon_url.png"
-          p= t('formtastic.tips.second').html_safe
-          = image_tag "catarse/icon_linktext.png"
-          p= t('formtastic.tips.third').html_safe
-          = image_tag "catarse/icon_bold.png"
-          p= t('formtastic.tips.fourth').html_safe
-          = image_tag "catarse/icon_italic.png"
-          p= t('formtastic.tips.fifth').html_safe
+        .right style="float: right;"
+          .bootstrap-alert
+            span
+            .alert
+              .important= t('.about_important')
+          - if params[:action] == "new"
+            .tips style="clear: right; width: 280px !important; float: right"
+              h3
+                = t('formtastic.tips.title')
+                = link_to '(click here)', 'javascript: void(0);', onclick: "$('#charity_warning_text').toggle();", style: "width: auto; float: right; font-style: normal"
+              #charity_warning_text style="display: none"
+                = image_tag "catarse/icon_media.png"
+                p= t('formtastic.tips.first').html_safe
+                = image_tag "catarse/icon_url.png"
+                p= t('formtastic.tips.second').html_safe
+                = image_tag "catarse/icon_linktext.png"
+                p= t('formtastic.tips.third').html_safe
+                = image_tag "catarse/icon_bold.png"
+                p= t('formtastic.tips.fourth').html_safe
+                = image_tag "catarse/icon_italic.png"
+                p= t('formtastic.tips.fifth').html_safe
+        .left style="float: left"
+          = form.label :about, "#{t('formtastic.labels.charity.about')} *"
+          = form.text_area :about, class: "#{'error' if @charity.errors[:about].present?}"
+          - if params[:action] != 'new'
+            .inline-hints= t('.about_important')
+      - if params[:action] != "new"
+        .tips
+          h3
+            = t('formtastic.tips.title')
+            = link_to '(click here)', 'javascript: void(0);', onclick: "$('#charity_warning_text').toggle();", style: "width: auto; float: right; font-style: normal"
+          #charity_warning_text style="display: none"
+            = image_tag "catarse/icon_media.png"
+            p= t('formtastic.tips.first').html_safe
+            = image_tag "catarse/icon_url.png"
+            p= t('formtastic.tips.second').html_safe
+            = image_tag "catarse/icon_linktext.png"
+            p= t('formtastic.tips.third').html_safe
+            = image_tag "catarse/icon_bold.png"
+            p= t('formtastic.tips.fourth').html_safe
+            = image_tag "catarse/icon_italic.png"
+            p= t('formtastic.tips.fifth').html_safe
 
       - if current_user.admin? || params[:action] == "new"
         .section-header
