@@ -44,11 +44,11 @@ sass:
         #project_share style="float: right; width: 320px"
           ul
             li
-              #like-box style="float: right; width:80px; max-height: 20px;"= render_facebook_like href: charity_by_slug_url(@charity.permalink, locale: I18n.locale)
+              #like-box style="float: right; width:80px; max-height: 20px; vertical-align: top"= render_facebook_like href: charity_by_slug_url(@charity.permalink, locale: I18n.locale)
             li 
               #twitter_share style="display: inline"= render_twitter(url: charity_by_slug_url(permalink: @charity.permalink))
             li
-              .fb-share-button data-href=request.url data-type="button_count"
+              .fb-share-button data-href=request.url data-type="button_count" style="vertical-align:top"
         .clearfix
     
     .sidebar style="margin-right: 20px"
