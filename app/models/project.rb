@@ -233,6 +233,7 @@ class Project < ActiveRecord::Base
       id: id,
       name: name,
       user: user,
+      user_path: Rails.application.routes.url_helpers.user_path(user),
       category: category,
       country: country,
       image: display_image,
