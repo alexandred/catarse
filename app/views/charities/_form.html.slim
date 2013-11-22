@@ -102,7 +102,8 @@ sass:
         = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
         - if @charity.uploaded_image.present?
-          = image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172')
+          .thumbnail style="display: block"
+            = image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172')
           - if params[:action] != 'new'
             .inline-hints= t('.thumbnail_important')
 
@@ -253,7 +254,7 @@ sass:
         = "&nbsp;".html_safe
         = t('projects.new.subscription.paid')
         - if params[:action] != 'new'
-          .inline-hints= t('.subscription_important')
+          .inline-hints style="margin-top: 8px"= t('.subscription_important')
       - if current_user.admin? || params[:action] == "new" 
         .input
           .bootstrap-alert

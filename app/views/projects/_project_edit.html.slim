@@ -62,7 +62,7 @@ sass:
           = t("projects.new.header2")
       - if can? :update, @project, :uploaded_image
         = form.input :uploaded_image, as: :file, required: false,
-          hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('projects.new.thumbnail_important') )
+          hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') + "<br>".html_safe + t('projects.new.thumbnail_important') : t('projects.new.thumbnail_important') )
       - if can? :update, @project, :video_url
         = form.input :video_url, as: :string, hint: t('projects.new.video_important'),required: false
       - if current_user.admin
