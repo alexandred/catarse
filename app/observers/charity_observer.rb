@@ -9,25 +9,10 @@ class CharityObserver < ActiveRecord::Observer
   end
   
   def after_create(charity)
-    if (user = charity.new_draft_recipient)
-      Notification.create_notification_once(charity.new_draft_charity_notification_type,
-                                            user,
-                                            {charity_id: charity.id},
-                                            {charity: charity, charity_name: charity.name, from: charity.user.email, display_name: charity.user.display_name}
-                                           )
-    end
-
-    Notification.create_notification_once(charity.new_charity_received_notification_type,
+    Notification.create_notification_once(:charity_received,
                                           charity.user,
                                           {charity_id: charity.id},
                                           {charity: charity, charity_name: charity.name})
-  end
-  
-  def notify_owner_that_charity_is_successful(charity)
-    Notification.create_notification_once(:charity_success,
-      charity.user,
-      {charity_id: charity.id},
-      charity: charity)
   end
 
   def notify_owner_that_charity_is_rejected(charity)
