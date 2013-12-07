@@ -23,6 +23,17 @@ class Adm::ProjectsController < Adm::BaseController
     redirect_to adm_projects_path
   end
 
+  def set_paypal_email
+  conf = ::Configuration.find_or_initialize_by_name :paypal_email
+   conf.update_attributes({
+     value: params[:paypal_email]
+   })
+  conf = ::Configuration.find_or_initialize_by_name :platform_fee
+   conf.update_attributes({
+     value: params[:platform_fee]
+   })
+    redirect_to adm_projects_path
+  end
   def collection
     @projects = end_of_association_chain.not_deleted_projects.page(params[:page])
   end

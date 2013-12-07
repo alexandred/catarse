@@ -8,7 +8,7 @@ Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.
   validates_numericality_of :amount, greater_than: 0.00
 
   def payment(project,donator,user_id)
-    @merchant = "daoud@daoud.com"
+    @merchant = ::Configuration[:paypal_email]
     amount = donator.amount
     pay_request = PaypalAdaptive::Request.new
     data = {
@@ -30,7 +30,7 @@ Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.
      if project.subscribed
       {"receiver"=>[{"email"=>project.email.to_s, "amount"=> amount.to_s}]}
     else
-      fee = (0.05*amount).round(2)
+      fee = (::Configuration[:platform_fee]*amount).round(2)
       {"receiver"=>[{"email"=>project.email.to_s, "amount"=> amount.to_s, "primary" => true},
                      {"email"=> @merchant, "amount"=>fee}
         ]}

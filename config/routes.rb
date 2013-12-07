@@ -29,6 +29,7 @@ Catarse::Application.routes.draw do
             put 'approve'
             put 'reject'
             put 'push_to_draft'
+            put 'set_paypal_email'
           end
         end
       end
@@ -190,6 +191,7 @@ Catarse::Application.routes.draw do
   match "/charities/filter/nearby" => "charities#nearby"
   match "/charities/filter/recent" => "charities#recent"
   match "/charities/filter/:country" => "charities#country"
+  match "/adm/set_paypal_email" => "adm/projects#set_paypal_email", as: :set_paypal_email
 
   # Root path
   root to: 'projects#index'

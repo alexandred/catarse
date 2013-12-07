@@ -16,7 +16,15 @@ javascript:
       h2
         strong= "#{@total_projects} "
         = t('.total_projects')
-
+    = form_tag set_paypal_email_path, method: :post do |f|
+      .input
+        = label_tag :paypal_email, t('.paypal_email')
+        = text_field_tag :paypal_email, ::Configuration[:paypal_email]
+      .input
+        = label_tag :platform_fee, t('.platform_fee')
+        = text_field_tag :platform_fee, ::Configuration[:platform_fee]
+      .input
+      = submit_tag t('.submit')
     .filters
       .bootstrap-form
         = form_tag adm_projects_path, method: :get, class: 'form-horizontal' do |f|
