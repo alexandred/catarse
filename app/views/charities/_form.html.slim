@@ -71,7 +71,7 @@ sass:
           = form.label :permalink, "#{t('activerecord.attributes.charity.permalink')} *"
           .input-prepend.permalink
             span.add-on= "#{::Configuration[:base_url]}/"
-            = form.text_field :permalink, class: "permalink #{'error' if @charity.errors[:permalink].present?}", style: "width: auto;"
+            = form.text_field :permalink, class: "permalink #{'error' if @charity.errors[:permalink].present?}", style: "width: auto;", required: true
           - if params[:action] != 'new'
             .inline-hints= t('.permalink_important').html_safe
 
@@ -81,7 +81,7 @@ sass:
             .alert
               .important= t('.name_important').html_safe
           = form.label :name, "#{t('formtastic.labels.charity.name')} *"
-          = form.text_field :name, class: "#{'error' if @charity.errors[:name].present?}"
+          = form.text_field :name, required: true, class: "#{'error' if @charity.errors[:name].present?}"
           - if params[:action] != 'new'
             .inline-hints= t('.name_important').html_safe
         .input
@@ -278,7 +278,7 @@ sass:
 
       .clearfix
       .submit
-        fieldset.accept
+        fieldset.accept style="padding-top: 0px !important"
           = form.check_box :accepted_terms
           = form.label :accepted_terms, t('accept_terms_html', link: link_to(t('terms'), t('footer.links.terms_link'), target: :_blank)), class: 'inline', style: "padding-left: 8px"
           - if @charity.errors[:accepted_terms].present?
@@ -288,7 +288,7 @@ sass:
           .form-actions.bootstrap-twitter style="background-color: transparent; border-top: none;"
             .send
               - if params[:action] == "new"
-                = submit_tag t('formtastic.labels.charity.submit'), id: 'charity_submit', class: 'btn btn_send', style: "float: none"
+                = submit_tag t('formtastic.labels.charity.submit'), id: 'charity_submit', class: 'btn btn_send', style: "float: none; padding: 0px !important; margin-top: 0px !important; margin-bottom: 9px !important"
               - else
                 = submit_tag t('formtastic.labels.charity.update'), id: 'charity_submit', class: 'btn btn_send', style: "float: right"
             /= form.submit t('.submit'), disabled: true, class: 'btn-large btn-block btn btn-warning', id: 'charity_submit', style: 'width: 100%;'

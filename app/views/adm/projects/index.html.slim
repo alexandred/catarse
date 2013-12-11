@@ -24,6 +24,9 @@ javascript:
         = label_tag :platform_fee, t('.platform_fee')
         = text_field_tag :platform_fee, ::Configuration[:platform_fee]
       .input
+        = label_tag :subscription_fee, t('.subscription_fee')
+        = text_field_tag :subscription_fee, ::Configuration[:subscription_fee]
+      .input
       = submit_tag t('.submit')
     .filters
       .bootstrap-form

@@ -253,7 +253,8 @@ class Project < ActiveRecord::Base
       failed: failed?,
       display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
       display_expires_at: display_expires_at,
-      in_time: in_time?
+      in_time: in_time?,
+      draft: draft?
     }
   end
 

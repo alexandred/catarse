@@ -7,7 +7,10 @@
         = image_tag project.display_image, itemprop: 'image'
     .project_content
       h4= link_to project, target: ( defined?(embed_link) ? '__blank' : '' ), itemprop: 'url' do
-        span[itemprop="name"]= project.name
+        span[itemprop="name"]
+          = project.name
+          - if !project.online?
+            span style="color: rgb(231, 82, 151)"= " #{t('users.projects.draft_mode')}"
       p.author
         = t('.by')
         |&nbsp;

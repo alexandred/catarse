@@ -28,6 +28,9 @@ script type="text/template" id="user_project_template"
         h4
           a href='<%= url %>'
             | <%= name %>
+            | <% if(draft) { %>
+              = t('users.projects.draft_mode')
+            | <% } %>
         p.author== "#{t('project_by')} <%= user['name'] %>"
         p.headline <%= headline %>
       .status_bar

@@ -32,6 +32,10 @@ class Adm::ProjectsController < Adm::BaseController
    conf.update_attributes({
      value: params[:platform_fee]
    })
+  conf = ::Configuration.find_or_initialize_by_name :subscription_fee
+   conf.update_attributes({
+     value: params[:subscription_fee]
+   })
     redirect_to adm_projects_path
   end
   def collection

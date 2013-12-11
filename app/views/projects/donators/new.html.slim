@@ -53,7 +53,7 @@ sass:
   .container
     .backer_content
       .title
-        h1= t('donations.donate_to') + @project.name
+        h1= "#{t('donations.donate_to')} " + @project.name
       #back_options.bootstrap-form
         = semantic_form_for @donator, url: @create_url, html: { id: 'backer_form' } do |form|
           = form.inputs do

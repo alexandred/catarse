@@ -10,10 +10,17 @@ class PlansController < ApplicationController
   end
 
   def redirect2
-  	if params.has_key?(:amt)
-  		 flash[:notice] = "Thank you! Your payment of $#{params[:amt]} was sucessful. An invoice has been sent to your email."
-  	end
-  	redirect_to root_path
+  	if params.has_key?(:project_id)
+       flash[:notice] = t('flash.thanks_message')
+       flash.keep
+       redirect_to project_by_slug_path(permalink: Project.find(params[:project_id]).permalink )
+  	elsif params.has_key?(:charity_id)
+       flash[:notice] = t('flash.thanks_message')
+       flash.keep
+       redirect_to charity_by_slug_path(permalink: Charity.find(params[:charity_id]).permalink )
+    else
+  	 redirect_to root_path
+    end
   end
 
   private

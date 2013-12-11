@@ -1,4 +1,7 @@
 en:
+  flash:
+    thanks_message: "Thank you! Your payment was sucessful. An invoice has been sent to your email."
+    required_fields: "Please fill in all required fields correctly"
   donations:
     infobox: "Please note dummy text..."
     donate_to: "Donate to"
@@ -11,6 +14,12 @@ en:
       answer1: First, choose how much you want to donate. Then click on “Review and make a payment”  to redirect you to the next page to complete your payment.
       question2: When is the donation accepted?
       answer2: Once Paypal confirms the transaction (card and bank transfer confirmation is on the same day, lead slips to 4 working days to be confirmed).
+  draft_warning:
+    title: ATENÇÃO!  Este projeto ainda não está no ar... Seja bem-vindo ao rascunho o/
+    minimise: (minimizar informações)
+    line1: Este projeto ainda está em fase de Rascunho, isso significa que nenhuma informação abaixo é definitiva até a entrada do projeto no ar. Por isso, aproveite! Dê uma olhada no vídeo, na descrição e nas recompensas e <strong> deixe seu feedback na aba de comentários.</strong>
+    line2: line2
+    line3: line3
   faq:
     header: "Header"
     subheader: "Subheader"
@@ -1133,6 +1142,7 @@ en:
       no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
       title: "%{name}'s projects"
       title_current_user: "My projects"
+      draft_mode: "(draft mode)"
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."

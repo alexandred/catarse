@@ -16,6 +16,7 @@ en:
         total_projects: 'Total Projects'
         paypal_email: 'Paypal Email:'
         platform_fee: 'Platform Fee:'
+        subscription_fee: "Subscription Fee:"
         submit: 'Submit'
     financials:
       index:

@@ -62,6 +62,10 @@ class CharitiesController < ApplicationController
           return redirect_to charity_by_slug_path(@charity.permalink)
         end
       end
+      failure.html do
+        flash[:notice] = t('flash.required_fields')
+        render action: 'new'
+      end
     end
   end
   
@@ -76,7 +80,10 @@ class CharitiesController < ApplicationController
           return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit')
         end
       end
-      failure.html{ return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') }
+      failure.html{ 
+        flash[:notice] = t('flash.required_fields')
+        return redirect_to charity_by_slug_path(@charity.permalink) 
+      }
     end
   end
 

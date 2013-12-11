@@ -4,6 +4,8 @@ sass:
       display: inline
       height: 20px
       vertical-align: top
+  #project_warning_text
+    display: none
 = content_for :meta_tags do
   meta name="description" content=@charity.about
   meta property="og:title" content=@charity.name
@@ -23,6 +25,9 @@ sass:
   
 #page_content
   .container
+    - if !@charity.online?
+      = render "projects/draft_warning"
+
     #charity_description[data-charity=@charity.to_json]
     .section_header
       .project_image
@@ -139,7 +144,11 @@ sass:
             {
             return true;
             }
-          }
+          }  
+      });
+      $('#project_warning .alert-warning #toggle_warning').click(function() {
+        $('#project_warning_text').slideToggle(1000);
+        return false;
       });
     })
     (function(d, s, id) {

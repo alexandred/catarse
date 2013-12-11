@@ -65,6 +65,7 @@ end
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   platform_fee: '0.13',
   paypal_email: 'daoud@daoud.com',
+  subscription_fee: '$9',
   support_forum: 'http://suporte.catarse.me/',
   base_domain: 'catarse-charity-demo.herokuapp.com',
   uservoice_secret_gadget: 'change_this'
