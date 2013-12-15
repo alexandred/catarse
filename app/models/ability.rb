@@ -22,14 +22,14 @@ class Ability
     # NOTE: Project authorizations
     can :create, :projects if current_user.persisted?
 
-    can :update, :projects, [:about, :video_url, :uploaded_image, :headline ] do |project|
-      project.user == current_user && ( project.online? || project.waiting_funds? || project.successful? || project.failed? )
+    can :update, :projects, [:about, :video_url, :uploaded_image, :headline, :plan] do |project|
+      project.user == current_user #&& ( project.online? || project.waiting_funds? || project.successful? || project.failed? )
     end
 
     can :update, :projects do |project|
       project.user == current_user && ( project.draft? || project.rejected? )
     end
-
+    
     #NOTE: Charity authorizations
     can :create, :charities if current_user.persisted?
 

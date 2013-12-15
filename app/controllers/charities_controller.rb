@@ -63,7 +63,7 @@ class CharitiesController < ApplicationController
         end
       end
       failure.html do
-        flash[:notice] = t('flash.required_fields')
+        flash[:error] = t('flash.required_fields')
         render action: 'new'
       end
     end
@@ -81,7 +81,7 @@ class CharitiesController < ApplicationController
         end
       end
       failure.html{ 
-        flash[:notice] = t('flash.required_fields')
+        flash[:error] = t('flash.required_fields')
         return redirect_to charity_by_slug_path(@charity.permalink) 
       }
     end
