@@ -59,6 +59,10 @@ class ProjectsController < ApplicationController
           return redirect_to project_by_slug_path(@project.permalink)
         end
       end
+      failure.html do
+        flash[:error] = t('flash.required_fields')
+        render action: 'new'
+      end
     end
   end
 

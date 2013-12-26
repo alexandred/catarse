@@ -1,12 +1,11 @@
 class PlansController < ApplicationController
-	before_filter :loggedin, except: 'redirect2'
 
   def index
   end
 
   def redirect
-  		session[:plan] = params[:plan]
-  		redirect_to new_user_session_path(active_register: true)
+  		flash[:notice] = t('flash.thanks_message')
+      redirect_to user_path(current_user, anchor: "projects")
   end
 
   def redirect2
