@@ -122,6 +122,10 @@ sass:
     }
     
     $('document').ready(function(){
+      if (window.location.hash != "") {
+      open = window.location.hash.replace('#','');
+      switchSection(this, "#charity_" + open);
+      }
       $('#menu-projects').click(function(){ switchSection(this, '#charity_projects') })
       $('#menu-about').click(function(){ switchSection(this, '#charity_about') })
       $('#menu-donations').click(function(){ switchSection(this, '#charity_donations') })

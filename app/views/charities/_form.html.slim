@@ -59,7 +59,7 @@ sass:
   .clearfix
   = semantic_form_for @charity, html: { id: 'charity_form' } do |form|
     = form.inputs do
-      - if current_user.admin? || params[:action] != "edit"
+      - if current_user.admin? || @charity.state == "draft" || params[:action] == "new"
         .section-header
           = t('charities.new.header1')
         .input
@@ -150,7 +150,7 @@ sass:
             = image_tag "catarse/icon_italic.png"
             p= t('formtastic.tips.fifth').html_safe
 
-      - if current_user.admin? || params[:action] != "edit"
+      - if current_user.admin? || @charity.state == "draft" || params[:action] == "new"
         .section-header
           = t('charities.new.header2')
         .input
@@ -202,7 +202,7 @@ sass:
           = form.text_field :zip, class: "#{'error' if @charity.errors[:zip].present?}"
           - if params[:action] != 'new'
             .inline-hints= t('.zip_important').html_safe
-      - if current_user.admin || params[:action] != "edit"
+      - if current_user.admin || @charity.state == "draft" || params[:action] == "new"
         .section-header
           = t('charities.new.header3')
 
@@ -226,7 +226,7 @@ sass:
         - if params[:action] != 'new'
           .inline-hints= t('.url_important').html_safe
 
-      - if current_user.admin? || params[:action] != "edit"
+      - if current_user.admin? || @charity.state == "draft" || params[:action] == "new"
         .section-header
           = t('charities.new.header4')
         .input
@@ -254,7 +254,7 @@ sass:
         = t('projects.new.subscription.paid')
         - if params[:action] != 'new'
           .inline-hints style="margin-top: 8px"= t('.subscription_important').html_safe
-      - if current_user.admin? || params[:action] != "edit" 
+      - if current_user.admin? || params[:action] == "new" 
         .input
           .bootstrap-alert
             span

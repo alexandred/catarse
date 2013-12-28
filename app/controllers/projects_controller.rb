@@ -77,7 +77,10 @@ class ProjectsController < ApplicationController
           return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit')
         end
       end
-      failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
+      failure.html{ 
+        flash[:error] = t('flash.required_fields')
+        return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') 
+      }
     end
   end
 

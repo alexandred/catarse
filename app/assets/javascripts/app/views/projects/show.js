@@ -216,10 +216,10 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   validate: function(event){
     var form = $(event.target).parentsUntil('form')
     var submit = form.find('[type=submit]')
-    if(this.isValid(form))
-      submit.attr('disabled', false)
-    else
-      submit.attr('disabled', true)
+    //if(this.isValid(form))
+    //  submit.attr('disabled', false)
+    //else
+    //  submit.attr('disabled', true)
   },
 
   selectTarget: function(event){

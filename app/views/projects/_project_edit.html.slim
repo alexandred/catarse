@@ -25,12 +25,12 @@ sass:
       - if current_user.admin
         .section-header
           = t("projects.new.header0")
-      - if current_user.admin
         = form.input :user_id
         = form.label :permalink, "#{t('activerecord.attributes.project.permalink')} *"
         .input-prepend.permalink
           span.add-on style="float: left"= "#{::Configuration[:base_url]}/"
           .permalink style="width: 350px; float: left" = form.text_field :permalink
+      - if current_user.admin || @project.draft?
         .section-header
           = t("projects.new.header1")
       - if can? :update, @project, :name
@@ -60,7 +60,7 @@ sass:
             p= t('formtastic.tips.fourth').html_safe
             = image_tag "catarse/icon_italic.png"
             p= t('formtastic.tips.fifth').html_safe
-      - if current_user.admin
+      - if current_user.admin || @project.draft?
         .section-header
           = t("projects.new.header2")
       - if can? :update, @project, :uploaded_image
@@ -68,7 +68,7 @@ sass:
           hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') + "<br>".html_safe + t('projects.new.thumbnail_important').html_safe : t('projects.new.thumbnail_important').html_safe )
       - if can? :update, @project, :video_url
         = form.input :video_url, as: :string, hint: t('projects.new.video_important').html_safe,required: false
-      - if current_user.admin
+      - if current_user.admin || @project.draft?
         .section-header
           = t("projects.new.header3")
       - if can? :update, @project, :goal
@@ -77,7 +77,7 @@ sass:
         = form.input :currency, as: :select, collection: (Project.major_currencies + Project.all_currencies).map {|c| c.upcase }, required: true, hint: t('projects.new.currency_important').html_safe
       - if can? :update, @project, :online_days
         = form.input :online_days, as: :number, required: true, hint: t('projects.new.days_important').html_safe
-      - if current_user.admin
+      - if current_user.admin || @project.draft?
         .section-header
           = t("projects.new.header4")
       .subscription

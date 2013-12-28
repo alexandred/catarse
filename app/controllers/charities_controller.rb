@@ -82,7 +82,7 @@ class CharitiesController < ApplicationController
       end
       failure.html{ 
         flash[:error] = t('flash.required_fields')
-        return redirect_to charity_by_slug_path(@charity.permalink) 
+        return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') 
       }
     end
   end
