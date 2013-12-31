@@ -531,8 +531,8 @@ waiting_confirmation.pt.png: waiting_confirmation.pt-a654771fdb4bcbc2478ce524627
 waiting_confirmation/index.pt.png: waiting_confirmation.pt-a654771fdb4bcbc2478ce524627309f0.png
 app/views/layouts/application.js: app/views/layouts/application-299add5572ba8c0ad1c2f0b9bc81b51a.js
 app/views/layouts/application/index.js: app/views/layouts/application-299add5572ba8c0ad1c2f0b9bc81b51a.js
-application.js: application-898a978fef12e0c80418177f7285cde0.js
-application/index.js: application-898a978fef12e0c80418177f7285cde0.js
+application.js: application-3b54dd8969e7cc6da60fffacc799dce9.js
+application/index.js: application-3b54dd8969e7cc6da60fffacc799dce9.js
 application.css: application-24fef86d594a031cd0e83109befbea88.css
 application/index.css: application-24fef86d594a031cd0e83109befbea88.css
 jquery.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
