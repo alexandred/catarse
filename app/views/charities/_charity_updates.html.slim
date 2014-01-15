@@ -19,8 +19,8 @@ sass:
       .tips
         h3
           = t('formtastic.tips.title')
-          = link_to '(click here)', 'javascript: void(0);', onclick: "$('#project_warning_text').toggle();", style: "width: auto; float: right; font-style: normal"
-        #project_warning_text style="display: none"
+          = link_to '(click here)', 'javascript: void(0);', onclick: "$('#format_style').toggle();", style: "width: auto; float: right; font-style: normal"
+        #format_style style="display: none"
           = image_tag "catarse/icon_media.png"
           p= t('formtastic.tips.first').html_safe
           = image_tag "catarse/icon_url.png"

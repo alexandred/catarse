@@ -76,7 +76,10 @@ sass:
       - if can? :update, @project, :currency
         = form.input :currency, as: :select, collection: (Project.major_currencies + Project.all_currencies).map {|c| c.upcase }, required: true, hint: t('projects.new.currency_important').html_safe
       - if can? :update, @project, :online_days
-        = form.input :online_days, as: :number, required: true, hint: t('projects.new.days_important').html_safe
+        - if current_user.admin?
+          = form.input :online_days, as: :number, required: true, hint: t('projects.new.days_important').html_safe
+        - else
+          = form.input :online_days, as: :select, collection: [["15", 15],["30", 30],["45", 45],["60", 60],["75", 75],["90", 90],["105", 105],["120", 120]], required: true, hint: t('projects.new.days_important').html_safe
       - if current_user.admin || @project.draft?
         .section-header
           = t("projects.new.header4")

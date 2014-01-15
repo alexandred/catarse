@@ -70,6 +70,7 @@ class CharitiesController < ApplicationController
   end
   
   def update
+    oldpermalink = @charity.permalink
     update! do |success, failure|
       success.html do 
         if params[:charity][:plan] == "paid" and !@charity.subscribed
@@ -82,7 +83,7 @@ class CharitiesController < ApplicationController
       end
       failure.html{ 
         flash[:error] = t('flash.required_fields')
-        return redirect_to charity_by_slug_path(@charity.permalink, anchor: 'edit') 
+        return redirect_to charity_by_slug_path(oldpermalink, anchor: 'edit') 
       }
     end
   end
