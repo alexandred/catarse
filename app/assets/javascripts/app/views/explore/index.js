@@ -44,9 +44,9 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.initializeView({
       pg_search: search
     })
-    var input = this.$('#search')
-    if(input.val() != search)
-      input.val(search)
+    //var input = this.$('#search')
+    //if(input.val() != search)
+    //  input.val(search)
   },
 
   updateSearch: function(){
