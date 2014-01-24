@@ -29,13 +29,15 @@
 					<div id="confirmed">
 						Donated on <%= donator.created_at.strftime("%d/%m/%Y") %>.
 					</div>
-					<div id="backed">
-						<% if (user.donators.count + user.donations.count) == 1 %>
-							Donated only to this cause so far.
-						<% else %>
-							Donated to this and <%= (user.donators.count + user.donations.count) - 1 %> other causes.
-						<% end %>
-					</div>
+					<% if donator.user_id %>
+						<div id="backed">
+							<% if (user.donators.count + user.donations.count) == 1 %>
+								Donated only to this cause so far.
+							<% else %>
+								Donated to this and <%= (user.donators.count + user.donations.count) - 1 %> other causes.
+							<% end %>
+						</div>
+					<% end %>
 				</div>
 				<% if donator.comment != "" %>
 					<div class="comment" style="padding-left:20px; font-weight: bold;"><%= donator.comment %></div>
