@@ -2,8 +2,8 @@ class BackerObserver < ActiveRecord::Observer
   observe :donator, :donation
 
   def after_create(backer)
-    backer.define_key
-    backer.define_payment_method
+    #backer.define_key
+    #backer.define_payment_method
   end
 
   def before_save(backer)
@@ -42,24 +42,24 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def after_save(backer)
-    Notification.create_notification_once(:project_success,
-      backer.project.user,
-      {project_id: backer.project.id},
-      project: backer.project) if backer.project.reached_goal?
+    #Notification.create_notification_once(:project_success,
+    #  backer.project.user,
+    #  {project_id: backer.project.id},
+    #  project: backer.project) if backer.project.reached_goal?
   end
 
   def notify_backoffice(backer)
-    CreditsMailer.request_refund_from(backer).deliver
+    #CreditsMailer.request_refund_from(backer).deliver
   end
 
   def notify_backoffice_about_canceled(backer)
-    user = User.where(email: Configuration[:email_payments]).first
-    if user.present?
-      Notification.create_notification_once(:backer_canceled_after_confirmed,
-        user,
-        {backer_id: backer.id},
-        backer: backer)
-    end
+    #user = User.where(email: Configuration[:email_payments]).first
+    #if user.present?
+    #  Notification.create_notification_once(:backer_canceled_after_confirmed,
+    #    user,
+    #    {backer_id: backer.id},
+    #    backer: backer)
+    #end
   end
 
 end
