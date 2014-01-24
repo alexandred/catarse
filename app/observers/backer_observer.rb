@@ -7,9 +7,6 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def before_save(backer)
-
-    if backer.confirmed? and backer.confirmed_at.nil?
-      backer.confirmed_at = Time.now
       Notification.create_notification_once(:confirm_backer,
         backer.user,
         {backer_id: backer.id},
@@ -21,15 +18,6 @@ class BackerObserver < ActiveRecord::Observer
         {backer_id: backer.id},
         backer: backer,
         project_name: backer.project.name)
-
-      if (Time.now > backer.project.expires_at  + 7.days) && (user = User.where(email: ::Configuration[:email_payments]).first)
-        Notification.create_notification_once(:backer_confirmed_after_project_was_closed,
-          user,
-          {backer_id: backer.id},
-          backer: backer,
-          project_name: backer.project.name)
-      end
-    end
 
     unless backer.user.have_address?
       backer.user.address_street = backer.address_street
