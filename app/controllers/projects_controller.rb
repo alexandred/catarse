@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
         end
       end
       failure.html do
-        flash[:error] = t('flash.required_fields')
+        flash.now[:error] = t('flash.required_fields')
         render action: 'new'
       end
     end

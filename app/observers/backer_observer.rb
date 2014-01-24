@@ -7,11 +7,6 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def before_save(backer)
-    Notification.create_notification_once(:payment_slip,
-      backer.user,
-      {backer_id: backer.id},
-      backer: backer,
-      project_name: backer.project.name) if backer.payment_choice_was.nil? && backer.payment_choice == 'BoletoBancario'
 
     if backer.confirmed? and backer.confirmed_at.nil?
       backer.confirmed_at = Time.now
