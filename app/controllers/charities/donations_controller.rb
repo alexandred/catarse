@@ -1,4 +1,5 @@
 class Charities::DonationsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
   inherit_resources
   actions :index, :new, :create, :return
 	skip_before_filter :force_http, only: [:create]
@@ -39,7 +40,7 @@ class Charities::DonationsController < ApplicationController
   def return
     if params.has_key?(:charity_id) and params.has_key?(:amt)
       charity = Charity.find(params[:charity_id])
-      flash[:success] = "Thank you for your donation of #{params[:amt]} #{charity.currency} to #{charity.name}."
+      flash[:success] = "Thank you for your donation of #{number_to_currency(params[:amt], unit: charity.currency_symbol)} to #{charity.name}."
       redirect_to charity_path(charity)
     else
       redirect_to root_path

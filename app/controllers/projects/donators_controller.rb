@@ -1,4 +1,5 @@
 class Projects::DonatorsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
   inherit_resources
   actions :index, :new, :create, :return
   skip_before_filter :force_http, only: [:create]
@@ -39,8 +40,8 @@ class Projects::DonatorsController < ApplicationController
   def return
     if params.has_key?(:project_id) and params.has_key?(:amt)
       project = Project.find(params[:project_id])
-      flash[:success] = "Thank you for your donation of #{params[:amt]} #{project.currency} to #{project.name}."
-      redirect_to project_path(project)
+      flash[:success] = "Thank you for your donation of #{number_to_currency(params[:amt], unit: project.currency_symbol)} to #{project.name}."
+      redirect_to project_by_slug_path(permalink: project.permalink)
     else
       redirect_to root_path
     end

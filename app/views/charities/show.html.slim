@@ -6,6 +6,8 @@ sass:
       vertical-align: top
   .inline-hints
     display: inline !important
+  .no_donations
+    font-style: italic
 = content_for :meta_tags do
   meta name="description" content=@charity.about
   meta property="og:title" content=@charity.name
@@ -91,7 +93,7 @@ sass:
             = render '/projects/project', project: project
         #charity_donations.content style="display: none"
           - if @charity.donations.count == 0
-            p= t('.no_donations')
+            p.no_donations= t('.no_donations')
           - else
             = render template: 'charities/donations/index'
         #charity_comments.content style="display:none"

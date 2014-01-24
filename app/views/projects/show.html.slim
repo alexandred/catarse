@@ -2,6 +2,8 @@ sass:
   .fb-share-button 
     top: -10px
     margin-right: 10px
+  .no_donations
+    font-style: italic
 - content_for :js_templates do
   = render partial: 'backer'
   = render partial: 'project_templates'
@@ -65,7 +67,7 @@ sass:
         //.media_content_backers
         #project_backers.content.hide
           - if @project.donators.count == 0
-            p="There are currently no donations for this project. You can be the first!"
+            p.no_donations="There are currently no donations for this project. You can be the first!"
           - else
             = render template: 'projects/donators/index'
         #project_comments.content.hide= render 'comments'
