@@ -8,6 +8,13 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
+  def after_save(project)
+    if project.failed? && Time.now < project.expires_at
+      project.state = "online"
+      project.save!
+    end
+  end
+
   def after_create(project)
     if (user = project.new_draft_recipient)
       Notification.create_notification_once(project.new_draft_project_notification_type,

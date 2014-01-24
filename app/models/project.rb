@@ -300,6 +300,10 @@ class Project < ActiveRecord::Base
       transition draft: :online
     end
 
+    event :extend do
+      transition failed: :online
+    end
+
     event :finish do
       transition online: :failed,             if: ->(project) {
         project.expired? && !project.reached_goal?
