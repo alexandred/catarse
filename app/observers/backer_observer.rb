@@ -7,17 +7,22 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def before_save(backer)
+      if backer.project_id 
+        project = Project.find(backer.project_id)
+      else
+        project = Charity.find(backer.charity_id)
+      end
       Notification.create_notification_once(:confirm_backer,
         backer.user,
         {backer_id: backer.id},
         backer: backer,
-        project_name: backer.project.name)
+        project_name: project.name)
 
       Notification.create_notification_once(:project_owner_backer_confirmed,
         backer.project.user,
         {backer_id: backer.id},
         backer: backer,
-        project_name: backer.project.name)
+        project_name: project.name)
 
     unless backer.user.have_address?
       backer.user.address_street = backer.address_street
