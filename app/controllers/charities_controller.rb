@@ -104,6 +104,7 @@ class CharitiesController < ApplicationController
           @updates << update if can? :see, update
         end
         @update = @charity.updates.where(id: params[:update_id]).first if params[:update_id].present?
+        @projects = @charity.projects.where("state != ?", "draft")
       }
     rescue ActiveRecord::RecordNotFound
       return render_404

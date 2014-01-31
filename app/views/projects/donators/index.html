@@ -1,7 +1,7 @@
 <div id="page_content">
 	<div class="media_content_backers">
 		<ul class="collection_list">
-			<% for donator in @project.donators %>
+			<% for donator in @project.donators.order("created_at desc") %>
 			<% user = User.find(donator.user_id) unless donator.user_id == nil %>
 			<li>
 				<div class="backer_avatar">

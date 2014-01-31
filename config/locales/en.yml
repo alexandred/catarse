@@ -2,6 +2,7 @@ en:
   flash:
     thanks_message: "Thank you! Your payment was sucessful. An invoice has been sent to your email."
     required_fields: "Please fill in all required fields correctly"
+    update_removed: "Update removed"
   donations:
     infobox: "Please note dummy text..."
     donate_to: "Donate to"

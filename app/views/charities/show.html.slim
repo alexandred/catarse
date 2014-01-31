@@ -65,7 +65,7 @@ sass:
           ul
             li= link_to t('.about'), '#about', class: 'selected', id: 'menu-about'
             li= link_to t('.updates') + " (#{@charity.updates.count})", '#updates', id: 'menu-updates'
-            li= link_to t('.projects') + " (#{@charity.projects.count})", '#projects', id: 'menu-projects'
+            li= link_to t('.projects') + " (#{@projects.count})", '#projects', id: 'menu-projects'
             li= link_to t('.donations') + " (#{@charity.donations.count})", '#donations', id: 'menu-donations'
             li= link_to '#comments', id: 'menu-comments' do
               = t('.comments')
@@ -89,7 +89,7 @@ sass:
         #charity_updates.content style="display: none"
           = render 'charity_updates'
         #charity_projects.content style="display: none"
-          - @charity.projects.each do |project|
+          - @projects.each do |project|
             = render '/projects/project', project: project
         #charity_donations.content style="display: none"
           - if @charity.donations.count == 0

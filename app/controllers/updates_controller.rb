@@ -9,7 +9,11 @@ class UpdatesController < ApplicationController
   def index
     index! do |format|
       format.html{ return render :index, layout: false } if @project
-      format.html { redirect_to controller: 'charities', action: 'show', id: parent.id } if @charity
+      format.html { 
+        flash[:notice] = nil
+        flash.discard
+        redirect_to controller: 'charities', action: 'show', id: parent.id, anchor: 'updates'
+        } if @charity
     end
   end
 
@@ -19,11 +23,13 @@ class UpdatesController < ApplicationController
     Rails.logger.info @update.valid?
     Rails.logger.info @update.errors
     create! do |format|
-      format.html{ return index }
+      format.html{ return index, anchor: 'updates' }
     end
   end
 
   def destroy
-    destroy!{|format| return index }
+    destroy!{|format|
+      return index 
+    }
   end
 end
