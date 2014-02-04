@@ -24,7 +24,6 @@ class PlansController < ApplicationController
         when /Project<(.*)>/
           redirect_to project_by_slug_path(permalink: Project.find($1).permalink )
       end
-    end
     else
   	 redirect_to root_path
     end
