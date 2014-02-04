@@ -17,6 +17,14 @@ class PlansController < ApplicationController
        flash[:notice] = t('flash.thanks_message')
        flash.keep
        redirect_to charity_by_slug_path(permalink: Charity.find(params[:charity_id]).permalink )
+    elsif params.has_key?(:cm)
+      case params[:cm]
+        when /Charity<(.*)>/
+          redirect_to charity_by_slug_path(permalink: Charity.find($1).permalink )
+        when /Project<(.*)>/
+          redirect_to project_by_slug_path(permalink: Project.find($1).permalink )
+      end
+    end
     else
   	 redirect_to root_path
     end
