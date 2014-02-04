@@ -72,7 +72,7 @@ sass:
         .section-header
           = t("projects.new.header3")
       - if can? :update, @project, :goal
-        = form.input :goal, as: :number, required: true, hint: t('projects.new.goal_important').html_safe
+        = form.input :goal, as: :number, required: true, hint: t('projects.new.goal_important').html_safe, input_html: { value: number_with_precision(@project.goal, precision: 2) }
       - if can? :update, @project, :currency
         = form.input :currency, as: :select, collection: (Project.major_currencies + Project.all_currencies).map {|c| c.upcase }, required: true, hint: t('projects.new.currency_important').html_safe
       - if can? :update, @project, :online_days

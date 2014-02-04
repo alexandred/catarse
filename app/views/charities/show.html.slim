@@ -105,8 +105,8 @@ sass:
             p= t('.vist_us') + " #{link_to @charity.charity_url}".html_safe
           br
           p
-           = t('.email_us') + " "
-           = link_to @charity.email, "mailto:#{@charity.email}".html_safe
+           = t('.phone_us') + " "
+           = @charity.phone
         - if can? :update, @charity
           #charity_edit.content.hide= render 'form'
             

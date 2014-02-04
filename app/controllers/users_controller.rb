@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   def update_password
     @user = User.find(params[:id])
     if @user.update_with_password(params[:user])
+      sign_in(@user, bypass: true)
       flash[:notice] = t('users.current_user_fields.updated')
     else
       flash[:error] = @user.errors.full_messages.to_sentence
