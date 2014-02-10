@@ -587,20 +587,29 @@
 }
 #home-slider .slide-title{
     font-family: 'Lato', sans-serif;
-  font-weight: 300;
-    font-size: 2.5em;
+    font-weight: bold;
+    font-size: 55px;
     line-height: 1.2em;
     color: #fff;
     padding-bottom: 20px;
+    text-shadow: 1px 1px 8px #000000;
 }
 .slide-description,
 .slide-description2{
     font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    font-size: 1.23em;
+    font-weight: bold;
+    font-size: 32px;
     line-height: 1.6em;
-    color: #deddd0;
+    color: #fff;
     padding-bottom: 20px;
+    text-shadow: 1px 1px 8px #000000;
+    list-style-type: disc;
+    list-style: disc !important;
+}
+
+.slide-descrition ol {
+    list-style-type: disc !important;
+    list-style: disc !important; 
 }
 .slide-description2{
   color: #fff
