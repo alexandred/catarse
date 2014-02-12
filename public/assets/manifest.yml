@@ -281,8 +281,8 @@ catarse/moip-choice.png: catarse/moip-choice-28fa749b1590169c09dd2dd3c8b6a26a.pn
 catarse/moip-choice/index.png: catarse/moip-choice-28fa749b1590169c09dd2dd3c8b6a26a.png
 catarse/multide_logo55x36.png: catarse/multide_logo55x36-187b7ffea726d925d11991ad45d34e9c.png
 catarse/multide_logo55x36/index.png: catarse/multide_logo55x36-187b7ffea726d925d11991ad45d34e9c.png
-catarse/newsletter_icon18x15.png: catarse/newsletter_icon18x15-1222b4f137c0b1653f1b11c614e4197e.png
-catarse/newsletter_icon18x15/index.png: catarse/newsletter_icon18x15-1222b4f137c0b1653f1b11c614e4197e.png
+catarse/newsletter_icon18x15.png: catarse/newsletter_icon18x15-a64a88c20a1ecd8ff43097a57cfd2d52.png
+catarse/newsletter_icon18x15/index.png: catarse/newsletter_icon18x15-a64a88c20a1ecd8ff43097a57cfd2d52.png
 catarse/opendata_icon26x26.png: catarse/opendata_icon26x26-cc319e831b0d7570ed7f613f547c293c.png
 catarse/opendata_icon26x26/index.png: catarse/opendata_icon26x26-cc319e831b0d7570ed7f613f547c293c.png
 catarse/partners_icon26x26.png: catarse/partners_icon26x26-d2bc36b756bf55fc09a8ea6bd5793973.png
@@ -425,6 +425,8 @@ facebook_panel/th-119x119-16.jpg: facebook_panel/th-119x119-16-b743779d9633b2d61
 facebook_panel/th-119x119-16/index.jpg: facebook_panel/th-119x119-16-b743779d9633b2d613a859991e868ebb.jpg
 facebook_panel/th-119x119-17.jpg: facebook_panel/th-119x119-17-772d1efcca942dc6192bcf8faf5b1319.jpg
 facebook_panel/th-119x119-17/index.jpg: facebook_panel/th-119x119-17-772d1efcca942dc6192bcf8faf5b1319.jpg
+facebook_panel/th-119x119-18.jpg: facebook_panel/th-119x119-18-4e41f2427b04227d944f99db9e3d1f26.jpg
+facebook_panel/th-119x119-18/index.jpg: facebook_panel/th-119x119-18-4e41f2427b04227d944f99db9e3d1f26.jpg
 facebook_panel/th-119x119-2.jpg: facebook_panel/th-119x119-2-215b967fd4d7463f5d8383b4fd9e6c96.jpg
 facebook_panel/th-119x119-2/index.jpg: facebook_panel/th-119x119-2-215b967fd4d7463f5d8383b4fd9e6c96.jpg
 facebook_panel/th-119x119-3.jpg: facebook_panel/th-119x119-3-0f15ad807e47338ef800b5cdb6e5182f.jpg
@@ -533,8 +535,8 @@ app/views/layouts/application.js: app/views/layouts/application-299add5572ba8c0a
 app/views/layouts/application/index.js: app/views/layouts/application-299add5572ba8c0ad1c2f0b9bc81b51a.js
 application.js: application-004d8f174ba1717fa069dc565ee0e42a.js
 application/index.js: application-004d8f174ba1717fa069dc565ee0e42a.js
-application.css: application-08251d5149e399b6c944c73e76062e8d.css
-application/index.css: application-08251d5149e399b6c944c73e76062e8d.css
+application.css: application-49f93c437434e3670a7951720ed80d39.css
+application/index.css: application-49f93c437434e3670a7951720ed80d39.css
 jquery.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
 jquery/index.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
 catarse_moip.js: catarse_moip-f3dcd49f77ab85288c43e8e32204e851.js
