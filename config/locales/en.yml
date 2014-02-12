@@ -1,4 +1,14 @@
 en:
+  banner:
+    button1: "Learn more"
+    button2: "Submit your project"
+    button3: "Submit your charity"
+    slide1_title: "Welcome to Lillah.org"
+    slide1_description: "The brand new online fundraising platform built exclusively for the global Muslim community."
+    slide2_title: "Get started today!"
+    slide2_description: "<ul style='list-style: disc inside none !important'><li>Create your campaign</li><li>Engage your friends & family</li><li>Collect your donations!</li></ul>"
+    slide3_title: "Raise funds for:"
+    slide3_description: "<ul style='list-style: disc inside none !important'><li>Individuals like you</li><li>Community & group projects</li><li>Organisations & non&ndash;profits</li></ul>"
   flash:
     thanks_message: "Thank you! Your payment was sucessful. An invoice has been sent to your e-mail."
     required_fields: "Please fill in all required fields correctly."
@@ -9,6 +19,10 @@ en:
     donate_anonymously: "Donate anonymously"
     leave_comment: "Leave a comment with this donation"
     donate: "Donate"
+    anonymous_text:
+      bold: Are you sure you want your donation to be anonymous?
+      regular: Leaving your donation public gives you a better reputation.
+      description: Besides that, the amount you donated will never be disclosed to any one but the project owner (who will always know who you are), even if your donation is public.
     sidebar:
       header: I want to donate, what’s next?
       question1: How do I make a donation?
@@ -17,7 +31,7 @@ en:
       answer2: Once you have submitted the form and PayPal confirms the transaction, your card is typically processed within 24 hours.
   draft_warning:
     title: Please note, this campaign is currently in draft mode and is awaiting approval.
-    minimise: Minimise
+    minimise: (Minimise)
     line1: Since it is not live yet, you may edit your campaign if you need to do so. Once it is live, you will only be able to edit certain fields.
     line2: line2
     line3: line3
@@ -81,7 +95,7 @@ en:
       subtitle: Donors
     goal:
       subtitle: "Total of %{total}"
-  project_by: "Project by"
+  project_by: "Project By"
   tell_about_this_back: "Tell the world about your support!"
   share_my_backs: "See the projects I support on Lillah!"
   tell_about_this_project: "Tell the world about your project!"
@@ -91,9 +105,9 @@ en:
     titles:
       info: "Useful Information"
       opendata: "Statistics"
-      social: "Support us"
+      social: "Support Us"
       browse: "Browse"
-      newsletter: "Subscribe to our newsletter"
+      newsletter: "Subscribe to our Newsletter"
     stats:
       backers: Donors
       backs: Donations
@@ -125,6 +139,7 @@ en:
       twitter: "Twitter"
       facebook: "Facebook"
       blog: "Blog"
+      newsletter: "Newsletter"
   sidebar:
     titles:
       blog: Blog
@@ -520,6 +535,7 @@ en:
       expired: expired
       failed: "not funded"
       successful: funded
+      draft: draft
       waiting_confirmation: waiting
       waiting_funds: waiting
       not_reached_goal: waiting
@@ -537,7 +553,7 @@ en:
         waiting_funds: "Waiting confirmation from payments to know if this project will be funded."
         draft: "This project is in draft mode and is not open to backers yet."
       reached_of: "Reached of"
-      submit: "Donate to this project"
+      submit: "Donate"
     backer:
       anonymous_backer: "Anonymous donor"
       anonymous_description: "Opted to remain anonymous"
@@ -658,7 +674,7 @@ en:
       submit: "Post update"
       comment: "Text"
       exclusive: "Visible to donors only"
-      title: "Update title"
+      title: "Update Title"
       destroy: "Remove update"
       destroy_confirmation: "Are you sure want to remove this update?"
     rewards:
@@ -714,17 +730,17 @@ en:
       first_backers_important: "These people are fundamental to the success of your project."
       how_know_important: "Yay! We reached the final question."
       headline_important: "Keep this summary of your project brief and to the point. Don’t exceed 140 characters."
-      tags_important: "See other projects in your category <a href='%{href}' target='_blank'>here</a>!."
+      tags_important: "Select the category that best fits your project."
       country_important: "Select the country this project is located in."
       goal_important: "What is your fundraising target? Choose your funding total carefully as it can't be changed once you launch. Be realistic about what you think you can raise. "
       currency_important: "Select the currency you would like to use for your donations."
-      charity_important: "DUMMY TEXT"
+      charity_important: "If your project is in support of a charity that is listed on this website, select it here."
       subscription_important: "Read more about our subscription plans here."
       days_important: "120 days is the maximum funding period. We recommend a shorter duration as this creates a sense of urgency. Choose your funding period carefully as it can't be changed once you launch."
       subtitle: "We need some information from you to publish your project …"
       title: "Submit your project"
       about: "Describe your project and how much do you need"
-      category: "Project category"
+      category: "Project Category"
       how_much_you_need: "Goal Amount"
       about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
       contact: "Leave us your e-mail address so we can contact you"
@@ -744,7 +760,7 @@ en:
       rewards_hint: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
       submit: "Submit this project"
       subtitle: " We need some information from you to publish your project…"
-      title: "Submit your project"
+      title: "Submit your Project"
       header0: "#0. Admin"
       header1: "#1. Project Overview"
       header2: "#2. Supporting Media"
@@ -792,7 +808,7 @@ en:
       currency_important: "Select the currency you would like to use for your donations."
       subscription_important: "Read more about our subscription plans here."
     new:
-      title: "Submit your charity"
+      title: "Submit your Charity"
       subtitle: "We need some information from you to publish your project…"
       legend_html: "Tell us about your project by filling out the form below. Your campaign will then be sent to draft mode where you can share it with friends.<br><br>After your campaign has been reviewed by an administrator and approved, it will go live and will be ready to accept donations."
       permalink_hint: 'Go simple. Your supporters should be able to remember your charity’s URL…'
@@ -999,9 +1015,9 @@ en:
       video: "Make a video"
       more_questions: "Tell me more about Lillah.org..."
       title_magic: "The Lillah.org Difference"
-      magic: "We give the Muslim community the platform to raise funds for their projects and charities. It is a quick and easy way of raising money without having to borrow from banks and other sources. With Lillah.org, it couldn’t be easier to raise money for or to donate to a project or charity. Lots of people, each donating a small amount, can contribute to something big."
+      magic: "We give the Muslim community the platform to raise funds for their projects and charities. It is a quick and easy way of raising money without having to borrow from banks and other sources.With Lillah.org, it couldn’t be easier to raise money for or to donate to a project or charity. Lots of people, each donating a small amount, can contribute to something big."
       title_money: "Hard Work & Perseverance"
-      money: " The more effort you put into your campaign, the better you can expect your results to be. In order to maximise your project’s potential, you will to need to increase awareness among your own network of contacts and by reaching out to others. Remember, we want your campaign to be as successful as you do but this ultimately comes down to you and how effectively you advertise it."
+      money: " The more effort you put into your campaign, the better you can expect your results to be. In order to maximise your project’s potential, you will to need to increase awareness among your own network of contacts and by reaching out to others.Remember, we want your campaign to be as successful as you do but this ultimately comes down to you and how effectively you advertise it."
       title_work: "NA"
       work: "NA"
       title_costs: "NA"
@@ -1120,6 +1136,7 @@ en:
       bio_limit: 'only 140 characters'
       updated: "Your information has been updated"
       update_social_info: "Update"
+      ok: "OK"
       social_info: "Contact Information"
       twitter: "Twitter Username"
       facebook_link: "Facebook Profile (Full Link)"
@@ -1166,4 +1183,5 @@ en:
     updates:
       subject: "%{project_name} Update by %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Do you have any comments? Leave it on the project page: <a href='%{project_link}'>%{project_name}</a>."
+
 

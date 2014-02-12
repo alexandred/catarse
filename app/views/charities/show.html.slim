@@ -103,10 +103,11 @@ sass:
           - if @charity.charity_url != ""
             br
             p= t('.vist_us') + " #{link_to @charity.charity_url}".html_safe
-          br
-          p
-           = t('.phone_us') + " "
-           = @charity.phone
+          - if @charity.phone != ""
+            br
+            p
+             = t('.phone_us') + " "
+             = @charity.phone
         - if can? :update, @charity
           #charity_edit.content.hide= render 'form'
             

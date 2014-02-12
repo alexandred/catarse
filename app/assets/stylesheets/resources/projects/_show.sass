@@ -120,15 +120,15 @@
         color: black
     .project_image
       +grid(2)
-      padding-top:  40px
-      padding-bottom: 40px
+      padding-top:  20px
+      padding-bottom: 20px
       img
         max-width: 90px
         max-height: 67px
     .section_header
       +grid(14)
-      padding-top:  40px
-      padding-bottom: 40px
+      padding-top:  25px
+      padding-bottom: 20px
       h1
         color: #333
         font-family: "Lato"
@@ -926,6 +926,7 @@
       &.highlights
         h2
           background: url($images_path+'min_star12x11.png') left 3px no-repeat
+          text-transform: capitalize
       &.categories
         h2
           background: url($images_path+'category_icon14x14.png') left 2px no-repeat
@@ -957,7 +958,7 @@
         font-family: "Lato"
         font-weight: 700
         margin-bottom: 10px
-        text-transform: lowercase
+        text-transform: capitalize
         padding-left: 20px
       &.highlights
         h2

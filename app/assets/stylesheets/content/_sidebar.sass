@@ -2,7 +2,49 @@
   border-left: 1px $df_gryn solid
   .content
     padding: 33px 0 0 22px
+    .newsletter
+      float: left
+      padding-bottom: 30px
+      margin-top: 30px
+      border-bottom: 1px rgba(black, 0.1) solid
+      h3
+        font-family: "Lato"
+        font-weight: 700
+        font-size: 18px
+        background: url($images_path+'newsletter_icon18x15.png') left 2px no-repeat
+        text-indent: 28px
+        color: black
+        padding-bottom:  25px
+      form
+        input[type="text"]
+          float: left
+          width: 122px
+          height: 28px
+          +border-radius(4px 0 0 4px)
+          border: 1px $df_gryn solid
+          border-right: none
+          &:focus
+            outline: none
+            border: 1px $pink solid
+            border-right: none
+        input[type="submit"]
+          float: left
+          background: $pink
+          width: 72px
+          height: 32px
+          +border-radius(0 4px 4px 0)
+          color: white
+          font-family: "Lato"
+          font-size: 12px
+          text-transform: uppercase
+          border: none
+          +transition(all, 0.5s)
+          &:active
+            +box-shadow(rgba(black, 0.5) 0 0 5px inset)
     .blog
+      margin-top: 30px
+      padding-bottom: 30px
+      border-bottom: 1px rgba(black, 0.1) solid
       h3
         font-family: "Lato"
         font-weight: 700
@@ -50,7 +92,6 @@
     .facebook
       margin-top: 30px
       padding-bottom: 30px
-      border-bottom: 1px rgba(black, 0.1) solid
       h3
         font-family: "Lato"
         font-weight: 700
@@ -62,6 +103,7 @@
         padding-bottom:  25px
 
     .twitter
+      display: inline-block
       margin-top: 30px
       padding-bottom: 30px
       border-bottom: 1px rgba(black, 0.1) solid
@@ -80,40 +122,6 @@
         color: $ultra_gryn
         line-height:  133%
         margin-bottom: 20px
-
-    .newsletter
-      float: left
-      padding-bottom: 30px
-      margin-top: 30px
-      border-bottom: 1px rgba(black, 0.1) solid
-      h3
-        font-family: "Lato"
-        font-weight: 700
-        font-size: 18px
-        background: url($images_path+'newsletter_icon18x15.png') left 2px no-repeat
-        text-indent: 28px
-        color: black
-        padding-bottom:  25px
-      form
-        input[type='text']
-          width:  183px
-          height: 27px
-          border: 1px $minimal_gryn solid
-          text-align: center
-          +border-radius(8px)
-        input[type="submit"]
-          +border-radius(8px)
-          background: $pink
-          color: white
-          border: none
-          margin-top: 10px
-          padding: 3px 15px
-          float:  right
-          margin-right:  12px
-          font-family: "Lato"
-          font-size: 16px
-          &:active
-            +box-shadow(rgba(black, 0.5) 0 0 5px inset)
 
     .faq
       display: block

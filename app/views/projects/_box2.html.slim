@@ -1,7 +1,7 @@
 .project[itemscope itemtype="http://schema.org/CreativeWork" class=(custom_class if defined?(custom_class))]
   meta[itemprop="dateCreated" content=project.created_at.to_date]
   .box
-    p.black_box= project.country
+    p.black_box style="margin-top: 148px"= project.country
     .cover
       = link_to project, target: ( defined?(embed_link) ? '__blank' : '' ) do
         = image_tag project.display_image, itemprop: 'image'

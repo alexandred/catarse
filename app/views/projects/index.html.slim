@@ -58,57 +58,58 @@
           hr
           = link_to t('main.links.recents'), explore_path(anchor: :recent)
     .sidebar
-      erb:
-        <div class="content" style="padding-top:0 !important;">
+      .content style="padding-top:0 !important"
+        .blog
+          h3= t('main.social.blog')
+        .newsletter
+          h3= t('main.social.newsletter')
+          = form_tag "#{::Configuration[:mailchimp_url]}", id: 'mailee-form', method: 'post' do
+            = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
+            = submit_tag "#{t('newsletter_subscribe')}"
+        erb:
           <div class="twitter">
             <h3><%= t('main.social.twitter') %></h3>
-            <a class="twitter-timeline" data-dnt="true" data-widget-id="360799322792673280" height="330" href="https://twitter.com/Neighborly"></a>
+            <a class="twitter-timeline" data-dnt="true" data-widget-id="433718848198430720" height="330" href="https://twitter.com/lillahorg"></a>
           </div>
           
           <div class="facebook">
             <h3><%= t('main.social.facebook') %></h3>
-            <div class="fb-like-box" data-header="false" data-height="300" data-href="http://www.facebook.com/NEIGHBORdotLY" data-show-border="false" data-show-faces="true" data-stream="false" data-width="198"></div>
+            <div class="fb-like-box" data-header="false" data-height="300" data-href="https://www.facebook.com/lillah.org" data-show-border="false" data-show-faces="true" data-stream="false" data-width="198"></div>
           </div>
-          
-          <div class="blog">
-            <h3><%= t('main.social.blog') %></h3>
-          </div>
-          
-        </div>
     .clearfix
 
     erb:
       <div class="home-discover-friends">
           <div class="container_12">
               <div class="row-friends">
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-1.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-2.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-3.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-4.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-5.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-6.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-7.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-8.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-1.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-2.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-3.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-4.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-5.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-6.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-7.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-8.jpg' %>" alt="$USER_NAME"></a>
                   <div class="clear"></div>
               </div>
               <div class="row-friends row-connect-fb">
-                  <a class="thumb-avatar t-first" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-17.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar t-first" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-17.jpg' %>" alt="$USER_NAME"></a>
                   <div class="connect-fb">
                       <p class="rs description">Discover great projects with your friends!</p>
-                      <a href="#" class="btn btn-fb">Connect With Facebook</a>
+                      <a target="_blank" href="https://www.facebook.com/lillah.org" class="btn btn-fb">Connect With Facebook</a>
                   </div>
-                  <a class="thumb-avatar t-last" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-1.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar t-last" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-1.jpg' %>" alt="$USER_NAME"></a>
                   <div class="clear"></div>
               </div>
               <div class="row-friends">
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-9.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-10.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-11.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-12.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-13.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-14.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-15.jpg' %>" alt="$USER_NAME"></a>
-                  <a class="thumb-avatar" href="#"><img src="<%= image_path 'facebook_panel/th-119x119-16.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-9.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-10.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-11.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-12.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-13.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-14.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-15.jpg' %>" alt="$USER_NAME"></a>
+                  <a class="thumb-avatar" target="_blank" href="https://www.facebook.com/lillah.org"><img src="<%= image_path 'facebook_panel/th-119x119-16.jpg' %>" alt="$USER_NAME"></a>
                   <div class="clear"></div>
               </div>
           </div>

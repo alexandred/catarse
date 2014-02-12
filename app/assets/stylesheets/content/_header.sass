@@ -10,6 +10,7 @@
     background: #3e4b51
     padding: 9px 0
     height: 20px
+    margin-bottom: 15px
     a 
       text-decoration: none
     .container_12
@@ -82,6 +83,7 @@
       border: none
       background: url($images_path+"logo.png") left top no-repeat
       text-indent: -9999em
+      margin-bottom: 15px
     nav
       a
         display: inline-block
@@ -113,13 +115,15 @@
             text-decoration: underline
           &.explore
             background: url($images_path+"explore_icon23x15.png") left 3px no-repeat
-            text-indent: 30px
+            text-indent: 29px
+            text-transform: capitalize
             margin-right: 20px
             .dropdown_arrow 
               margin: 0 0 4px 5px
           &.submit_project
             background: url($images_path+"submit_project_icon25x13.png") left 4px no-repeat
-            text-indent: 30px
+            text-indent: 29px
+            text-transform: capitalize
             margin-right: 0
             .dropdown_arrow 
               margin: 0 0 4px 5px
@@ -128,7 +132,7 @@
         margin-top: 20px
         a
           font-family: "Lato"
-          text-transform: lowercase
+          text-transform: capitalize
           color: $ultra_gryn
           font-size: 14px
           margin-right: 12px

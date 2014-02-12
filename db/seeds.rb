@@ -59,9 +59,9 @@ end
   email_projects: 'projetos@catarse.me',
   email_system: 'system@catarse.me',
   email_no_reply: 'no-reply@catarse.me',
-  facebook_url: "http://facebook.com/catarse.me",
-  facebook_app_id: '173747042661491',
-  twitter_username: "catarse",
+  facebook_url: "https://www.facebook.com/lillah.org",
+  facebook_app_id: '591228010959262',
+  twitter_username: "lillahorg",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   platform_fee: '0.13',
   paypal_email: 'daoud@daoud.com',
@@ -86,7 +86,7 @@ Channel.find_or_create_by_name!(
 
 OauthProvider.find_or_create_by_name!(
   name: 'facebook',
-  key: 'your_facebook_app_key',
-  secret: 'your_facebook_app_secret',
+  key: '591228010959262',
+  secret: 'f95526d544f732d509316466be403934',
   path: 'facebook'
 )
