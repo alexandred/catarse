@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 # For heroku
 ruby '1.9.3'
 
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 gem 'rails',    '3.2.13'
 gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
@@ -95,7 +100,7 @@ group :production do
 
   # Workers, forks and all that jazz
   gem 'unicorn'
-
+  gem 'thin'
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
   gem 'heroku-deflater', '>= 0.4.1'
