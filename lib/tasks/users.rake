@@ -56,7 +56,6 @@ namespace :users do
     end
 
     u.update_attribute :admin, true
-    u.update_attributed :subscribed, true
     puts  "#{u.name}: #{u.email} is now an administrator and is subscribed!"
     puts 'Done!'
     puts

@@ -50,9 +50,9 @@
 end
 
 {
-  company_name: 'Catarse',
-  host: 'catarse.me',
-  base_url: "http://catarse-charity-demo.herokuapp.com",
+  company_name: 'Lillah',
+  host: 'lillah.org',
+  base_url: "http://lillah.org",
   blog_url: "http://blog.catarse.me",
   email_contact: 'contato@catarse.me',
   email_payments: 'financeiro@catarse.me',
@@ -67,7 +67,7 @@ end
   paypal_email: 'daoud@daoud.com',
   subscription_fee: '$9',
   support_forum: 'http://suporte.catarse.me/',
-  base_domain: 'catarse-charity-demo.herokuapp.com',
+  base_domain: 'lillah.org',
   uservoice_secret_gadget: 'change_this'
 }.each do |name, value|
    conf = Configuration.find_or_initialize_by_name name
