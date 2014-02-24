@@ -20,9 +20,9 @@ en:
     leave_comment: "Leave a comment with this donation"
     donate: "Donate"
     anonymous_text:
-      bold: Are you sure you want your donation to be anonymous?
-      regular: Leaving your donation public gives you a better reputation.
-      description: Besides that, the amount you donated will never be disclosed to any one but the project owner (who will always know who you are), even if your donation is public.
+      bold: Are you sure you want to donate anonymously?
+      regular:  
+      description: If you choose to donate anonymously, your name will be displayed as "Anonymous" to the public viewing the list of donations on the fundraising page. 
     sidebar:
       header: I want to donate, what’s next?
       question1: How do I make a donation?
@@ -116,18 +116,18 @@ en:
       funded_projects: "Successful projects"
       active_projects: "Live projects"
     links:
-      about: "About us"
+      about: "About Us"
       how_works: "How it works"
-      faq: FAQ/Help
+      faq: FAQs
       terms: "Terms & Conditions"
       policy: "Privacy Policy"
-      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
-      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy'
+      terms_link: 'http://www.lillah.org/blog/terms-and-conditions'
+      policy_link: 'http://www.lillah.org/blog/privacy-policy'
       contact: Contact Us
-      charities: "Explore charities"
-      newcharity: "Submit your charity"
-      projects: "Explore projects"
-      newproject: "Submit your project"
+      charities: "Explore Charities"
+      newcharity: "Submit Your Charity"
+      projects: "Explore Projects"
+      newproject: "Submit Your project"
   main:
     links:
       selected: "See more recommended projects"
@@ -327,8 +327,8 @@ en:
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
-      failure: "Could not authorise you from %{kind} because \"%{reason}\"."
-      success: "Successfully authorised from %{kind} account."
+      failure: "Could not authorise your %{kind} account due to the following: \"%{reason}\"."
+      success: "Successfully authorised your %{kind} account."
     passwords:
       send_instructions: "You will shortly receive an e-mail with instructions on how to reset your password."
       send_paranoid_instructions: "If your e-mail already exists, you will receive an e-mail with instructions on how to recover your password."
@@ -1002,7 +1002,7 @@ en:
       title_one: "Submit"
       step_one: "Help us and the public to understand your project by explaining exactly what you want to achieve with your project. Remember to be honest and concise when explaining why you need funding and what you aim to do with the finances. Ensure your project is appealing and your fundraising target is achievable. "
       title_two: "Review"
-      step_two: "After we receive your project, it will be reviewed by our team. The objective of this is to remove any projects that are inappropriate and go against guidelines. We will also scan projects to ensure they are error-free and presentable. Remember, we want your project to be as successful as much as you do. "
+      step_two: "After we receive your project, it will be reviewed by our team. The objective of this is to remove any projects that are inappropriate and go against guidelines. We will also scan projects to ensure they are error-free and presentable.<br><br>Remember, we want your project to be as successful as much as you do. "
       title_three: "Marketing"
       step_three: "Once your project has been approved, you’ll need to put a project marketing strategy in place in order to engage as many people as possible. Social media will be an excellent way to raise awareness about your project, so make sure details of your campaign are well communicated online."
       title_four: "Launch"
@@ -1015,7 +1015,7 @@ en:
       video: "Make a video"
       more_questions: "Tell me more about Lillah.org..."
       title_magic: "The Lillah.org Difference"
-      magic: "We give the Muslim community the platform to raise funds for their projects and charities. It is a quick and easy way of raising money without having to borrow from banks and other sources.With Lillah.org, it couldn’t be easier to raise money for or to donate to a project or charity. Lots of people, each donating a small amount, can contribute to something big."
+      magic: "We give the Muslim community the platform to raise funds for their projects and charities. It is a quick and easy way of raising money without having to borrow from banks and other sources.<br><br>With Lillah.org, it couldn’t be easier to raise money for or to donate to a project or charity. Lots of people, each donating a small amount, can contribute to something big."
       title_money: "Hard Work & Perseverance"
       money: " The more effort you put into your campaign, the better you can expect your results to be. In order to maximise your project’s potential, you will to need to increase awareness among your own network of contacts and by reaching out to others.Remember, we want your campaign to be as successful as you do but this ultimately comes down to you and how effectively you advertise it."
       title_work: "NA"
@@ -1024,9 +1024,9 @@ en:
       costs: "NA"
       why: "Pricing"
       intro: " At Lillah.org, we give you two options when initiating a campaign:"
-      why_one: "The “Free” plan - you will not be required to make any monthly payments but we will collect 4.4% of each donation."
+      why_one: "The “Free” plan - you will not be required to make any monthly payments but we will collect 5% of each donation."
       why_two: "The “Paid” plan - you will be required to make a monthly payment of £10, but we won’t deduct a % on any donations made."
-      why_three: "Please bear in mind that PayPal, the payment gateway that we utilise, charge a small fee for transactions – see the PayPal website for more details."
+      why_three: "PayPal also charge a payment processing fee of 3.4% + £0.20p* for each transaction. *This varies according to your country. See the <a href="http://www.paypal.co.uk">PayPal</a> website for more details."
     guidelines_charity:
       accept: "I have read and understood how Lillah.org works."
       explore_curious: "Just looking around!"
@@ -1040,7 +1040,7 @@ en:
       title_one: "Submit"
       step_one: "Help us and the public to understand your charity by explaining exactly what your charity does and what it stands for. Remember to be honest and concise when explaining why your charity needs funding and what it does with the finances. "
       title_two: "Review"
-      step_two: "After we receive your charity, it will be reviewed by our team. The objective of this is to remove any charities that may go against guidelines. We will also scan charity submissions to ensure they are error-free and presentable. Remember, we want your charity to be as successful as much as you do. "
+      step_two: "After we receive your charity, it will be reviewed by our team. The objective of this is to remove any charities that may go against guidelines. We will also scan charity submissions to ensure they are error-free and presentable.<br><br>Remember, we want your charity to be as successful as much as you do. "
       title_three: "Marketing"
       step_three: "Once your charity has been approved, you’ll need to put a marketing strategy in place in order to engage as many people as possible. Social media will be an excellent way to raise awareness about your charity, so make sure details of your campaign are well communicated online."
       title_four: "Launch"
@@ -1053,7 +1053,7 @@ en:
       video: "Make a video"
       more_questions: "Tell me more about Lillah.org..."
       title_magic: "The Lillah.org Difference"
-      magic: "We give the Muslim community the platform to raise funds for their projects and charities. It is a quick and easy way of raising money without having to borrow from banks and other sources. With Lillah.org, it couldn’t be easier to raise money for or to donate to a project or charity. Lots of people, each donating a small amount, can contribute to something big."
+      magic: "We give the Muslim community the platform to raise funds for their projects and charities. It is a quick and easy way of raising money without having to borrow from banks and other sources.<br><br>With Lillah.org, it couldn’t be easier to raise money for or to donate to a project or charity. Lots of people, each donating a small amount, can contribute to something big."
       title_money: "Hard Work & Perseverance"
       money: " The more effort you put into your campaign, the better you can expect your results to be. In order to maximise your project’s potential, you will to need to increase awareness among your own network of contacts and by reaching out to others. Remember, we want your campaign to be as successful as you do but this ultimately comes down to you and how effectively you advertise it."
       title_work: "NA"
@@ -1062,9 +1062,9 @@ en:
       costs: "NA"
       why: "Pricing"
       intro: " At Lillah.org, we give you two options when initiating a campaign:"
-      why_one: "The “Free” plan - you will not be required to make any monthly payments but we will collect 4.4% of each donation."
+      why_one: "The “Free” plan - you will not be required to make any monthly payments but we will collect 5% of each donation."
       why_two: "The “Paid” plan - you will be required to make a monthly payment of £10, but we won’t deduct a % on any donations made."
-      why_three: "Please bear in mind that PayPal, the payment gateway that we utilise, charge a small fee for transactions – see the PayPal website for more details."
+      why_three: "PayPal also charge a payment processing fee of 3.4% + £0.20p* for each transaction. *This varies according to your country. See the <a href="http://www.paypal.co.uk">PayPal</a> website for more details."
     guidelines_tips:
       title: "Almost there!"
       subtitle: "Before submitting your project, it's good to think over a few important points."
