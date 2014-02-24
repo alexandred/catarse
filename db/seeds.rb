@@ -54,6 +54,8 @@ end
   platform_fee: '0.05',
   paypal_email: 'admin@lillah.org',
   subscription_fee: '£10',
+  subscription_ID: '9A4T2AZ8PKG6G',
+  unsubscribe_alias: 'SGGGX43FAKKXN',
   support_forum: 'http://lillah.org/blog/forum',
   base_domain: 'lillah.org',
   uservoice_secret_gadget: 'change_this'

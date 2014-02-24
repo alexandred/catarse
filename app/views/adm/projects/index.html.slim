@@ -27,6 +27,12 @@ javascript:
         = label_tag :subscription_fee, t('.subscription_fee')
         = text_field_tag :subscription_fee, ::Configuration[:subscription_fee]
       .input
+        = label_tag :subscription_ID, t('.subscription_ID')
+        = text_field_tag :subscription_ID, ::Configuration[:subscription_ID]
+      .input
+        = label_tag :unsubscribe_alias, t('.unsubscribe_alias')
+        = text_field_tag :unsubscribe_alias, ::Configuration[:unsubscribe_alias]
+      .input
       = submit_tag t('.submit')
     .filters
       .bootstrap-form
