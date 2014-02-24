@@ -1026,7 +1026,7 @@ en:
       intro: " At Lillah.org, we give you two options when initiating a campaign:"
       why_one: "The “Free” plan - you will not be required to make any monthly payments but we will collect 5% of each donation."
       why_two: "The “Paid” plan - you will be required to make a monthly payment of £10, but we won’t deduct a % on any donations made."
-      why_three: "PayPal also charge a payment processing fee of 3.4% + £0.20p* for each transaction. *This varies according to your country. See the <a href="http://www.paypal.co.uk">PayPal</a> website for more details."
+      why_three: "PayPal also charge a payment processing fee of 3.4% + £0.20p* for each transaction. *This varies according to your country. See the <a href='http://www.paypal.co.uk'>PayPal</a> website for more details."
     guidelines_charity:
       accept: "I have read and understood how Lillah.org works."
       explore_curious: "Just looking around!"
@@ -1064,7 +1064,7 @@ en:
       intro: " At Lillah.org, we give you two options when initiating a campaign:"
       why_one: "The “Free” plan - you will not be required to make any monthly payments but we will collect 5% of each donation."
       why_two: "The “Paid” plan - you will be required to make a monthly payment of £10, but we won’t deduct a % on any donations made."
-      why_three: "PayPal also charge a payment processing fee of 3.4% + £0.20p* for each transaction. *This varies according to your country. See the <a href="http://www.paypal.co.uk">PayPal</a> website for more details."
+      why_three: "PayPal also charge a payment processing fee of 3.4% + £0.20p* for each transaction. *This varies according to your country. See the <a href='http://www.paypal.co.uk'>PayPal</a> website for more details."
     guidelines_tips:
       title: "Almost there!"
       subtitle: "Before submitting your project, it's good to think over a few important points."
