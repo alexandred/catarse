@@ -36,6 +36,14 @@ class Adm::ProjectsController < Adm::BaseController
    conf.update_attributes({
      value: params[:subscription_fee]
    })
+  conf = ::Configuration.find_or_initialize_by_name :subscription_ID
+   conf.update_attributes({
+     value: params[:subscription_ID]
+   })
+  conf = ::Configuration.find_or_initialize_by_name :unsubscribe_alias
+   conf.update_attributes({
+     value: params[:unsubscribe_alias]
+   })
     redirect_to adm_projects_path
   end
   def collection
