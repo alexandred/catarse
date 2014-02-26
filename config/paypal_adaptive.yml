@@ -15,9 +15,9 @@ test:
   api_cert_file: "/path/to_cert"
 
 production:
-  environment: "production"
-  username: "my_production_username"
-  password: "my_production_password"
-  signature: "my_production_signature"
-  application_id: "my_production_app_id"
-  api_cert_file: "/path/to_cert"
+  environment: "sandbox"
+  username: "admin-facilitator_api1.lillah.org"
+  password: "1393360947"
+  signature: "AZL1.AFnv5MXHxNvmsE84ncx0FWMAguaGX3BZHLqq8m.bQlJMD7x1XCf"
+  application_id: "APP-80W284485P519543T"
+  api_cert_file:

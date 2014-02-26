@@ -1,9 +1,9 @@
 class Donator < ActiveRecord::Base
   schema_associations
 include Rails.application.routes.url_helpers
-Rails.application.routes.default_url_options = { :host => 'catarse-charity-demo.herokuapp.com' } #Configuration[:base_domain] || request.domain }
-  belongs_to :users
-  belongs_to :projects
+Rails.application.routes.default_url_options = { :host => 'lillah.org' } #Configuration[:base_domain] || request.domain }
+  belongs_to :usersa
+  belongs_to :projecats
   attr_accessible :amount, :comment, :status, :anonymous
   validates_presence_of :amount, :project_id
   validates_numericality_of :amount, greater_than: 0.00

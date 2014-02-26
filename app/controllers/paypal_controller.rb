@@ -87,7 +87,7 @@ class PaypalController < ApplicationController
     request.params.each_pair {|key, value| query = query + '&' + key + '=' + 
       value if key != 'register/pay_pal_ipn.html/pay_pal_ipn' }
     paypal_url = 'www.paypal.com'
-    if ENV['RAILS_ENV'] == 'development'
+    if ENV['RAILS_ENV'] == 'production'
       paypal_url = 'www.sandbox.paypal.com'
     end
     # Verify all this with paypal
@@ -128,7 +128,7 @@ class PaypalController < ApplicationController
     params = request.params
     parametres = 'cmd=_notify-validate&' + env['rack.request.form_vars']
     paypal_url = 'www.paypal.com'
-    if ENV['RAILS_ENV'] == 'development'
+    if ENV['RAILS_ENV'] == 'production'
     paypal_url = 'www.sandbox.paypal.com'
     end
     # Verify all this with paypal
@@ -153,7 +153,7 @@ class PaypalController < ApplicationController
     params = request.params
     parametres = 'cmd=_notify-validate&' + env['rack.request.form_vars']
     paypal_url = 'www.paypal.com'
-    if ENV['RAILS_ENV'] == 'development'
+    if ENV['RAILS_ENV'] == 'production'
     paypal_url = 'www.sandbox.paypal.com'
     end
     # Verify all this with paypal

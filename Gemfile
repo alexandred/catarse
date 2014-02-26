@@ -30,10 +30,10 @@ gem 'schema_associations'
 gem 'chartkick'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git'
+#gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '388b7bc'
+#gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '388b7bc'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
 # Decorators
@@ -77,7 +77,7 @@ gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '>= 1.1.1'
 gem 'enumerate_it'
-gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
+#gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
 
 # Translations
 gem 'http_accept_language'
@@ -138,11 +138,11 @@ group :test do
   gem 'coveralls', require: false
 end
 
+gem "compass-rails"
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem "compass-rails"
   gem 'uglifier'
   gem 'compass-960-plugin'
 end
