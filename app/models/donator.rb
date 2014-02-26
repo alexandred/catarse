@@ -12,6 +12,7 @@ Rails.application.routes.default_url_options = { :host => 'lillah.org' } #Config
     @merchant = ::Configuration[:paypal_email]
     amount = donator.amount
     pay_request = PaypalAdaptive::Request.new
+=begin
     data = {
     "returnUrl" => return_project_donators_url(project.id) + "?project_id=#{project.id}&amt=#{amount}", 
     "requestEnvelope" => {"errorLanguage" => "en_US"},
@@ -24,7 +25,7 @@ Rails.application.routes.default_url_options = { :host => 'lillah.org' } #Config
     data["feesPayer"] = "PRIMARYRECEIVER" if !project.subscribed
     pay_response = pay_request.pay(data)
     return pay_response
-
+=end
    end
 
    def receivers(project,amount)
