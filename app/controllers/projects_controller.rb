@@ -54,6 +54,8 @@ class ProjectsController < ApplicationController
     create!(notice: t('projects.create.success')) do |success, failure|
       success.html do
         if params[:project][:plan] == 'paid'
+          @project.susbcribed = false
+          @project.save(validate: false)
           return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=#{Configuration[:subscription_ID]}&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
         else
           return redirect_to project_by_slug_path(@project.permalink)
