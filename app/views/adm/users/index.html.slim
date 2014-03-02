@@ -69,10 +69,11 @@
                   td= user.user_total ? user.user_total.sum : 0
                   td= user.credits
                   td= user.provider
-                  td
                   - if !user.admin?
-                    = link_to adm_user_path(user), method: :delete, data: {confirm: t('adm.confirm_dialog')} do
+                    td= link_to adm_user_path(user), method: :delete, data: {confirm: t('adm.confirm_dialog')} do
                                 i.icon-trash
+                  - else
+                    td
       = paginate @users
 
   .clearfix
