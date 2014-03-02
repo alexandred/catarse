@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
+
+  before_destroy :delete_all_children
   begin
     # NOTE: Sync normal users on mailchimp
     sync_with_mailchimp subscribe_data: ->(user) {
@@ -75,6 +77,7 @@ class User < ActiveRecord::Base
   has_many :oauth_providers, through: :authorizations
   has_many :donators
   has_many :donations
+  has_many :notifications, dependent: :nullify
   has_one :user_total
 
 
@@ -305,5 +308,17 @@ class User < ActiveRecord::Base
 
   def password_required?
     is_devise? && (!persisted? || !password.nil? || !password_confirmation.nil?)
+  end
+
+  def delete_all_children
+    Notification.where(user_id: id).each do |notification|
+      notification.destroy
+    end
+    Project.where(user_id: id).each do |project|
+      project.destroy
+    end
+    Charity.where(user_id: id).each do |charity|
+      charity.destroy
+    end
   end
 end

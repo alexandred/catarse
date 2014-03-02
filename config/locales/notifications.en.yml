@@ -1,5 +1,14 @@
 en:
   notifications:
+    charity_visible:
+      subject: "Charity Online"
+      header: "Charity Online"
+    charity_received:
+      subject: "Charity Received"
+      header: "Charity Received"
+    charity_rejected:
+      subject: "Charity Rejected"
+      header: "Charity Rejected"   
     backer_canceled_after_confirmed:
       subject: "Backer canceled after confirmed"
       header: "Backer canceled after confirmed"

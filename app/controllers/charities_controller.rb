@@ -56,7 +56,7 @@ class CharitiesController < ApplicationController
 
     create!(notice: t('charities.create.success')) do |success, failure|
       success.html do
-        @charity.susbcribed = false
+        @charity.subscribed = false
         @charity.save(validate: false)
         if params[:charity][:plan] == 'paid'
           return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8HDK7F2UPF38W&custom=Charity<#{@charity.id}>&notify_url=#{paypal_url}"
@@ -65,7 +65,7 @@ class CharitiesController < ApplicationController
         end
       end
       failure.html do
-        flash[:error] = t('flash.required_fields')
+        flash.now[:error] = t('flash.required_fields')
         render action: 'new'
       end
     end

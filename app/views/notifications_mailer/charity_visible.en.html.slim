@@ -1,5 +1,6 @@
-- project = @notification.charity
-|Olá, #{project.user.display_name}.
+- project = @notification.mail_params[:charity]
+- user = @notification.user
+|Olá, #{user.display_name}.
 br
 br
 |Seu projeto acabou de entrar no ar e já está apto a começar a receber os apoios, agora é a hora! Agora é começar a fazer a barrinha verde subir :D

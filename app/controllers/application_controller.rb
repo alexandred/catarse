@@ -103,7 +103,7 @@ end
   end
 
   def render_404
-    render file: "#{Rails.root}/public/404.html", status: 404, layout: false
+    render file: "errors/404.html.slim", status: 404, layout: 'layouts/catarse_bootstrap'
   end
 
   def force_http

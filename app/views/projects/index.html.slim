@@ -68,10 +68,10 @@
                   = link_to post.url, target: '__blank', class: 'post-title' do
                     /= image_tag("catarse/post_title_image.png")
                     = truncate(post.title, length: 80)
-                p.post-author= "#{t('projects.box.by')} #{post.author} #{t('projects.box.when')} #{l(post.published.to_date)}"
-                = link_to post.url, target: '__blank', class: 'post-resume' do
+                p.post-author= "#{t('projects.box.when')} #{l(post.published.to_date)}"
+                = link_to post.url, target: '__blank', class: 'resume' do
                   = truncate(post.summary, length: 130).html_safe
-        .nawsletter
+        .newsletter
           h3= t('main.social.newsletter')
           = form_tag "#{::Configuration[:mailchimp_url]}", id: 'mailee-form', method: 'post' do
             = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'

@@ -69,7 +69,7 @@ sass:
               .important= t('.permalink_important').html_safe
           = form.label :permalink, "#{t('activerecord.attributes.charity.permalink')} *"
           .input-prepend.permalink
-            span.add-on= "#{::Configuration[:base_url]}/"
+            span.add-on= "#{::Configuration[:base_url]}/charities/"
             = form.text_field :permalink, class: "permalink #{'error' if @charity.errors[:permalink].present?}", style: "width: auto;", required: true
           - if params[:action] != 'new'
             .inline-hints= t('.permalink_important').html_safe
@@ -100,6 +100,7 @@ sass:
             .important= t('.thumbnail_important').html_safe
         = form.label :uploaded_image, "#{t('formtastic.labels.charity.uploaded_image')} *"
         = form.file_field :uploaded_image, class: "#{'error' if @charity.errors[:uploaded_image].present?}"
+        = form.hidden_field :uploaded_image_cache
         - if @charity.uploaded_image.present?
           .thumbnail style="display: block; width: 50%; margin-left: 175px"
             = image_tag(@charity.uploaded_image.project_thumb.url, size: '220x172')
@@ -286,7 +287,7 @@ sass:
         fieldset
           .form-actions.bootstrap-twitter style="background-color: transparent; border-top: none;"
             .send
-              - if params[:action] == "new"
+              - if params[:action] == "new" || !@charity.errors.empty?
                 = submit_tag t('formtastic.labels.charity.submit'), id: 'charity_submit', class: 'btn btn_send', style: "float: none; padding: 0px !important; margin-top: 0px !important; margin-bottom: 9px !important"
               - else
                 = submit_tag t('formtastic.labels.charity.update'), id: 'charity_submit', class: 'btn btn_send', style: "float: right"

@@ -1,0 +1,13 @@
+.bootstrap-twitter
+  .row
+    .large-2.large-centered.columns
+      .text-center.login-logo
+        = link_to root_path do
+          = image_tag 'catarse_bootstrap/logo_icon_catarse.png'
+  .row
+    .large-5.large-centered.columns
+      .box.animated.fadeIn
+        h2.text-center= t('not_found.title')
+        hr
+        .large-11.columns.large-centered
+          p= t('not_found.text')

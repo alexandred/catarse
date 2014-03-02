@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource new: [ :set_email ], except: [ :projects ]
   inherit_resources
-  actions :show, :update, :unsubscribe_update, :request_refund, :set_email, :update_email, :uservoice_gadget
+  actions :show, :update, :unsubscribe_update, :request_refund, :set_email, :update_email, :uservoice_gadget, :destroy
   respond_to :json, only: [:backs, :projects, :request_refund]
 
   def uservoice_gadget

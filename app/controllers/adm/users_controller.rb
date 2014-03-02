@@ -6,6 +6,12 @@ class Adm::UsersController < Adm::BaseController
 
   has_scope :by_id, :by_name, :by_email, :by_payer_email, :by_key, :has_credits, :has_credits_difference, only: :index
 
+  def destroy
+    @user = User.find params[:id]
+    @user.destroy
+    redirect_to adm_users_path
+  end
+
   protected
   def set_totals
     totals = end_of_association_chain.backer_totals

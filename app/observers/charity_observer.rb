@@ -18,14 +18,14 @@ class CharityObserver < ActiveRecord::Observer
   def notify_owner_that_charity_is_rejected(charity)
     Notification.create_notification_once(:charity_rejected,
       charity.user,
-      {charity_id: charity.id},
+      {project_id: charity.id},
       charity: charity)
   end
 
   def notify_owner_that_charity_is_online(charity)
     Notification.create_notification_once(:charity_visible,
       charity.user,
-      {charity_id: charity.id},
+      {project_id: charity.id},
       charity: charity)
   end
 
