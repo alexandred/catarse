@@ -40,7 +40,7 @@ end
 {
   company_name: 'Lillah',
   host: 'lillah.org',
-  base_url: "http://lillah.org/blog",
+  base_url: "http://lillah.org",
   blog_url: "http://lillah.org/blog/blog",
   email_contact: 'admin@lillah.org',
   email_payments: 'admin@lillah.org',
@@ -56,7 +56,7 @@ end
   subscription_fee: '£10',
   subscription_ID: '9A4T2AZ8PKG6G',
   unsubscribe_alias: 'SGGGX43FAKKXN',
-  support_forum: 'http://lillah.org/blog/forum',
+  support_forum: 'http://lillah.org/blog',
   base_domain: 'lillah.org',
   uservoice_secret_gadget: 'change_this'
 }.each do |name, value|
