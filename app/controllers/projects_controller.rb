@@ -72,8 +72,7 @@ class ProjectsController < ApplicationController
     update! do |success, failure|
       success.html do
         if params[:project][:plan] == "paid" and !@project.subscribed
-          id = Configuration[:subscription_ID].to_s
-          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=#{id}&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XXX&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
         elsif params[:project][:plan] == "free" and @project.subscribed
           return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=#{Configuration[:unsubscribe_alias]}"
         else
