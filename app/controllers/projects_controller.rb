@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
         if params[:project][:plan] == 'paid'
           @project.subscribed = false
           @project.save(validate: false)
-          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=#{Configuration[:subscription_ID]}&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=#{::Configuration[:subscription_ID]}&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
         else
           return redirect_to project_by_slug_path(@project.permalink)
         end
@@ -72,10 +72,9 @@ class ProjectsController < ApplicationController
     update! do |success, failure|
       success.html do
         if params[:project][:plan] == "paid" and !@project.subscribed
-          raise Configuration[:subscription_ID]
-          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=#{Configuration[:subscription_ID]}&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=#{::Configuration[:subscription_ID]}&custom=Project<#{@project.id}>&notify_url=#{paypal_url}"
         elsif params[:project][:plan] == "free" and @project.subscribed
-          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=#{Configuration[:unsubscribe_alias]}"
+          return redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=#{::Configuration[:unsubscribe_alias]}"
         else
           return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit')
         end
