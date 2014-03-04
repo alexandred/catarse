@@ -40,8 +40,8 @@ end
 {
   company_name: 'Lillah',
   host: 'lillah.org',
-  base_url: "http://lillah.org",
-  blog_url: "http://lillah.org/blog",
+  base_url: "http://lillah.org/blog",
+  blog_url: "http://lillah.org/blog/blog",
   email_contact: 'admin@lillah.org',
   email_payments: 'admin@lillah.org',
   email_projects: 'admin@lillah.org',

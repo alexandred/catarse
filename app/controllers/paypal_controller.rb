@@ -20,7 +20,7 @@ class PaypalController < ApplicationController
   # This will be called if a subscription expires
   def subscription_expired(custom)
     case custom
-      when /(.*)<(.*)>/
+      when /(Charity|Project)<\d+>/
         logger.info("expired_subscription (#{custom})")
         model = $1.constantize.find($2.to_i)
         model.subscribed = false
@@ -31,7 +31,7 @@ class PaypalController < ApplicationController
   # Called if a subscription fails
   def subscription_failed(custom)
     case custom
-      when /(.*)<(.*)>/
+      when /(Charity|Project)<\d+>/
         logger.info("failed_subscription (#{custom})")
         model = $1.constantize.find($2.to_i)
         model.subscribed = false
@@ -42,7 +42,7 @@ class PaypalController < ApplicationController
   # Called each time paypal collects a payment
   def subscription_payment(custom)
     case custom
-      when /(.*)<(.*)>/
+      when /(Charity|Project)<\d+>/
         logger.info("success_subscription (#{custom})")
         model = $1.constantize.find($2.to_i)
         model.subscribed = true
