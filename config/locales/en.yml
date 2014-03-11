@@ -1,4 +1,9 @@
 en:
+  modal:
+    title: "Login?"
+    description: "Do you want to login to donate?"
+    yes: "Yes"
+    no: "No"
   banner:
     button1: "Learn more"
     button2: "Submit your  project"

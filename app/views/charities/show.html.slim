@@ -26,6 +26,21 @@ sass:
     }
   
 #page_content
+  .bootstrap-twitter
+    erb:
+      <div id="myModal" class="modal hide">
+          <div class="modal-header">
+              <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+               <h3><%= t('modal.title') %></h3>
+          </div>
+          <div class="modal-body">
+              <p><%= t('modal.description') %></p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" id="btnYes" class="btn danger"><%= t('modal.yes') %></a>
+            <a href="#" id="btnNo" aria-hidden="true" class="btn secondary"><%= t('modal.no') %></a>
+          </div>
+      </div>
   .container
     - if !@charity.online?
       = render "projects/draft_warning"
@@ -136,22 +151,31 @@ sass:
       $('#menu-updates').click(function(){ switchSection(this, '#charity_updates') })
       $('#menu-edit').click(function(){ switchSection(this, '#charity_edit') })
 
-      $("#pledge").click(function(){
-        if(#{current_user ? true : false}) {
-          return true;
-        } else {
-          var r=confirm("Would you like to sign in to donate?")
-          if (r==true)
-            {
-            window.location.href="#{new_charity_donation_path(@charity)}" + "?redirect=true"
-            return false;
-            }
-          else
-            {
-            return true;
-            }
-          }  
+      $('#myModal').on('show', function() {
+          var id = $(this).data('id'),
+              removeBtn = $(this).find('.danger');
+      })
+
+      $('#pledge').on('click', function(e) {
+          if(#{current_user ? true : false}) {
+            return true
+          } else {
+          e.preventDefault();
+          $('#myModal').modal('show');
+          }
       });
+
+      $('#btnYes').click(function() {
+          // handle deletion here
+          window.location.href= "#{new_charity_donation_path(@charity)}" + "?redirect=true"
+          $('#myModal').modal('hide');
+      });
+      $('#btnNo').click(function() {
+          // handle deletion here
+          window.location.href= "#{new_charity_donation_path(@charity)}" + "?redirect=false"
+          $('#myModal').modal('hide');
+      });
+
       $('#project_warning .alert-warning #toggle_warning').click(function() {
         $('#project_warning_text').slideToggle(1000);
         return false;
