@@ -1,5 +1,5 @@
 class BackerObserver < ActiveRecord::Observer
-  observe :donator, :donation
+  observe :backer
 
   def after_create(backer)
     #backer.define_key

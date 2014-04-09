@@ -28,7 +28,7 @@ module Catarse
       g.test_framework :rspec, fixture: false, views: false
     end
     config.active_record.observers = [
-      :backer_observer, :user_observer, :notification_observer, 
+      :donation_observer, :donator_observer, :user_observer, :notification_observer, 
       :update_observer, :project_observer, :payment_notification_observer, :charity_observer
     ]
 

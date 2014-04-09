@@ -1,0 +1,28 @@
+- backer = @notification.backer
+- user = @notification.user
+- project = @notification.project
+|Dear #{user.display_name},
+br
+br
+|Thank you for your kind donation of {backer.amount} to #{link_to(project.name, project_by_slug_url(permalink: project.permalink))}!
+br
+br
+|Please retain this e-mail as a receipt. 
+br
+br
+|We are indeed grateful to you for your enthusiastic support which greatly helps to assist those in our community.
+br
+br
+|If you would like to get in touch with the project owner, please send an e-mail to #{mail_to project.user.email}.
+br
+br
+|Also make sure you support us by liking our  #{link_to 'Facebook', Configuration[:facebook_url]}  page and following us on #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" }. Please also tell your friends and family about Lillah.org!
+br
+br
+|If you have any further questions or require further assistance, please get in touch by replying to this e-mail.
+br
+br
+|Regards,
+br
+br
+|The #{Configuration[:company_name]} Team
