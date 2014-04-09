@@ -1,5 +1,11 @@
 en:
   notifications:
+    confirm_donator:
+      subject: "Your donation has been confirmed!"
+      header: "Your donation has been confirmed!"
+    confirm_donation:
+      subject: "Your donation has been confirmed!"
+      header: "Your donation has been confirmed!"
     charity_visible:
       subject: "Your charity is now online"
       header: "Your charity is now online!"
