@@ -8,7 +8,7 @@ class DonationObserver < ActiveRecord::Observer
       Notification.create_notification_once(:confirm_donation,
         user,
         {donator_id: donation.id},
-        backer: donation,
+        donation: donation,
         project: charity,
         user: user)
   end
