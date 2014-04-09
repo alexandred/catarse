@@ -1,4 +1,4 @@
-class AddCharityNotificationTypes < ActiveRecord::Migration
+class AddDonatorNotificationTypes < ActiveRecord::Migration
   def up
     execute "
     INSERT INTO notification_types (name, created_at, updated_at) VALUES ('confirm_donator', now(), now());
