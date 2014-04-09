@@ -1,6 +1,6 @@
-- donator = @notification.donator
-- user = @notification.user
-- project = @notification.project
+- donator = project
+- user = User.find(project.user_id)
+- project = Project.find(project.project_id)
 |Dear #{user.display_name},
 br
 br
