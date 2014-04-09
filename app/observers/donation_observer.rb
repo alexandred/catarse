@@ -2,13 +2,13 @@ class DonationObserver < ActiveRecord::Observer
   observe :donation
 
   def after_save(donation)
-
+  	user = User.find(donation.user_id)
       Notification.create_notification_once(:confirm_donation,
         user,
         {donation_id: donation.id},
         donation: donation,
         project: donation,
-        user: donation)
+        user: user)
   end
 
 
