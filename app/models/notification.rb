@@ -15,8 +15,6 @@ class Notification < ActiveRecord::Base
       create! user: user,
         project: mail_params[:project],
         backer: mail_params[:backer],
-        donator: mail_params[:donator],
-        donation: mail_params[:donation],
         project_update: mail_params[:update],
         notification_type: nt,
         mail_params: mail_params
