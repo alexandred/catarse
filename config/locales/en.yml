@@ -1,13 +1,13 @@
 en:
   modal:
-    title: "Login?"
-    description: "Do you want to login to donate?"
+    title: "Would you like to login?"
+    description: "You do not need an account with us to donate. However, by registering and logging in, you can take full advantage of what Lillah.org has to offer. Registration is quick and easy."
     yes: "Yes"
     no: "No"
   banner:
     button1: "Learn more"
-    button2: "Submit your  project"
-    button3: "Submit your charity"
+    button2: "Submit project"
+    button3: "Submit charity"
     slide1_title: "Welcome to Lillah.org"
     slide1_description: "The brand new online fundraising platform built exclusively for the global Muslim community."
     slide2_title: "Get started today!"
@@ -26,7 +26,7 @@ en:
     donate: "Donate"
     anonymous_text:
       bold: Are you sure you want to donate anonymously?
-      regular:  
+      regular:   
       description: If you choose to donate anonymously, your name will be displayed as "Anonymous" to the public viewing the list of donations on the fundraising page. 
     sidebar:
       header: I want to donate, what’s next?
@@ -725,7 +725,7 @@ en:
       permalink_important: 'Remember to keep this short and easy to remember.'
       permalink_hint: 'Go simple. Your supporters should be able to remember your project’s URL. Try to avoid using hyphens and underscores.'
       name_important: "A short, memorable title is the best option. Don’t exceed 50 characters."
-      email_important: "You need a PayPal account to receive donations. Enter the e-mail address associated with your PayPal account here. "
+      email_important: "You need a PayPal account to receive donations. Enter the e-mail address associated with your PayPal account here. NOTE: Choose your payment plan carefully before you hit submit."
       online_days_important: "120 days is the maximum"
       about_important: "Tell us about your project. Make sure it is compelling by explaining exactly what you want to achieve. Remember to be honest and concise when explaining why you need funding and what you aim to do with the finances. You may include links, images and videos in the long description to further strengthen your campaign."
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
@@ -804,7 +804,7 @@ en:
       tags_important: " See other projects in your category <a href='%{href}' target='_blank'>here</a>!."
       regnumber_important: "Your charity’s registration number has to be verified before your charity is approved."
       url_important: "Enter your charity’s web address (if applicable)."
-      email_important: "You need a PayPal account to receive donations. Enter the e-mail address associated with your PayPal account here. "
+      email_important: "You need a PayPal account to receive donations. Enter the e-mail address associated with your PayPal account here. NOTE: Choose your payment plan carefully before you hit submit."
       phone_important: "Enter your charity’s telephone number."
       address_important: "Enter your charity’s address."
       town_important: "Enter the town / city in which your charity is located."
@@ -1011,8 +1011,8 @@ en:
       step_two: "After we receive your project, it will be reviewed by our team. The objective of this is to remove any projects that may go against guidelines. We will also scan projects to ensure they are error-free and presentable. Remember, we want your project to be as successful as much as you do. "
       title_three: "Marketing"
       step_three: "Once your project has been approved, you’ll need to put a project marketing strategy in place in order to engage as many people as possible. Social media will be an excellent way to raise awareness about your project, so make sure details of your campaign are well communicated online."
-      title_four: "Launch"
-      step_four: "After you have gone live, keep supporters engaged through regular project updates. Ensuring people remain interested in your project will give your project a greater chance of reaching its fundraising target. "
+      title_four: "Collect"
+      step_four: "After you have gone live, keep supporters engaged through regular project updates. Ensuring people remain interested in your project will give your project a greater chance of reaching its fundraising target. Finances go straight to your PayPal account and can be accessed immediately. "
       title_requirements: "Requirements to submit your project to Catarse"
       creative: "Creative and Finite"
       colective: "Collective Benefits"
@@ -1049,8 +1049,8 @@ en:
       step_two: "After we receive your charity, it will be reviewed by our team. The objective of this is to remove any charities that may go against guidelines. We will also scan charity submissions to ensure they are error-free and presentable. Remember, we want your charity to be as successful as much as you do. "
       title_three: "Marketing"
       step_three: "Once your charity has been approved, you’ll need to put a marketing strategy in place in order to engage as many people as possible. Social media will be an excellent way to raise awareness about your charity, so make sure details of your campaign are well communicated online."
-      title_four: "Launch"
-      step_four: "After your charity is online, keep supporters engaged through regular updates. Ensuring people remain interested in your charity will give your charity a greater chance of raising as much finances as possible."
+      title_four: "Collect"
+      step_four: "After your charity is online, keep supporters engaged through regular updates. Ensuring people remain interested in your charity will give your charity a greater chance of raising as much finances as possible. Finances go straight to your PayPal account and can be accessed immediately."
       title_requirements: "Requirements to submit your project to Catarse"
       creative: "Creative and Finite"
       colective: "Collective Benefits"

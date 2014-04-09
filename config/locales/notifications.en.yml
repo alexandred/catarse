@@ -1,23 +1,23 @@
 en:
   notifications:
     charity_visible:
-      subject: "Charity Online"
-      header: "Charity Online"
+      subject: "Your charity is now online"
+      header: "Your charity is now online!"
     charity_received:
-      subject: "Charity Received"
-      header: "Charity Received"
+      subject: "Your charity has been submitted"
+      header: "Your charity will now be reviewed by the Lillah team"
     charity_rejected:
-      subject: "Charity Rejected"
-      header: "Charity Rejected"   
+      subject: "Your charity was not accepted"
+      header: "Your charity was not accepted by Lillah"   
     backer_canceled_after_confirmed:
       subject: "Backer canceled after confirmed"
       header: "Backer canceled after confirmed"
     project_owner_backer_confirmed:
-      subject: "Hooray! Another new supporter backed your project"
-      header: "A new back has just been confirmed for your project"
+      subject: "Your project has a new donation"
+      header: "You have received a new donation!"
     confirm_backer:
-      subject: "Thank you! Your back for %{project_name} was confirmed!"
-      header: "Back confirmed"
+      subject: "Thank you for your donation"
+      header: "Your donation to %{project_name} has been confirmed!"
     payment_slip:
       subject: "Status do apoio para %{project_name}: boleto impresso"
       header: "Informações sobre pagamentos por boleto no Catarse"
@@ -25,28 +25,28 @@ en:
       subject: "Seu apoio para %{project_name} foi recebido e está aguardando confirmação do %{payment_method}"
       header: "Apoio Em Análise - o que é isso?"
     updates:
-      subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
+      subject: "%{project_name} update by %{project_owner}: %{update_title}"
     project_in_wainting_funds:
       subject: "O prazo do seu projeto acabou, saiba quais são os próximos passos"
       header: "Acabou o prazo!"
     project_success:
-      subject: "Project successful: some necessary information"
-      header: "Project successful"
+      subject: "Your project has successfully reached its target"
+      header: "Your project was successfully funded on Lillah"
     project_unsuccessful:
-      subject: "Your project was not funded on Catarse, but we would like your feedback x)"
-      header: "Project was not successfully funded ;)"
+      subject: "Your project was partially funded"
+      header: "Your project was partially funded on Lillah"
     backer_project_successful:
-      subject: "Hooray! The project %{project_name} has succeeded on Catarse"
-      header: "Hooray! The project you backed has succeeded on Catarse"
+      subject: "The project %{project_name} has successfully reached its target"
+      header: "The project you donated to was successfully funded on Lillah"
     backer_project_unsuccessful:
-      subject: "The project %{project_name} was not funded - some useful information"
-      header: "Information on credits and refunds ;)"
+      subject: "The project %{project_name} was partially funded"
+      header: "The project you donated to was partially funded on Lillah"
     pending_backer_project_unsuccessful:
       subject: "You started to back the project %{project_name}, which was not funded - some useful information"
       header: "Information about confirmation of support, credits and refunds ;)"
     project_received:
-      subject: "Your project was received by Catarse"
-      header: "Your project was received by the Catarse team"
+      subject: "Your project has been submitted"
+      header: "Your project will now be reviewed by the Lillah team"
     project_received_channel:
       subject: "Your project was received by the Wings Channel"
       header: "Your project was welcomed by the staff of the Wings Channel"
@@ -54,11 +54,11 @@ en:
       subject: "The project %{project_name} has just been created"
       header:  "A new project is awaiting review"
     project_visible:
-      subject: "Your project is now online at Catarse"
-      header: "Now it's for real"
+      subject: "Your project is now online"
+      header: "Your project is now online!"
     project_rejected:
-      subject: "Your project does not fit Catarse's focus"
-      header: "Your project was not accepted ;("
+      subject: "Your project was not accepted"
+      header: "Your project was not accepted by Lillah"
     new_draft_project:
       subject: "New project created - %{project_name}"
       header: "New project created"
@@ -67,7 +67,7 @@ en:
       header: "Ajuda para tese de doutorado sobre crowdfunding"
     adm_project_deadline:
       subject: "The project %{project_name} has reached its deadline"
-      header: "The project reached its deadline"
+      header: "The project %{project_name} has reached its deadline"
     credits_warning:
       subject: "You have R$ %{amount} in credits on Catarse"
       header: "Why not back another project?"

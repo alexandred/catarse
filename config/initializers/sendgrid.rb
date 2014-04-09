@@ -6,7 +6,9 @@ begin
     authentication: :plain,
     user_name: "admin@lillah.org",
     password: "WQZzgYnLBPHbjej4hsn1Ow",
-    domain: 'mandrillapp.com'
+    domain: 'lillah.org',
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => OpenSSL::SSL::VERIFY_NONE
     }
     ActionMailer::Base.delivery_method = :smtp
   end

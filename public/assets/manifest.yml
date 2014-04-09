@@ -73,6 +73,8 @@ catarse/bg_tips7.png: catarse/bg_tips7-11227f0415c484f73c365c0bd86b4fd6.png
 catarse/bg_tips7/index.png: catarse/bg_tips7-11227f0415c484f73c365c0bd86b4fd6.png
 catarse/bg_tips8.png: catarse/bg_tips8-4fecfd8667f1c489cd82ba06d0ddd59d.png
 catarse/bg_tips8/index.png: catarse/bg_tips8-4fecfd8667f1c489cd82ba06d0ddd59d.png
+catarse/blog_icon.png: catarse/blog_icon-fb06b11414f663eaf6f04df0652a3ee5.png
+catarse/blog_icon/index.png: catarse/blog_icon-fb06b11414f663eaf6f04df0652a3ee5.png
 catarse/blog_icon17x14.png: catarse/blog_icon17x14-fb06b11414f663eaf6f04df0652a3ee5.png
 catarse/blog_icon17x14/index.png: catarse/blog_icon17x14-fb06b11414f663eaf6f04df0652a3ee5.png
 catarse/boleto_icon.png: catarse/boleto_icon-f8fd781d168b15a8ed74c9233867ad36.png
@@ -451,6 +453,8 @@ gravatar.png: gravatar-1886c051a97054931b5f807de346fe88.png
 gravatar/index.png: gravatar-1886c051a97054931b5f807de346fe88.png
 icon_alertheader.png: icon_alertheader-bfc3062ad825007052e03d775a7e78f9.png
 icon_alertheader/index.png: icon_alertheader-bfc3062ad825007052e03d775a7e78f9.png
+icon_sidebar.png: icon_sidebar-fb06b11414f663eaf6f04df0652a3ee5.png
+icon_sidebar/index.png: icon_sidebar-fb06b11414f663eaf6f04df0652a3ee5.png
 jquery-ui/ui-bg_diagonals-small_0_aaaaaa_40x40.png: jquery-ui/ui-bg_diagonals-small_0_aaaaaa_40x40-444d7a2d0c7e207696245fd610b3f696.png
 jquery-ui/ui-bg_diagonals-small_0_aaaaaa_40x40/index.png: jquery-ui/ui-bg_diagonals-small_0_aaaaaa_40x40-444d7a2d0c7e207696245fd610b3f696.png
 jquery-ui/ui-bg_diagonals-thick_15_444444_40x40.png: jquery-ui/ui-bg_diagonals-thick_15_444444_40x40-4f489a492bffb3bcce0056016a07c480.png
@@ -535,8 +539,8 @@ app/views/layouts/application.js: app/views/layouts/application-299add5572ba8c0a
 app/views/layouts/application/index.js: app/views/layouts/application-299add5572ba8c0ad1c2f0b9bc81b51a.js
 application.js: application-b1da1753cc59b1530a55a991f8be4393.js
 application/index.js: application-b1da1753cc59b1530a55a991f8be4393.js
-application.css: application-13b579a1dbe0cefcdd06104e45c9184c.css
-application/index.css: application-13b579a1dbe0cefcdd06104e45c9184c.css
+application.css: application-0bf863070a9888bc67dcd82cc8762821.css
+application/index.css: application-0bf863070a9888bc67dcd82cc8762821.css
 jquery.min.map: jquery.min-388372ef65cc311f6a3df4a6ceac8d22.map
 jquery/index.min.map: jquery.min-388372ef65cc311f6a3df4a6ceac8d22.map
 chartkick.js: chartkick-c59fd2f78de74c335adf16df1b924656.js

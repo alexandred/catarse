@@ -4,7 +4,7 @@ en:
     projects:
       index:
         by_state: 'By state'
-        between_created_at: 'Created at between'
+        between_created_at: 'Created between'
         submit: 'Filter'
         send_to_trash: 'Delete'
         send_to_draft: 'Send to DRAFT!'
@@ -45,43 +45,43 @@ en:
     backers:
       messages:
         successful:
-          confirm: 'Backer confirmed!'
-          pendent: 'Backer unconfirmed!'
-          refund: 'Backer refunded!'
+          confirm: 'Donor confirmed!'
+          pendent: 'Donor unconfirmed!'
+          refund: 'Donor refunded!'
           change_reward: 'Reward changed!'
-          hide: 'Backer hidden!'
-          cancel: 'Backer canceled!'
-          push_to_trash: 'Backer deleted!'
+          hide: 'Donor hidden!'
+          cancel: 'Donor canceled!'
+          push_to_trash: 'Donor deleted!'
       index:
-        push_to_trash: 'Delete backer'
-        cancel: 'Cancel backer'
+        push_to_trash: 'Delete Donor'
+        cancel: 'Cancel donor'
         refund_and_hide: 'Refund and hide'
-        backer_info: 'Info of backer %{key}'
+        backer_info: 'Info of donor %{key}'
         payment_id: 'Payment ID'
         payment_method: 'Payment method'
         payment_fee: 'Payment method fee'
         payment_choice: 'Payment choice'
-        payer_email: 'Payer email'
-        user_email: 'Catarse user email'
+        payer_email: 'Payment email'
+        user_email: 'Lillah user email'
         pending_to_refund: 'Pending to refund'
         created_at: 'Created at'
-        title: "Backers management"
-        menu: Backs
+        title: "Donors management"
+        menu: Donations
         anonymous: Anonymous?
         confirmed: Confirmed?
         credits: "Used credits?"
         id: ID
         key: Key
-        no_backers: "No backers found."
+        no_backers: "No donations found."
         project: Project
         refunded: Refunded?
         requested_refund: "Requested refund?"
         reward: Reward
         no_reward: "No reward"
         submit: Search
-        total_backed: backed
-        total_backers: backers
-        total_backs: backs
+        total_backed: Donated
+        total_backers: Donors
+        total_backs: Donations
         total_users: Users
         user: User
         value: Value
@@ -90,9 +90,9 @@ en:
         menu: "Statistics"
         title: "Statistics"
         total_users: "Users"
-        total_backs: "Backs"
-        total_backers: "Backers"
-        total_backed: "Backed"
+        total_backs: "Donations"
+        total_backers: "Donors"
+        total_backed: "Donated"
         total_projects: "Projects"
         total_projects_success: "Successful"
         total_projects_online: "Online"

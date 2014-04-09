@@ -75,6 +75,8 @@ class User < ActiveRecord::Base
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
+  has_many :authorizations
+  has_many :unsubscribes
   has_many :donators
   has_many :donations
   has_many :notifications, dependent: :nullify
@@ -171,7 +173,7 @@ class User < ActiveRecord::Base
   end
 
   def facebook_id
-    auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
+    auth = self.authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
     auth.uid if auth
   end
 
@@ -227,12 +229,12 @@ class User < ActiveRecord::Base
   end
 
   def updates_subscription
-    unsubscribes.updates_unsubscribe(nil)
+    self.unsubscribes.updates_unsubscribe(nil)
   end
 
   def project_unsubscribes
     backed_projects.map do |p|
-      unsubscribes.updates_unsubscribe(p.id)
+      self.unsubscribes.updates_unsubscribe(p.id)
     end
   end
 

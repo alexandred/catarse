@@ -1,39 +1,35 @@
 - backer = @notification.backer
-|Hi, #{backer.user.name}!
+|Dear #{backer.user.name},
 br
 br
-|Unfortunately the project #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} that you backed did not reach its goal and wasn't funded on #{Configuration[:company_name]}.
+|The project #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} that you donated to was partially funded on #{Configuration[:company_name].downcase}!
 br
 br
-|Due to this, you received #{backer.display_value} in credits to back other projects. You can explore more #{backer.project.category} projects in #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}")}
+|A total of #{backer.project.total_backers} generous donors, raised a total of #{backer.project.display_pledged} for the project. 
 br
 br
-|We selected some projects suggestions specially for you:
-br
--backer.user.recommended_projects(3).each do |project|
-  |#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
-  br
-  |#{project.headline}
-  br
-  br
+|Please share this with your friends:
 br
 br
-|If you prefer, you can ask for a refund of your money by clicking on #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. It's through it that you must access your account. If you have any trouble in this process, send an email to #{mail_to Configuration[:email_payments]} with the subject “Reembolso - problema no login”.
+- fb_img = "<img src=\"#{Configuration[:base_url]}/assets/auth/facebook_64.png\" title='Facebook' class='social' />".html_safe
+== raw link_to(fb_img, "http://www.facebook.com/share.php?u=#{Configuration[:base_url]}/projects/#{backer.project.to_param}&t=Uhuu! The project '#{backer.project.name}', that I donated to was funded on #{Configuration[:company_name]}!" , :target => :_blank)
+- twitter_img = "<img src='#{Configuration[:base_url]}/assets/auth/twitter_64.png' title='Twitter' class='social' />".html_safe
+== raw link_to(twitter_img,"http://twitter.com/?status=#{"Uhuu! The project '#{backer.project.name}', that I donated to was funded on @#{Configuration[:twitter_username]}! #{project_by_slug_url(permalink: backer.project.permalink)}"}", :target => :_blank)
 br
 br
-|Back key: #{backer.key}
+|We are indeed grateful to you for your enthusiastic support which greatly helps to assist those in our community.
 br
 br
-|If you choose to be refunded, remember that, as stated on  #{link_to("Termos de Uso do #{Configuration[:company_name]}","#{Configuration[:base_url]}/terms")}, if you backed using a credit card, the value will only be returned in the next card bill. If you paid using bank transfer, we will send you an email explaining all the steps to get you money back.
+|If you would like to get in touch with the project owner, please send an e-mail to #{mail_to backer.project.user.email}.
 br
 br
-|If, for any reason, you want to contact #{backer.project.user.display_name}, send an email to #{mail_to backer.project.user.email}.
+|Also make sure you support us by liking our  #{link_to 'Facebook', Configuration[:facebook_url]} page and following us on #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" }. Please also tell your friends and family about Lillah.org!
 br
 br
-|If you have any questions, access our #{link_to('FAQ',"#{Configuration[:base_url]}/faq")} or send an email to #{mail_to Configuration[:email_payments]}.
+|If you have any further questions or require further assistance, please get in touch by replying to this e-mail.
 br
 br
-|A big hug,
+|Regards,
 br
 br
-|#{Configuration[:company_name]} Team
+|The #{Configuration[:company_name]} Team

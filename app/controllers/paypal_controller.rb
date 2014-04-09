@@ -127,7 +127,7 @@ class PaypalController < ApplicationController
   def ipn2
     params = request.params
     parametres = 'cmd=_notify-validate&' + env['rack.request.form_vars']
-    paypal_url = 'www.paypal.com'
+    paypal_url = 'www.sandbox.paypal.com'
     if ENV['RAILS_ENV'] == 'production'
     paypal_url = 'www.sandbox.paypal.com'
     end
@@ -152,10 +152,10 @@ class PaypalController < ApplicationController
   def ipn3
     params = request.params
     parametres = 'cmd=_notify-validate&' + env['rack.request.form_vars']
-    paypal_url = 'www.paypal.com'
-    if ENV['RAILS_ENV'] == 'production'
     paypal_url = 'www.sandbox.paypal.com'
-    end
+   # if ENV['RAILS_ENV'] == 'production'
+   # paypal_url = 'www.sandbox.paypal.com'
+   # end
     # Verify all this with paypal
     http = Net::HTTP.new(paypal_url, 443)
     http.use_ssl = true

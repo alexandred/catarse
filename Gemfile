@@ -56,7 +56,7 @@ gem 'ezcrypto'
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
 
 # Email marketing
-gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '45dc426'
+#gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '45dc426'
 
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.1.1'
@@ -70,7 +70,7 @@ gem 'rmagick'
 
 # Other Tools
 gem 'ranked-model'
-gem 'feedzirra'
+gem 'feedzirra', '= 0.7.1'
 gem 'validation_reflection',      git: 'git://github.com/ncri/validation_reflection.git'
 gem 'inherited_resources',        '1.3.1'
 gem 'has_scope'
