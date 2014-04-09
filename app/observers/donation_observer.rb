@@ -1,7 +1,7 @@
 class DonationObserver < ActiveRecord::Observer
   observe :donation
 
-  def before_save(donation)
+  def after_save(donation)
       user = User.find(donation.user_id)
       charity = Charity.find(donation.charity_id)
 
