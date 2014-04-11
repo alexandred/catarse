@@ -80,6 +80,8 @@ class User < ActiveRecord::Base
   has_many :donators
   has_many :donations
   has_many :notifications, dependent: :nullify
+  has_many :charities
+  has_many :projects
   has_one :user_total
 
 
