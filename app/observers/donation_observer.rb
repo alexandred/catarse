@@ -11,7 +11,7 @@ class DonationObserver < ActiveRecord::Observer
         donation: donation,
         charity: charity,
         user: user,
-        amount: donator.amount)
+        amount: donation.amount)
   end
 
 
