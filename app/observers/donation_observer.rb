@@ -9,7 +9,7 @@ class DonationObserver < ActiveRecord::Observer
         user,
         {donation_id: donation.id},
         donation: donation,
-        charity: project,
+        charity: charity,
         user: user,
         amount: donator.amount)
   end
