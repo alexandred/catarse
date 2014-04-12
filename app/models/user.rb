@@ -82,6 +82,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :nullify
   has_many :charities
   has_many :projects
+  has_many :updates
   has_one :user_total
 
 

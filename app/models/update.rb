@@ -4,6 +4,7 @@ class Update < ActiveRecord::Base
   schema_associations
   belongs_to :project
   belongs_to :charity
+  belongs_to :user
   has_many :notifications, dependent: :destroy
   validates_presence_of :user_id, :comment, :comment_html
   before_save -> {self.comment = comment.gsub(/^\s+/, "")}

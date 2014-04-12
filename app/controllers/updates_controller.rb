@@ -4,7 +4,7 @@ class UpdatesController < ApplicationController
 
   actions :index, :create, :destroy
   respond_to :html, only: [ :index, :create, :destroy ]
-  belongs_to :project, :charity, :optional => true
+  belongs_to :project, :charity, :user, :optional => true
 
   def index
     index! do |format|
