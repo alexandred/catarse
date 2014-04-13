@@ -40,7 +40,7 @@ sass:
       - if can? :update, @project, :category
         = form.input :category, as: :select, required: true, hint: t('projects.new.tags_important').html_safe 
       - if can? :update, @project, :charity
-        = form.input :charity, as: :select, required: false, hint: t('projects.new.charity_important').html_safe
+        = form.input :charity, collection: Charity.where(state: "online"), as: :select, required: false, hint: t('projects.new.charity_important').html_safe
       - if can? :update, @project, :headline
         = form.input :headline, as: :string, required: true, hint: t('projects.new.headline_important').html_safe
       - if can? :update, @project, :about
